@@ -1,0 +1,11 @@
+// Default Grid Settings
+$shelves-width: 1140px !default;
+$shelves-columns: 12 !default;
+$shelves-margin: 20px !default;
+$shelves-gutter: 20px !default;
+
+// Calculate the column width and gutter
+@if unit($shelves-gutter) == "px" {
+  $shelves-gutter: percentage($shelves-gutter / $shelves-width);
+}
+$shelves-column-width: (100% - ($shelves-columns - 1) * $shelves-gutter) / $shelves-columns;

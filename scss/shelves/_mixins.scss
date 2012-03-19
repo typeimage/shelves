@@ -1,0 +1,208 @@
+// Includes the styles for the container element - namely
+// some outer margins for fluid sizes.
+//
+//   $margin - The outer margins. Defaults to $shelves-margin.
+//
+@mixin container($margin: $shelves-margin) {
+  padding-left: $margin;
+  padding-right: $margin;
+}
+
+// Includes the styles for the row element. This includes
+// a clearfix, widths, and centering.
+//
+//   $width - The max width of the row element. If this is
+//            false, the row is completely fluid. Defaults
+//            to $shelves-width.
+//
+@mixin row($max-width: $shelves-width) {
+  @include pie-clearfix;
+  width: 100%;
+  
+  @if $max-width != false {
+    max-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Sets up an element to be a column in the grid system.
+// This is used internally to generate the default grid,
+// Use span($n) instead to create columns.
+@mixin column-base {
+  display: block;
+  float: left;
+  min-height: 1px;
+  position: relative;
+}
+
+// Sets the width of the element to the given number of columns.
+//
+//   $n       - The number of columns the element should span.
+//   $context - The number of columns encapsulating the element.
+//              Defaults to the full width of the grid.
+//
+@mixin columns-width($n, $context: $shelves-columns) {
+  width: columns-width($n, $context);
+}
+
+// Includes the gutter for a column on the grid.
+//
+//   $context              - The number of columns encapsulating the element.
+//                           Defaults to the full width of the grid.
+//   $include-first-column - Includes the styles for removing the gutter
+//                           on the first column in a row. Defaults to true.
+//
+@mixin column-gutter($context: $shelves-columns, $include-first-column: true) {
+  margin-left: column-gutter($context);
+  
+  @if $include-first-column == true {
+    &:first-child {
+      @include no-column-gutter;
+    }
+  }
+}
+
+// Removes the gutter of a column in a grid. This is usually added
+// to the first column in a row.
+@mixin no-column-gutter {
+  margin-left: 0;
+}
+
+//
+@mixin column-offset($n, $context: $shelves-columns, $first: false) {
+  margin-left: columns-width($n, $context) + column-gutter($context) * if($first, 1, 2);
+}
+
+//
+@mixin column-push($n, $context: $shelves-columns) {
+  left: columns-width($n, $context) + column-gutter($context);
+}
+
+//
+@mixin column-pull($n, $context: $shelves-columns) {
+  right: columns-width($n, $context) + column-gutter($context);
+}
+
+// Generates the default grid classes for a modular OOCSS
+// approach to using the grid. All of the selectors can be customized.
+//
+//   $container-selector    - Customize the selector for the container element.
+//                            Defaults to ".container".
+//   $row-selector          - Customize the selector for the row element.
+//                            Defaults to ".row".
+//   $column-selector       - Customize the selector for the columns.
+//                            Defaults to ".span".
+//   $offset-selector       - Customize the selector for the offset modifier.
+//                            Defaults to ".offset".
+//   $push-selector         - Customize the selector for the push modifier.
+//                            Defaults to ".push".
+//   $pull-selector         - Customize the selector for the pull modifier.
+//                            Defaults to ".pull".
+//   $first-column-selector - Customize the selector for the first column in a row.
+//                            Defaults to ".first-column".
+//   $separator             - Customize the seperator used in the selectors.
+//                            Defaults to "-".
+//
+@mixin generate-shelves(
+  $container-selector: ".container",
+  $row-selector:       ".row",
+  $column-selector:    ".span",
+  $offset-selector:    ".offset",
+  $push-selector:      ".push",
+  $pull-selector:      ".pull",
+  $no-gutter-selector: ".no-gutter",
+  $separator:          "-"
+) {
+  
+  #{$container-selector} {
+    @include container;
+  }
+  
+  #{$row-selector} {
+    @include row;
+  }
+
+  #{enumerate($column-selector, 1, $shelves-columns, $separator)} {
+    @include column-base;
+    @include column-gutter($include-first-column: false);
+    
+    &:first-child {
+      @extend #{$no-gutter-selector};
+    }
+  }
+  
+  #{$no-gutter-selector} {
+    @include no-column-gutter;
+  }
+
+  @for $i from 1 to $shelves-columns  {
+    #{$column-selector}#{$separator}#{$i} {
+      @include columns-width($i);
+    }
+  }
+    
+  @for $i from 1 to $shelves-columns  {
+    #{$offset-selector}#{$separator}#{$i} {
+      @include column-offset($i);
+      
+      &:first-child {
+        @include column-offset($i, $first: true);
+      }
+    }
+  }
+    
+  @for $i from 1 to $shelves-columns  {
+    #{$push-selector}#{$separator}#{$i} {
+      @include column-push($i);
+    }
+  }
+    
+  @for $i from 1 to $shelves-columns  {
+    #{$pull-selector}#{$separator}#{$i} {
+      @include column-pull($i);
+    }
+  }
+
+  @for $i from 2 to $shelves-columns  {
+    $i: $shelves-columns - $i; // reverse the loop order
+    
+    #{$column-selector}#{$separator}#{$i} {
+      #{enumerate($column-selector, 1, $i, $separator)} {
+        @include column-gutter($i, false);
+  
+        &:first-child {
+          @extend #{$no-gutter-selector};
+        }
+      }
+    
+      @for $j from 1 to $i {
+        #{$column-selector}#{$separator}#{$j} {
+          @include columns-width($j, $i);
+        }
+      }
+        
+      @for $j from 1 to $i {
+        #{$offset-selector}#{$separator}#{$j} {
+          @include column-offset($j, $i);
+          
+          &:first-child {
+            @include column-offset($j, $i, true);
+          }
+        }
+      }
+        
+      @for $j from 1 to $i {
+        #{$push-selector}#{$separator}#{$j} {
+          @include column-push($j, $i);
+        }
+      }
+        
+      @for $j from 1 to $i {
+        #{$pull-selector}#{$separator}#{$j} {
+          @include column-pull($j, $i);
+        }
+      }
+    }
+  }
+}
