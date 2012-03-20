@@ -1,57 +1,50 @@
 // Generates the entire grid, made up of reusable classes for a modular OOCSS
-// approach to using the grid. All of the selectors can be customized.
+// approach to using the grid. All of the names can be customized.
 //
-//   $container-selector     - Customize the selector for the container element.
-//                             Defaults to ".container".
-//   $row-selector           - Customize the selector for the row element.
-//                             Defaults to ".row".
-//   $column-selector        - Customize the selector for the columns.
-//                             Defaults to ".column".
-//   $prefix-selector        - Customize the selector for the prefix modifier.
-//                             Defaults to ".prefix".
-//   $suffix-selector        - Customize the selector for the suffix modifier.
-//                             Defaults to ".suffix".
-//   $push-selector          - Customize the selector for the push modifier.
-//                             Defaults to ".push".
-//   $pull-selector          - Customize the selector for the pull modifier.
-//                             Defaults to ".pull".
-//   $separator              - Customize the seperator used in the selectors.
-//                             Defaults to "-".
-//   $mobile-column-selector - Customize the selector for mobile columns.
-//                             Defaults to ".mobile-column".
-//   $reset-column-selector  - Customize the selector for reseting the column.
-//                             Defaults to ".reset-column".
-//   $reset-gutter-selector  - Customize the selector for reseting the gutter.
-//                             Defaults to ".reset-gutter".
+//   $container-name     - Customize the name for the container element.
+//                         Defaults to "container".
+//   $row-name           - Customize the name for the row element.
+//                         Defaults to "row".
+//   $column-name        - Customize the name for the columns.
+//                         Defaults to "column".
+//   $prefix-name        - Customize the name for the prefix modifier.
+//                         Defaults to "prefix".
+//   $suffix-name        - Customize the name for the suffix modifier.
+//                         Defaults to "suffix".
+//   $push-name          - Customize the name for the push modifier.
+//                         Defaults to "push".
+//   $pull-name          - Customize the name for the pull modifier.
+//                         Defaults to "pull".
+//   $separator          - Customize the seperator used in the names.
+//                         Defaults to "-".
+//   $mobile-column-name - Customize the name for mobile columns.
+//                         Defaults to "mobile-column".
 //
 @mixin shelves(
-  $container-selector:     $shelves-container-selector,
-  $row-selector:           $shelves-row-selector,
-  $column-selector:        $shelves-column-selector,
-  $prefix-selector:        $shelves-prefix-selector,
-  $suffix-selector:        $shelves-suffix-selector,
-  $push-selector:          $shelves-push-selector,
-  $pull-selector:          $shelves-pull-selector,
-  $separator:              $shelves-separator,
-  $mobile-column-selector: $shelves-mobile-column-selector,
-  $reset-column-selector:  $shelves-reset-column-selector,
-  $reset-gutter-selector:  $shelves-reset-gutter-selector
+  $container-name:     $shelves-container-name,
+  $row-name:           $shelves-row-name,
+  $column-name:        $shelves-column-name,
+  $prefix-name:        $shelves-prefix-name,
+  $suffix-name:        $shelves-suffix-name,
+  $push-name:          $shelves-push-name,
+  $pull-name:          $shelves-pull-name,
+  $separator:          $shelves-separator,
+  $mobile-column-name: $shelves-mobile-column-name
 ) {
   
   @include shelves-base(
-    $container-selector:     $container-selector,
-    $row-selector:           $row-selector,
-    $reset-gutter-selector:  $reset-gutter-selector
+    $container-name: $container-name,
+    $row-name:       $row-name
   );
   
   @include shelves-columns(
-    $column-selector:        $column-selector,
-    $prefix-selector:        $prefix-selector,
-    $suffix-selector:        $suffix-selector,
-    $push-selector:          $push-selector,
-    $pull-selector:          $pull-selector,
-    $separator:              $separator,
-    $reset-gutter-selector:  $reset-gutter-selector
+    $include-column-gutter: false,
+    $column-name:           $column-name,
+    $prefix-name:           $prefix-name,
+    $suffix-name:           $suffix-name,
+    $push-name:             $push-name,
+    $pull-name:             $pull-name,
+    $separator:             $separator
   );
   
   @for $i from 1 to $shelves-columns - 1  {
@@ -59,36 +52,37 @@
     // to cascade the nested column properties.
     $i: $shelves-columns - $i;
     
-    #{$column-selector}#{$separator}#{$i} {
+    .#{$column-name}#{$separator}#{$i} {
       @include shelves-columns(
-        $start:                  1,
-        $end:                    $i,
-        $context:                $i,
-        $include-column-base:    false,
-        $column-selector:        $column-selector,
-        $prefix-selector:        $prefix-selector,
-        $suffix-selector:        $suffix-selector,
-        $push-selector:          $push-selector,
-        $pull-selector:          $pull-selector,
-        $separator:              $separator,
-        $reset-gutter-selector:  $reset-gutter-selector
+        $start:                 1,
+        $end:                   $i,
+        $context:               $i,
+        $include-column-gutter: true,
+        $include-prefix:        true,
+        $include-suffix:        true,
+        $include-push:          false,
+        $include-pull:          false,
+        $column-name:           $column-name,
+        $prefix-name:           $prefix-name,
+        $suffix-name:           $suffix-name,
+        $push-name:             $push-name,
+        $pull-name:             $pull-name,
+        $separator:             $separator
       );
     } 
   }
   
   @media screen and (max-width: 767px) {
     @include shelves-resets(
-      $row-selector:          $row-selector,
-      $column-selector:       $column-selector,
-      $separator:             $separator,
-      $reset-column-selector: $reset-column-selector
+      $row-name:     $row-name,
+      $column-name:  $column-name,
+      $separator:    $separator
     );
     
     @include shelves-mobile-columns(
-      $column-selector:        $column-selector,
-      $separator:              $separator,
-      $mobile-column-selector: $mobile-column-selector,
-      $reset-gutter-selector:  $reset-gutter-selector
+      $column-name:        $column-name,
+      $separator:          $separator,
+      $mobile-column-name: $mobile-column-name
     );
   }
 }
@@ -96,29 +90,40 @@
 // Generates the grid's base classes, namely the
 // the row and container elements.
 //
-//   $container-selector     - Customize the selector for the container element.
-//                             Defaults to ".container".
-//   $row-selector           - Customize the selector for the row element.
-//                             Defaults to ".row".
-//   $reset-gutter-selector  - Customize the selector for reseting the gutter.
-//                             Defaults to ".reset-gutter".
+//   $container-name - Customize the name for the container element.
+//                     Defaults to "container".
+//   $row-name       - Customize the name for the row element.
+//                     Defaults to "row".
+//   $container-name - Customize the name for the container element.
+//                     Defaults to "container".
+//   $separator      - Customize the seperator used in the names.
+//                     Defaults to "-".
 //
 @mixin shelves-base(
-  $container-selector:     $shelves-container-selector,
-  $row-selector:           $shelves-row-selector,
-  $reset-gutter-selector:  $shelves-reset-gutter-selector
+  $container-name: $shelves-container-name,
+  $row-name:       $shelves-row-name,
+  $column-name:    $shelves-column-name,
+  $separator:      $shelves-separator
 ) {
   
-  #{$container-selector} {
+  .#{$container-name} {
     @include container;
   }
   
-  #{$row-selector} {
-    @include row($min-width: 767px, $row-selector: $row-selector);
+  .#{$row-name} {
+    @include row($min-width: 767px, $row-name: $row-name);
   }
   
-  #{$reset-gutter-selector} {
-    @include reset-column-gutter;
+  [class*="#{$column-name}#{$separator}"], {
+    @include column-base;
+    @include column-gutter($include-first-column: false);
+    
+    &,
+    & [class*="#{$column-name}#{$separator}"] {
+      &:first-child {
+        @include reset-column-gutter;
+      }
+    }
   }
 }
 
@@ -126,305 +131,141 @@
 // the columns. This can be used in different contexts, varying
 // the number of columns if necessary.
 //
-//   $column-selector        - Customize the selector for the columns.
-//                             Defaults to ".column".
-//   $prefix-selector        - Customize the selector for the prefix modifier.
-//                             Defaults to ".prefix".
-//   $suffix-selector        - Customize the selector for the suffix modifier.
-//                             Defaults to ".suffix".
-//   $push-selector          - Customize the selector for the push modifier.
-//                             Defaults to ".push".
-//   $pull-selector          - Customize the selector for the pull modifier.
-//                             Defaults to ".pull".
-//   $separator              - Customize the seperator used in the selectors.
-//                             Defaults to "-".
-//   $reset-gutter-selector  - Customize the selector for reseting the gutter.
-//                             Defaults to ".reset-gutter".
+//   $column-name - Customize the name for the columns.
+//                  Defaults to "column".
+//   $prefix-name - Customize the name for the prefix modifier.
+//                  Defaults to "prefix".
+//   $suffix-name - Customize the name for the suffix modifier.
+//                  Defaults to "suffix".
+//   $push-name   - Customize the name for the push modifier.
+//                  Defaults to "push".
+//   $pull-name   - Customize the name for the pull modifier.
+//                  Defaults to "pull".
+//   $separator   - Customize the seperator used in the names.
+//                  Defaults to "-".
 //
 @mixin shelves-columns(
-  $start:                  1,
-  $end:                    $shelves-columns,
-  $context:                $shelves-columns,
-  $include-column-base:    true,
-  $column-selector:        $shelves-column-selector,
-  $prefix-selector:        $shelves-prefix-selector,
-  $suffix-selector:        $shelves-suffix-selector,
-  $push-selector:          $shelves-push-selector,
-  $pull-selector:          $shelves-pull-selector,
-  $separator:              $shelves-separator,
-  $reset-gutter-selector:  $shelves-reset-gutter-selector
+  $start:                 1,
+  $end:                   $shelves-columns,
+  $context:               $shelves-columns,
+  $include-column-gutter: true,
+  $include-prefix:        true,
+  $include-suffix:        true,
+  $include-push:          true,
+  $include-pull:          true,
+  $column-name:           $shelves-column-name,
+  $prefix-name:           $shelves-prefix-name,
+  $suffix-name:           $shelves-suffix-name,
+  $push-name:             $shelves-push-name,
+  $pull-name:             $shelves-pull-name,
+  $separator:             $shelves-separator
 ) {
-  #{enumerate($column-selector, 1, $end - 1, $separator)} {
-    @if $include-column-base == true {
-      @include column-base;
-    }
-    @include column-gutter($context, false);
-    
-    &:first-child {
-      @extend #{$reset-gutter-selector};
+  @if $include-column-gutter {
+    [class*="#{$column-name}#{$separator}"] {
+      @include column-gutter($context, false);
     }
   }
 
   @for $i from $start to $end  {
-    #{$column-selector}#{$separator}#{$i} {
+    .#{$column-name}#{$separator}#{$i} {
       @include columns-width($i, $context);
     }
   }
     
-  @for $i from $start to $end  {
-    #{$prefix-selector}#{$separator}#{$i} {
-      @include column-prefix($i, $context);
+  @if $include-prefix == true {
+    @for $i from $start to $end  {
+      .#{$prefix-name}#{$separator}#{$i} {
+        @include column-prefix($i, $context);
+      }
     }
   }
     
-  @for $i from $start to $end  {
-    #{$suffix-selector}#{$separator}#{$i} {
-      @include column-suffix($i, $context);
+  @if $include-suffix == true {
+    @for $i from $start to $end  {
+      .#{$suffix-name}#{$separator}#{$i} {
+        @include column-suffix($i, $context);
+      }
     }
   }
     
-  @for $i from $start to $end  {
-    #{$push-selector}#{$separator}#{$i} {
-      @include column-push($i, $context);
+  @if $include-push == true {
+    @for $i from $start to $end  {
+      .#{$push-name}#{$separator}#{$i} {
+        @include column-push($i, $context);
+      }
     }
   }
     
-  @for $i from $start to $end  {
-    #{$pull-selector}#{$separator}#{$i} {
-      @include column-pull($i, $context);
-    }
-  }
-}
-
-// Generate the resets for 
-//
-//   $row-selector           - Customize the selector for the row element.
-//                             Defaults to ".row".
-//   $column-selector        - Customize the selector for the columns.
-//                             Defaults to ".column".
-//   $separator              - Customize the seperator used in the selectors.
-//                             Defaults to "-".
-//   $reset-column-selector  - Customize the selector for reseting the column.
-//                             Defaults to ".reset-column".
-//
-@mixin shelves-resets(
-  $row-selector:          $shelves-row-selector,
-  $column-selector:       $shelves-column-selector,
-  $separator:             $shelves-separator,
-  $reset-column-selector: $shelves-reset-column-selector
-) {
-  #{$row-selector} {
-    @include reset-row;
-  }
-  
-  #{$reset-column-selector} {
-    @include reset-column;
-    @include reset-column-prefix;
-    @include reset-column-suffix;
-    @include reset-column-push;
-    @include reset-column-pull;
-  }
-  
-  @for $i from 1 to $shelves-columns {
-    $i: $shelves-columns - $i; // reverse the loop order
-    
-    #{$column-selector}#{$separator}#{$i} {
-      @extend #{$reset-column-selector};
-      
-      @if $i > 1 {
-        #{enumerate($column-selector, 1, $i - 1, $separator)} {
-          @extend #{$reset-column-selector};
-        }
+  @if $include-pull == true {
+    @for $i from $start to $end  {
+      .#{$pull-name}#{$separator}#{$i} {
+        @include column-pull($i, $context);
       }
     }
   }
 }
 
-// Generates the default grid classes for a modular OOCSS
-// approach to using the grid. All of the selectors can be customized.
+// 
 //
-//   $column-selector        - Customize the selector for the columns.
-//                             Defaults to ".column".
-//   $separator              - Customize the seperator used in the selectors.
-//                             Defaults to "-".
-//   $mobile-column-selector - Customize the selector for mobile columns.
-//                             Defaults to ".mobile-column".
-//   $reset-gutter-selector  - Customize the selector for reseting the gutter.
-//                             Defaults to ".reset-gutter".
+//   $row-name    - Customize the name for the row element.
+//                  Defaults to "row".
+//   $column-name - Customize the name for the columns.
+//                  Defaults to "column".
+//   $separator   - Customize the seperator used in the names.
+//                  Defaults to "-".
+//
+@mixin shelves-resets(
+  $row-name:    $shelves-row-name,
+  $column-name: $shelves-column-name,
+  $separator:   $shelves-separator
+) {
+  .#{$row-name} {
+    @include reset-row;
+  }
+  
+  [class*="#{$column-name}#{$separator}"] {
+    &,
+    & [class*="#{$column-name}#{$separator}"] {
+      @include reset-column;
+    }
+  }
+}
+
+// Generates the default grid classes for a modular OOCSS
+// approach to using the grid. All of the names can be customized.
+//
+//   $column-name        - Customize the name for the columns.
+//                         Defaults to "column".
+//   $separator          - Customize the seperator used in the names.
+//                         Defaults to "-".
+//   $mobile-column-name - Customize the name for mobile columns.
+//                         Defaults to "mobile-column".
 //
 @mixin shelves-mobile-columns(
-  $column-selector:        $shelves-column-selector,
-  $separator:              $shelves-separator,
-  $mobile-column-selector: $shelves-mobile-column-selector,
-  $reset-gutter-selector:  $shelves-reset-gutter-selector
+  $column-name:        $shelves-column-name,
+  $separator:          $shelves-separator,
+  $mobile-column-name: $shelves-mobile-column-name
 ) {
-  #{$mobile-column-selector}#{$separator}base {
+  .#{$mobile-column-name}#{$separator}base {
     @include column-base;
     @include column-gutter($include-first-column: false);
   
     &:first-child {
-      @extend #{$reset-gutter-selector};
+      @include reset-column-gutter;
     }
   }
     
-  #{$mobile-column-selector} {
+  .#{$mobile-column-name} {
     $mobile-step: floor($shelves-columns / $shelves-mobile-columns);
     $i: $mobile-step;
     
     @while $i < $shelves-columns {
-      &#{$column-selector}#{$separator}#{$i} {
-        @extend #{$mobile-column-selector}#{$separator}base;
+      &.#{$column-name}#{$separator}#{$i} {
+        @extend .#{$mobile-column-name}#{$separator}base;
         @include columns-width($i);
       }
       
       $i: $i + $mobile-step;
     }
-  }
-}
-
-// Generates the default grid classes for a modular OOCSS
-// approach to using the grid. All of the selectors can be customized.
-//
-//   $container-selector     - Customize the selector for the container element.
-//                             Defaults to ".container".
-//   $row-selector           - Customize the selector for the row element.
-//                             Defaults to ".row".
-//   $column-selector        - Customize the selector for the columns.
-//                             Defaults to ".column".
-//   $prefix-selector        - Customize the selector for the prefix modifier.
-//                             Defaults to ".prefix".
-//   $suffix-selector        - Customize the selector for the suffix modifier.
-//                             Defaults to ".suffix".
-//   $push-selector          - Customize the selector for the push modifier.
-//                             Defaults to ".push".
-//   $pull-selector          - Customize the selector for the pull modifier.
-//                             Defaults to ".pull".
-//   $separator              - Customize the seperator used in the selectors.
-//                             Defaults to "-".
-//   $mobile-column-selector - Customize the selector for mobile columns.
-//                             Defaults to ".mobile-column".
-//   $reset-column-selector  - Customize the selector for reseting the column.
-//                             Defaults to ".reset-column".
-//   $reset-gutter-selector  - Customize the selector for reseting the gutter.
-//                             Defaults to ".reset-gutter".
-//
-@mixin generate-shelves(
-  $container-selector:     $shelves-container-selector,
-  $row-selector:           $shelves-row-selector,
-  $column-selector:        $shelves-column-selector,
-  $prefix-selector:        $shelves-prefix-selector,
-  $suffix-selector:        $shelves-suffix-selector,
-  $push-selector:          $shelves-push-selector,
-  $pull-selector:          $shelves-pull-selector,
-  $separator:              $shelves-separator,
-  $mobile-column-selector: $shelves-mobile-column-selector,
-  $reset-column-selector:  $shelves-reset-column-selector,
-  $reset-gutter-selector:  $shelves-reset-gutter-selector
-) {
-  
-  #{$container-selector} {
-    @include container;
-  }
-  
-  #{$row-selector} {
-    @include row;
-  }
-
-  #{enumerate($column-selector, 1, $shelves-columns - 1, $separator)} {
-    @include column-base;
-    @include column-gutter($include-first-column: false);
-    
-    &:first-child {
-      @extend #{$reset-gutter-selector};
-    }
-  }
-  
-  #{$reset-gutter-selector} {
-    @include reset-column-gutter;
-  }
-
-  @for $i from 1 to $shelves-columns  {
-    #{$column-selector}#{$separator}#{$i} {
-      @include columns-width($i);
-    }
-  }
-    
-  @for $i from 1 to $shelves-columns  {
-    #{$prefix-selector}#{$separator}#{$i} {
-      @include column-prefix($i);
-    }
-  }
-    
-  @for $i from 1 to $shelves-columns  {
-    #{$suffix-selector}#{$separator}#{$i} {
-      @include column-suffix($i);
-    }
-  }
-    
-  @for $i from 1 to $shelves-columns  {
-    #{$push-selector}#{$separator}#{$i} {
-      @include column-push($i);
-    }
-  }
-    
-  @for $i from 1 to $shelves-columns  {
-    #{$pull-selector}#{$separator}#{$i} {
-      @include column-pull($i);
-    }
-  }
-
-  @for $i from 1 to $shelves-columns - 1  {
-    $i: $shelves-columns - $i; // reverse the loop order
-    
-    #{$column-selector}#{$separator}#{$i} {
-      #{enumerate($column-selector, 1, $i - 1, $separator)} {
-        @include column-gutter($i, false);
-  
-        &:first-child {
-          @extend #{$reset-gutter-selector};
-        }
-      }
-    
-      @for $j from 1 to $i {
-        #{$column-selector}#{$separator}#{$j} {
-          @include columns-width($j, $i);
-        }
-      }
-        
-      @for $j from 1 to $i {
-        #{$prefix-selector}#{$separator}#{$j} {
-          @include column-prefix($j, $i);
-        }
-      }
-    }
-  }
-  
-  @media screen and (max-width: 767px) {
-    #{$row-selector} {
-      @include reset-row;
-    }
-    
-    #{$reset-column-selector} {
-      @include reset-column;
-      @include reset-column-prefix;
-      @include reset-column-suffix;
-      @include reset-column-push;
-      @include reset-column-pull;
-    }
-    
-    @for $i from 1 to $shelves-columns {
-      $i: $shelves-columns - $i; // reverse the loop order
-      
-      #{$column-selector}#{$separator}#{$i} {
-        @extend #{$reset-column-selector};
-        
-        @if $i > 1 {
-          #{enumerate($column-selector, 1, $i - 1, $separator)} {
-            @extend #{$reset-column-selector};
-          }
-        }
-      }
-    }
-    
   }
 }

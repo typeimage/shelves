@@ -10,10 +10,17 @@
 // Resets a column to expand to the full width of
 // its container and remove float & margins.
 @mixin reset-column {
+  @include reset-column-gutter;
+  @include reset-column-prefix;
+  @include reset-column-suffix;
+  @include reset-column-push;
+  @include reset-column-pull;
   float: none;
-  margin-left: 0;
-  margin-right: 0;
   width: auto;
+  
+  @if $legacy-support-for-ie7 {
+    *margin-right: 0px;
+  }
 }
 
 // Removes the gutter of a column in a grid. This is usually added

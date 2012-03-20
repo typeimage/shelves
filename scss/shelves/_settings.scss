@@ -11,15 +11,16 @@ $shelves-gutter:         20px !default;
 }
 $shelves-column-width: (100% - ($shelves-columns - 1) * $shelves-gutter) / $shelves-columns;
 
-// Default selectors
-$shelves-container-selector:     ".container";
-$shelves-row-selector:           ".row";
-$shelves-column-selector:        ".column";
-$shelves-prefix-selector:        ".prefix";
-$shelves-suffix-selector:        ".suffix";
-$shelves-push-selector:          ".push";
-$shelves-pull-selector:          ".pull";
-$shelves-separator:              "-";
-$shelves-mobile-column-selector: ".mobile-column";
-$shelves-reset-column-selector:  ".reset-column";
-$shelves-reset-gutter-selector:  ".reset-gutter";
+// Default Class Names
+// (Note the lack of the preceding ".")
+$shelves-container-name:     "container";
+$shelves-row-name:           "row";
+$shelves-column-name:        "column";
+$shelves-prefix-name:        "prefix";
+$shelves-suffix-name:        "suffix";
+$shelves-push-name:          "push";
+$shelves-pull-name:          "pull";
+$shelves-separator:          "-";
+$shelves-mobile-column-name: "mobile-column";
+$shelves-reset-column-name:  "reset-column";
+$shelves-reset-gutter-name:  "reset-gutter";
