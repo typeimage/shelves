@@ -26,6 +26,14 @@
   }
 }
 
+// Reset a row to expand to the full width of
+// its container.
+@mixin reset-row {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
 // Sets up an element to be a column in the grid system.
 // This is used internally to generate the default grid,
 // Use span($n) instead to create columns.
@@ -58,15 +66,35 @@
   
   @if $include-first-column == true {
     &:first-child {
-      @include no-column-gutter;
+      @include reset-column-gutter;
     }
   }
 }
 
 // Removes the gutter of a column in a grid. This is usually added
 // to the first column in a row.
-@mixin no-column-gutter {
+@mixin reset-column-gutter {
   margin-left: 0;
+}
+
+//
+//
+//   $n       - The number of columns the element should span.
+//   $context - The number of columns encapsulating the element.
+//              Defaults to the full width of the grid.
+//
+@mixin column($n, $context: $shelves-columns) {
+  @include column-base($context);
+  @include column-gutter($context);
+  @include columns-width($n, $context);
+}
+
+//
+@mixin reset-column {
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+  width: auto;
 }
 
 //
@@ -99,8 +127,8 @@
 //                            Defaults to ".push".
 //   $pull-selector         - Customize the selector for the pull modifier.
 //                            Defaults to ".pull".
-//   $first-column-selector - Customize the selector for the first column in a row.
-//                            Defaults to ".first-column".
+//   $reset-gutter-selector - Customize the selector for the first column in a row.
+//                            Defaults to ".reset-gutter".
 //   $separator             - Customize the seperator used in the selectors.
 //                            Defaults to "-".
 //
@@ -111,7 +139,7 @@
   $offset-selector:    ".offset",
   $push-selector:      ".push",
   $pull-selector:      ".pull",
-  $no-gutter-selector: ".no-gutter",
+  $reset-gutter-selector: ".reset-gutter",
   $separator:          "-"
 ) {
   
@@ -128,12 +156,12 @@
     @include column-gutter($include-first-column: false);
     
     &:first-child {
-      @extend #{$no-gutter-selector};
+      @extend #{$reset-gutter-selector};
     }
   }
   
-  #{$no-gutter-selector} {
-    @include no-column-gutter;
+  #{$reset-gutter-selector} {
+    @include reset-column-gutter;
   }
 
   @for $i from 1 to $shelves-columns  {
@@ -168,7 +196,7 @@
         @include column-gutter($i, false);
   
         &:first-child {
-          @extend #{$no-gutter-selector};
+          @extend #{$reset-gutter-selector};
         }
       }
     
@@ -183,6 +211,16 @@
           @include column-offset($j, $i);
         }
       }
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .row {
+      @include reset-row;
+    }
+    
+    #{enumerate($column-selector, 1, $shelves-columns, $separator)} {
+      @include reset-column;
     }
   }
 }
