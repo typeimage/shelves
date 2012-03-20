@@ -98,18 +98,43 @@
 }
 
 //
-@mixin column-offset($n, $context: $shelves-columns) {
-  padding-left: columns-width($n, $context) + column-gutter($context);
+@mixin column-prefix($n, $context: $shelves-columns) {
+  padding-left: columns-distance($n, $context);
+}
+
+//
+@mixin reset-column-prefix {
+  padding-left: 0;
+}
+
+//
+@mixin column-suffix($n, $context: $shelves-columns) {
+  padding-right: columns-distance($n, $context);
+}
+
+//
+@mixin reset-column-suffix {
+  padding-right: 0;
 }
 
 //
 @mixin column-push($n, $context: $shelves-columns) {
-  left: columns-width($n, $context) + column-gutter($context);
+  left: columns-distance($n, $context);
+}
+
+//
+@mixin reset-column-push {
+  left: auto;
 }
 
 //
 @mixin column-pull($n, $context: $shelves-columns) {
-  right: columns-width($n, $context) + column-gutter($context);
+  right: columns-distance($n, $context);
+}
+
+//
+@mixin reset-column-pull {
+  right: auto;
 }
 
 // Generates the default grid classes for a modular OOCSS
@@ -121,26 +146,32 @@
 //                            Defaults to ".row".
 //   $column-selector       - Customize the selector for the columns.
 //                            Defaults to ".span".
-//   $offset-selector       - Customize the selector for the offset modifier.
-//                            Defaults to ".offset".
+//   $prefix-selector       - Customize the selector for the prefix modifier.
+//                            Defaults to ".prefix".
+//   $suffix-selector       - Customize the selector for the suffix modifier.
+//                            Defaults to ".suffix".
 //   $push-selector         - Customize the selector for the push modifier.
 //                            Defaults to ".push".
 //   $pull-selector         - Customize the selector for the pull modifier.
 //                            Defaults to ".pull".
-//   $reset-gutter-selector - Customize the selector for the first column in a row.
-//                            Defaults to ".reset-gutter".
 //   $separator             - Customize the seperator used in the selectors.
 //                            Defaults to "-".
+//   $reset-column-selector - Customize the selector for reseting the column.
+//                            Defaults to ".reset-column".
+//   $reset-gutter-selector - Customize the selector for reseting the gutter.
+//                            Defaults to ".reset-gutter".
 //
 @mixin generate-shelves(
-  $container-selector: ".container",
-  $row-selector:       ".row",
-  $column-selector:    ".span",
-  $offset-selector:    ".offset",
-  $push-selector:      ".push",
-  $pull-selector:      ".pull",
-  $reset-gutter-selector: ".reset-gutter",
-  $separator:          "-"
+  $container-selector:    ".container",
+  $row-selector:          ".row",
+  $column-selector:       ".span",
+  $prefix-selector:       ".prefix",
+  $suffix-selector:       ".suffix",
+  $push-selector:         ".push",
+  $pull-selector:         ".pull",
+  $separator:             "-",
+  $reset-column-selector: ".reset-column",
+  $reset-gutter-selector: ".reset-gutter"
 ) {
   
   #{$container-selector} {
@@ -151,7 +182,7 @@
     @include row;
   }
 
-  #{enumerate($column-selector, 1, $shelves-columns, $separator)} {
+  #{enumerate($column-selector, 1, $shelves-columns - 1, $separator)} {
     @include column-base;
     @include column-gutter($include-first-column: false);
     
@@ -171,8 +202,14 @@
   }
     
   @for $i from 1 to $shelves-columns  {
-    #{$offset-selector}#{$separator}#{$i} {
-      @include column-offset($i);
+    #{$prefix-selector}#{$separator}#{$i} {
+      @include column-prefix($i);
+    }
+  }
+    
+  @for $i from 1 to $shelves-columns  {
+    #{$suffix-selector}#{$separator}#{$i} {
+      @include column-suffix($i);
     }
   }
     
@@ -188,11 +225,11 @@
     }
   }
 
-  @for $i from 2 to $shelves-columns  {
+  @for $i from 1 to $shelves-columns - 1  {
     $i: $shelves-columns - $i; // reverse the loop order
     
     #{$column-selector}#{$separator}#{$i} {
-      #{enumerate($column-selector, 1, $i, $separator)} {
+      #{enumerate($column-selector, 1, $i - 1, $separator)} {
         @include column-gutter($i, false);
   
         &:first-child {
@@ -207,20 +244,38 @@
       }
         
       @for $j from 1 to $i {
-        #{$offset-selector}#{$separator}#{$j} {
-          @include column-offset($j, $i);
+        #{$prefix-selector}#{$separator}#{$j} {
+          @include column-prefix($j, $i);
         }
       }
     }
   }
   
   @media screen and (max-width: 767px) {
-    .row {
+    #{$row-selector} {
       @include reset-row;
     }
     
-    #{enumerate($column-selector, 1, $shelves-columns, $separator)} {
+    #{$reset-column-selector} {
       @include reset-column;
+      @include reset-column-prefix;
+      @include reset-column-suffix;
+      @include reset-column-push;
+      @include reset-column-pull;
+    }
+    
+    @for $i from 1 to $shelves-columns {
+      $i: $shelves-columns - $i; // reverse the loop order
+      
+      #{$column-selector}#{$separator}#{$i} {
+        @extend #{$reset-column-selector};
+        
+        @if $i > 1 {
+          #{enumerate($column-selector, 1, $i - 1, $separator)} {
+            @extend #{$reset-column-selector};
+          }
+        }
+      }
     }
   }
 }

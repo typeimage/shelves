@@ -52,3 +52,15 @@
   
   @return $column-width * $n + $column-gutter * ($n - 1);
 }
+
+// Returns the total distance to shift a column the given
+// number of columns. If given a $context, this returns the
+// distance relative to that number of columns.
+//
+//   $n       - The number of columns to measure.
+//   $context - The number of columns encapsulating the columns.
+//              Defaults to the full width of the grid.
+//
+@function columns-distance($n, $context: $shelves-columns) {
+  @return columns-width($n, $context) + column-gutter($context);
+}

@@ -12,9 +12,9 @@ Copyright (c) 2012, Pete Browne
 .row { *zoom: 1; width: 100%; max-width: 1140px; margin-left: auto; margin-right: auto; }
 .row:after { content: ""; display: table; clear: both; }
 
-.span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-9, .span-10, .span-11, .span-12 { display: block; float: left; min-height: 1px; position: relative; margin-left: 1.754%; }
+.span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-9, .span-10, .span-11 { display: block; float: left; min-height: 1px; position: relative; margin-left: 1.754%; }
 
-.reset-gutter, .span-1:first-child, .span-2:first-child, .span-3:first-child, .span-4:first-child, .span-5:first-child, .span-6:first-child, .span-7:first-child, .span-8:first-child, .span-9:first-child, .span-10:first-child, .span-11:first-child, .span-12:first-child, .span-10 .span-1:first-child, .span-10 .span-2:first-child, .span-10 .span-3:first-child, .span-10 .span-4:first-child, .span-10 .span-5:first-child, .span-10 .span-6:first-child, .span-10 .span-7:first-child, .span-10 .span-8:first-child, .span-10 .span-9:first-child, .span-10 .span-10:first-child, .span-9 .span-1:first-child, .span-9 .span-2:first-child, .span-9 .span-3:first-child, .span-9 .span-4:first-child, .span-9 .span-5:first-child, .span-9 .span-6:first-child, .span-9 .span-7:first-child, .span-9 .span-8:first-child, .span-9 .span-9:first-child, .span-8 .span-1:first-child, .span-8 .span-2:first-child, .span-8 .span-3:first-child, .span-8 .span-4:first-child, .span-8 .span-5:first-child, .span-8 .span-6:first-child, .span-8 .span-7:first-child, .span-8 .span-8:first-child, .span-7 .span-1:first-child, .span-7 .span-2:first-child, .span-7 .span-3:first-child, .span-7 .span-4:first-child, .span-7 .span-5:first-child, .span-7 .span-6:first-child, .span-7 .span-7:first-child, .span-6 .span-1:first-child, .span-6 .span-2:first-child, .span-6 .span-3:first-child, .span-6 .span-4:first-child, .span-6 .span-5:first-child, .span-6 .span-6:first-child, .span-5 .span-1:first-child, .span-5 .span-2:first-child, .span-5 .span-3:first-child, .span-5 .span-4:first-child, .span-5 .span-5:first-child, .span-4 .span-1:first-child, .span-4 .span-2:first-child, .span-4 .span-3:first-child, .span-4 .span-4:first-child, .span-3 .span-1:first-child, .span-3 .span-2:first-child, .span-3 .span-3:first-child, .span-2 .span-1:first-child, .span-2 .span-2:first-child, .span-1 .span-1:first-child { margin-left: 0; }
+.reset-gutter, .span-1:first-child, .span-2:first-child, .span-3:first-child, .span-4:first-child, .span-5:first-child, .span-6:first-child, .span-7:first-child, .span-8:first-child, .span-9:first-child, .span-10:first-child, .span-11:first-child, .span-11 .span-1:first-child, .span-11 .span-2:first-child, .span-11 .span-3:first-child, .span-11 .span-4:first-child, .span-11 .span-5:first-child, .span-11 .span-6:first-child, .span-11 .span-7:first-child, .span-11 .span-8:first-child, .span-11 .span-9:first-child, .span-11 .span-10:first-child, .span-10 .span-1:first-child, .span-10 .span-2:first-child, .span-10 .span-3:first-child, .span-10 .span-4:first-child, .span-10 .span-5:first-child, .span-10 .span-6:first-child, .span-10 .span-7:first-child, .span-10 .span-8:first-child, .span-10 .span-9:first-child, .span-9 .span-1:first-child, .span-9 .span-2:first-child, .span-9 .span-3:first-child, .span-9 .span-4:first-child, .span-9 .span-5:first-child, .span-9 .span-6:first-child, .span-9 .span-7:first-child, .span-9 .span-8:first-child, .span-8 .span-1:first-child, .span-8 .span-2:first-child, .span-8 .span-3:first-child, .span-8 .span-4:first-child, .span-8 .span-5:first-child, .span-8 .span-6:first-child, .span-8 .span-7:first-child, .span-7 .span-1:first-child, .span-7 .span-2:first-child, .span-7 .span-3:first-child, .span-7 .span-4:first-child, .span-7 .span-5:first-child, .span-7 .span-6:first-child, .span-6 .span-1:first-child, .span-6 .span-2:first-child, .span-6 .span-3:first-child, .span-6 .span-4:first-child, .span-6 .span-5:first-child, .span-5 .span-1:first-child, .span-5 .span-2:first-child, .span-5 .span-3:first-child, .span-5 .span-4:first-child, .span-4 .span-1:first-child, .span-4 .span-2:first-child, .span-4 .span-3:first-child, .span-3 .span-1:first-child, .span-3 .span-2:first-child, .span-2 .span-1:first-child { margin-left: 0; }
 
 .span-1 { width: 6.725%; }
 
@@ -38,27 +38,49 @@ Copyright (c) 2012, Pete Browne
 
 .span-11 { width: 91.52%; }
 
-.offset-1 { padding-left: 8.48%; }
+.prefix-1 { padding-left: 8.48%; }
 
-.offset-2 { padding-left: 16.959%; }
+.prefix-2 { padding-left: 16.959%; }
 
-.offset-3 { padding-left: 25.439%; }
+.prefix-3 { padding-left: 25.439%; }
 
-.offset-4 { padding-left: 33.918%; }
+.prefix-4 { padding-left: 33.918%; }
 
-.offset-5 { padding-left: 42.398%; }
+.prefix-5 { padding-left: 42.398%; }
 
-.offset-6 { padding-left: 50.877%; }
+.prefix-6 { padding-left: 50.877%; }
 
-.offset-7 { padding-left: 59.357%; }
+.prefix-7 { padding-left: 59.357%; }
 
-.offset-8 { padding-left: 67.836%; }
+.prefix-8 { padding-left: 67.836%; }
 
-.offset-9 { padding-left: 76.316%; }
+.prefix-9 { padding-left: 76.316%; }
 
-.offset-10 { padding-left: 84.795%; }
+.prefix-10 { padding-left: 84.795%; }
 
-.offset-11 { padding-left: 93.275%; }
+.prefix-11 { padding-left: 93.275%; }
+
+.suffix-1 { padding-right: 8.48%; }
+
+.suffix-2 { padding-right: 16.959%; }
+
+.suffix-3 { padding-right: 25.439%; }
+
+.suffix-4 { padding-right: 33.918%; }
+
+.suffix-5 { padding-right: 42.398%; }
+
+.suffix-6 { padding-right: 50.877%; }
+
+.suffix-7 { padding-right: 59.357%; }
+
+.suffix-8 { padding-right: 67.836%; }
+
+.suffix-9 { padding-right: 76.316%; }
+
+.suffix-10 { padding-right: 84.795%; }
+
+.suffix-11 { padding-right: 93.275%; }
 
 .push-1 { left: 8.48%; }
 
@@ -104,7 +126,29 @@ Copyright (c) 2012, Pete Browne
 
 .pull-11 { right: 93.275%; }
 
-.span-10 .span-1, .span-10 .span-2, .span-10 .span-3, .span-10 .span-4, .span-10 .span-5, .span-10 .span-6, .span-10 .span-7, .span-10 .span-8, .span-10 .span-9, .span-10 .span-10 { margin-left: 2.113%; }
+.span-11 .span-1, .span-11 .span-2, .span-11 .span-3, .span-11 .span-4, .span-11 .span-5, .span-11 .span-6, .span-11 .span-7, .span-11 .span-8, .span-11 .span-9, .span-11 .span-10 { margin-left: 1.917%; }
+.span-11 .span-1 { width: 7.348%; }
+.span-11 .span-2 { width: 16.613%; }
+.span-11 .span-3 { width: 25.879%; }
+.span-11 .span-4 { width: 35.144%; }
+.span-11 .span-5 { width: 44.409%; }
+.span-11 .span-6 { width: 53.674%; }
+.span-11 .span-7 { width: 62.939%; }
+.span-11 .span-8 { width: 72.204%; }
+.span-11 .span-9 { width: 81.47%; }
+.span-11 .span-10 { width: 90.735%; }
+.span-11 .prefix-1 { padding-left: 9.265%; }
+.span-11 .prefix-2 { padding-left: 18.53%; }
+.span-11 .prefix-3 { padding-left: 27.796%; }
+.span-11 .prefix-4 { padding-left: 37.061%; }
+.span-11 .prefix-5 { padding-left: 46.326%; }
+.span-11 .prefix-6 { padding-left: 55.591%; }
+.span-11 .prefix-7 { padding-left: 64.856%; }
+.span-11 .prefix-8 { padding-left: 74.121%; }
+.span-11 .prefix-9 { padding-left: 83.387%; }
+.span-11 .prefix-10 { padding-left: 92.652%; }
+
+.span-10 .span-1, .span-10 .span-2, .span-10 .span-3, .span-10 .span-4, .span-10 .span-5, .span-10 .span-6, .span-10 .span-7, .span-10 .span-8, .span-10 .span-9 { margin-left: 2.113%; }
 .span-10 .span-1 { width: 8.099%; }
 .span-10 .span-2 { width: 18.31%; }
 .span-10 .span-3 { width: 28.521%; }
@@ -114,17 +158,17 @@ Copyright (c) 2012, Pete Browne
 .span-10 .span-7 { width: 69.366%; }
 .span-10 .span-8 { width: 79.577%; }
 .span-10 .span-9 { width: 89.789%; }
-.span-10 .offset-1 { padding-left: 10.211%; }
-.span-10 .offset-2 { padding-left: 20.423%; }
-.span-10 .offset-3 { padding-left: 30.634%; }
-.span-10 .offset-4 { padding-left: 40.845%; }
-.span-10 .offset-5 { padding-left: 51.056%; }
-.span-10 .offset-6 { padding-left: 61.268%; }
-.span-10 .offset-7 { padding-left: 71.479%; }
-.span-10 .offset-8 { padding-left: 81.69%; }
-.span-10 .offset-9 { padding-left: 91.901%; }
+.span-10 .prefix-1 { padding-left: 10.211%; }
+.span-10 .prefix-2 { padding-left: 20.423%; }
+.span-10 .prefix-3 { padding-left: 30.634%; }
+.span-10 .prefix-4 { padding-left: 40.845%; }
+.span-10 .prefix-5 { padding-left: 51.056%; }
+.span-10 .prefix-6 { padding-left: 61.268%; }
+.span-10 .prefix-7 { padding-left: 71.479%; }
+.span-10 .prefix-8 { padding-left: 81.69%; }
+.span-10 .prefix-9 { padding-left: 91.901%; }
 
-.span-9 .span-1, .span-9 .span-2, .span-9 .span-3, .span-9 .span-4, .span-9 .span-5, .span-9 .span-6, .span-9 .span-7, .span-9 .span-8, .span-9 .span-9 { margin-left: 2.353%; }
+.span-9 .span-1, .span-9 .span-2, .span-9 .span-3, .span-9 .span-4, .span-9 .span-5, .span-9 .span-6, .span-9 .span-7, .span-9 .span-8 { margin-left: 2.353%; }
 .span-9 .span-1 { width: 9.02%; }
 .span-9 .span-2 { width: 20.392%; }
 .span-9 .span-3 { width: 31.765%; }
@@ -133,16 +177,16 @@ Copyright (c) 2012, Pete Browne
 .span-9 .span-6 { width: 65.882%; }
 .span-9 .span-7 { width: 77.255%; }
 .span-9 .span-8 { width: 88.627%; }
-.span-9 .offset-1 { padding-left: 11.373%; }
-.span-9 .offset-2 { padding-left: 22.745%; }
-.span-9 .offset-3 { padding-left: 34.118%; }
-.span-9 .offset-4 { padding-left: 45.49%; }
-.span-9 .offset-5 { padding-left: 56.863%; }
-.span-9 .offset-6 { padding-left: 68.235%; }
-.span-9 .offset-7 { padding-left: 79.608%; }
-.span-9 .offset-8 { padding-left: 90.98%; }
+.span-9 .prefix-1 { padding-left: 11.373%; }
+.span-9 .prefix-2 { padding-left: 22.745%; }
+.span-9 .prefix-3 { padding-left: 34.118%; }
+.span-9 .prefix-4 { padding-left: 45.49%; }
+.span-9 .prefix-5 { padding-left: 56.863%; }
+.span-9 .prefix-6 { padding-left: 68.235%; }
+.span-9 .prefix-7 { padding-left: 79.608%; }
+.span-9 .prefix-8 { padding-left: 90.98%; }
 
-.span-8 .span-1, .span-8 .span-2, .span-8 .span-3, .span-8 .span-4, .span-8 .span-5, .span-8 .span-6, .span-8 .span-7, .span-8 .span-8 { margin-left: 2.655%; }
+.span-8 .span-1, .span-8 .span-2, .span-8 .span-3, .span-8 .span-4, .span-8 .span-5, .span-8 .span-6, .span-8 .span-7 { margin-left: 2.655%; }
 .span-8 .span-1 { width: 10.177%; }
 .span-8 .span-2 { width: 23.009%; }
 .span-8 .span-3 { width: 35.841%; }
@@ -150,69 +194,67 @@ Copyright (c) 2012, Pete Browne
 .span-8 .span-5 { width: 61.504%; }
 .span-8 .span-6 { width: 74.336%; }
 .span-8 .span-7 { width: 87.168%; }
-.span-8 .offset-1 { padding-left: 12.832%; }
-.span-8 .offset-2 { padding-left: 25.664%; }
-.span-8 .offset-3 { padding-left: 38.496%; }
-.span-8 .offset-4 { padding-left: 51.327%; }
-.span-8 .offset-5 { padding-left: 64.159%; }
-.span-8 .offset-6 { padding-left: 76.991%; }
-.span-8 .offset-7 { padding-left: 89.823%; }
+.span-8 .prefix-1 { padding-left: 12.832%; }
+.span-8 .prefix-2 { padding-left: 25.664%; }
+.span-8 .prefix-3 { padding-left: 38.496%; }
+.span-8 .prefix-4 { padding-left: 51.327%; }
+.span-8 .prefix-5 { padding-left: 64.159%; }
+.span-8 .prefix-6 { padding-left: 76.991%; }
+.span-8 .prefix-7 { padding-left: 89.823%; }
 
-.span-7 .span-1, .span-7 .span-2, .span-7 .span-3, .span-7 .span-4, .span-7 .span-5, .span-7 .span-6, .span-7 .span-7 { margin-left: 3.046%; }
+.span-7 .span-1, .span-7 .span-2, .span-7 .span-3, .span-7 .span-4, .span-7 .span-5, .span-7 .span-6 { margin-left: 3.046%; }
 .span-7 .span-1 { width: 11.675%; }
 .span-7 .span-2 { width: 26.396%; }
 .span-7 .span-3 { width: 41.117%; }
 .span-7 .span-4 { width: 55.838%; }
 .span-7 .span-5 { width: 70.558%; }
 .span-7 .span-6 { width: 85.279%; }
-.span-7 .offset-1 { padding-left: 14.721%; }
-.span-7 .offset-2 { padding-left: 29.442%; }
-.span-7 .offset-3 { padding-left: 44.162%; }
-.span-7 .offset-4 { padding-left: 58.883%; }
-.span-7 .offset-5 { padding-left: 73.604%; }
-.span-7 .offset-6 { padding-left: 88.325%; }
+.span-7 .prefix-1 { padding-left: 14.721%; }
+.span-7 .prefix-2 { padding-left: 29.442%; }
+.span-7 .prefix-3 { padding-left: 44.162%; }
+.span-7 .prefix-4 { padding-left: 58.883%; }
+.span-7 .prefix-5 { padding-left: 73.604%; }
+.span-7 .prefix-6 { padding-left: 88.325%; }
 
-.span-6 .span-1, .span-6 .span-2, .span-6 .span-3, .span-6 .span-4, .span-6 .span-5, .span-6 .span-6 { margin-left: 3.571%; }
+.span-6 .span-1, .span-6 .span-2, .span-6 .span-3, .span-6 .span-4, .span-6 .span-5 { margin-left: 3.571%; }
 .span-6 .span-1 { width: 13.69%; }
 .span-6 .span-2 { width: 30.952%; }
 .span-6 .span-3 { width: 48.214%; }
 .span-6 .span-4 { width: 65.476%; }
 .span-6 .span-5 { width: 82.738%; }
-.span-6 .offset-1 { padding-left: 17.262%; }
-.span-6 .offset-2 { padding-left: 34.524%; }
-.span-6 .offset-3 { padding-left: 51.786%; }
-.span-6 .offset-4 { padding-left: 69.048%; }
-.span-6 .offset-5 { padding-left: 86.31%; }
+.span-6 .prefix-1 { padding-left: 17.262%; }
+.span-6 .prefix-2 { padding-left: 34.524%; }
+.span-6 .prefix-3 { padding-left: 51.786%; }
+.span-6 .prefix-4 { padding-left: 69.048%; }
+.span-6 .prefix-5 { padding-left: 86.31%; }
 
-.span-5 .span-1, .span-5 .span-2, .span-5 .span-3, .span-5 .span-4, .span-5 .span-5 { margin-left: 4.317%; }
+.span-5 .span-1, .span-5 .span-2, .span-5 .span-3, .span-5 .span-4 { margin-left: 4.317%; }
 .span-5 .span-1 { width: 16.547%; }
 .span-5 .span-2 { width: 37.41%; }
 .span-5 .span-3 { width: 58.273%; }
 .span-5 .span-4 { width: 79.137%; }
-.span-5 .offset-1 { padding-left: 20.863%; }
-.span-5 .offset-2 { padding-left: 41.727%; }
-.span-5 .offset-3 { padding-left: 62.59%; }
-.span-5 .offset-4 { padding-left: 83.453%; }
+.span-5 .prefix-1 { padding-left: 20.863%; }
+.span-5 .prefix-2 { padding-left: 41.727%; }
+.span-5 .prefix-3 { padding-left: 62.59%; }
+.span-5 .prefix-4 { padding-left: 83.453%; }
 
-.span-4 .span-1, .span-4 .span-2, .span-4 .span-3, .span-4 .span-4 { margin-left: 5.455%; }
+.span-4 .span-1, .span-4 .span-2, .span-4 .span-3 { margin-left: 5.455%; }
 .span-4 .span-1 { width: 20.909%; }
 .span-4 .span-2 { width: 47.273%; }
 .span-4 .span-3 { width: 73.636%; }
-.span-4 .offset-1 { padding-left: 26.364%; }
-.span-4 .offset-2 { padding-left: 52.727%; }
-.span-4 .offset-3 { padding-left: 79.091%; }
+.span-4 .prefix-1 { padding-left: 26.364%; }
+.span-4 .prefix-2 { padding-left: 52.727%; }
+.span-4 .prefix-3 { padding-left: 79.091%; }
 
-.span-3 .span-1, .span-3 .span-2, .span-3 .span-3 { margin-left: 7.407%; }
+.span-3 .span-1, .span-3 .span-2 { margin-left: 7.407%; }
 .span-3 .span-1 { width: 28.395%; }
 .span-3 .span-2 { width: 64.198%; }
-.span-3 .offset-1 { padding-left: 35.802%; }
-.span-3 .offset-2 { padding-left: 71.605%; }
+.span-3 .prefix-1 { padding-left: 35.802%; }
+.span-3 .prefix-2 { padding-left: 71.605%; }
 
-.span-2 .span-1, .span-2 .span-2 { margin-left: 11.538%; }
+.span-2 .span-1 { margin-left: 11.538%; }
 .span-2 .span-1 { width: 44.231%; }
-.span-2 .offset-1 { padding-left: 55.769%; }
-
-.span-1 .span-1 { margin-left: 26.087%; }
+.span-2 .prefix-1 { padding-left: 55.769%; }
 
 @media screen and (max-width: 767px) { .row { margin-left: 0; margin-right: 0; width: 100%; }
-  .span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-9, .span-10, .span-11, .span-12 { float: none; margin-left: 0; margin-right: 0; width: auto; } }
+  .reset-column, .span-11, .span-11 .span-1, .span-11 .span-2, .span-11 .span-3, .span-11 .span-4, .span-11 .span-5, .span-11 .span-6, .span-11 .span-7, .span-11 .span-8, .span-11 .span-9, .span-11 .span-10, .span-10, .span-10 .span-1, .span-10 .span-2, .span-10 .span-3, .span-10 .span-4, .span-10 .span-5, .span-10 .span-6, .span-10 .span-7, .span-10 .span-8, .span-10 .span-9, .span-9, .span-9 .span-1, .span-9 .span-2, .span-9 .span-3, .span-9 .span-4, .span-9 .span-5, .span-9 .span-6, .span-9 .span-7, .span-9 .span-8, .span-8, .span-8 .span-1, .span-8 .span-2, .span-8 .span-3, .span-8 .span-4, .span-8 .span-5, .span-8 .span-6, .span-8 .span-7, .span-7, .span-7 .span-1, .span-7 .span-2, .span-7 .span-3, .span-7 .span-4, .span-7 .span-5, .span-7 .span-6, .span-6, .span-6 .span-1, .span-6 .span-2, .span-6 .span-3, .span-6 .span-4, .span-6 .span-5, .span-5, .span-5 .span-1, .span-5 .span-2, .span-5 .span-3, .span-5 .span-4, .span-4, .span-4 .span-1, .span-4 .span-2, .span-4 .span-3, .span-3, .span-3 .span-1, .span-3 .span-2, .span-2, .span-2 .span-1, .span-1 { float: none; margin-left: 0; margin-right: 0; width: auto; padding-left: 0; padding-right: 0; left: auto; right: auto; } }
