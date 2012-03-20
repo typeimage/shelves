@@ -1,11 +1,25 @@
 // Default Grid Settings
-$shelves-width: 1140px !default;
-$shelves-columns: 12 !default;
-$shelves-margin: 20px !default;
-$shelves-gutter: 20px !default;
+$shelves-width:          1140px !default;
+$shelves-columns:        12 !default;
+$shelves-mobile-columns: 4 !default;
+$shelves-margin:         20px !default;
+$shelves-gutter:         20px !default;
 
 // Calculate the column width and gutter
-@if unit($shelves-gutter) == "px" {
+@if unit($shelves-gutter) != "%" {
   $shelves-gutter: percentage($shelves-gutter / $shelves-width);
 }
 $shelves-column-width: (100% - ($shelves-columns - 1) * $shelves-gutter) / $shelves-columns;
+
+// Default selectors
+$shelves-container-selector:     ".container";
+$shelves-row-selector:           ".row";
+$shelves-column-selector:        ".column";
+$shelves-prefix-selector:        ".prefix";
+$shelves-suffix-selector:        ".suffix";
+$shelves-push-selector:          ".push";
+$shelves-pull-selector:          ".pull";
+$shelves-separator:              "-";
+$shelves-mobile-column-selector: ".mobile-column";
+$shelves-reset-column-selector:  ".reset-column";
+$shelves-reset-gutter-selector:  ".reset-gutter";
