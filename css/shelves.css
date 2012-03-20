@@ -2,8 +2,7 @@
 SHELVES
 -------
 
-The only fluid, responsive grid with infinitely nestable
-columns which align to the root grid.
+The only responsive, fluid CSS grid with infinitely nestable columns.
 
 Copyright (c) 2012, Pete Browne
 */
@@ -12,9 +11,9 @@ Copyright (c) 2012, Pete Browne
 .row { *zoom: 1; width: 100%; max-width: 1140px; margin-left: auto; margin-right: auto; }
 .row:after { content: ""; display: table; clear: both; }
 
-.column-1, .column-2, .column-3, .column-4, .column-5, .column-6, .column-7, .column-8, .column-9, .column-10, .column-11 { display: block; float: left; min-height: 1px; position: relative; margin-left: 1.754%; }
+.reset-gutter, .column-1:first-child, .column-2:first-child, .column-3:first-child, .column-4:first-child, .column-5:first-child, .column-6:first-child, .column-7:first-child, .column-8:first-child, .column-9:first-child, .column-10:first-child, .column-11:first-child, .column-11 .column-1:first-child, .column-11 .column-2:first-child, .column-11 .column-3:first-child, .column-11 .column-4:first-child, .column-11 .column-5:first-child, .column-11 .column-6:first-child, .column-11 .column-7:first-child, .column-11 .column-8:first-child, .column-11 .column-9:first-child, .column-11 .column-10:first-child, .column-10 .column-1:first-child, .column-10 .column-2:first-child, .column-10 .column-3:first-child, .column-10 .column-4:first-child, .column-10 .column-5:first-child, .column-10 .column-6:first-child, .column-10 .column-7:first-child, .column-10 .column-8:first-child, .column-10 .column-9:first-child, .column-9 .column-1:first-child, .column-9 .column-2:first-child, .column-9 .column-3:first-child, .column-9 .column-4:first-child, .column-9 .column-5:first-child, .column-9 .column-6:first-child, .column-9 .column-7:first-child, .column-9 .column-8:first-child, .column-8 .column-1:first-child, .column-8 .column-2:first-child, .column-8 .column-3:first-child, .column-8 .column-4:first-child, .column-8 .column-5:first-child, .column-8 .column-6:first-child, .column-8 .column-7:first-child, .column-7 .column-1:first-child, .column-7 .column-2:first-child, .column-7 .column-3:first-child, .column-7 .column-4:first-child, .column-7 .column-5:first-child, .column-7 .column-6:first-child, .column-6 .column-1:first-child, .column-6 .column-2:first-child, .column-6 .column-3:first-child, .column-6 .column-4:first-child, .column-6 .column-5:first-child, .column-5 .column-1:first-child, .column-5 .column-2:first-child, .column-5 .column-3:first-child, .column-5 .column-4:first-child, .column-4 .column-1:first-child, .column-4 .column-2:first-child, .column-4 .column-3:first-child, .column-3 .column-1:first-child, .column-3 .column-2:first-child, .column-2 .column-1:first-child, .mobile-column-base:first-child, .mobile-column.column-3:first-child, .mobile-column.column-6:first-child, .mobile-column.column-9:first-child { margin-left: 0; }
 
-.reset-gutter, .column-1:first-child, .column-2:first-child, .column-3:first-child, .column-4:first-child, .column-5:first-child, .column-6:first-child, .column-7:first-child, .column-8:first-child, .column-9:first-child, .column-10:first-child, .column-11:first-child, .column-11 .column-1:first-child, .column-11 .column-2:first-child, .column-11 .column-3:first-child, .column-11 .column-4:first-child, .column-11 .column-5:first-child, .column-11 .column-6:first-child, .column-11 .column-7:first-child, .column-11 .column-8:first-child, .column-11 .column-9:first-child, .column-11 .column-10:first-child, .column-10 .column-1:first-child, .column-10 .column-2:first-child, .column-10 .column-3:first-child, .column-10 .column-4:first-child, .column-10 .column-5:first-child, .column-10 .column-6:first-child, .column-10 .column-7:first-child, .column-10 .column-8:first-child, .column-10 .column-9:first-child, .column-9 .column-1:first-child, .column-9 .column-2:first-child, .column-9 .column-3:first-child, .column-9 .column-4:first-child, .column-9 .column-5:first-child, .column-9 .column-6:first-child, .column-9 .column-7:first-child, .column-9 .column-8:first-child, .column-8 .column-1:first-child, .column-8 .column-2:first-child, .column-8 .column-3:first-child, .column-8 .column-4:first-child, .column-8 .column-5:first-child, .column-8 .column-6:first-child, .column-8 .column-7:first-child, .column-7 .column-1:first-child, .column-7 .column-2:first-child, .column-7 .column-3:first-child, .column-7 .column-4:first-child, .column-7 .column-5:first-child, .column-7 .column-6:first-child, .column-6 .column-1:first-child, .column-6 .column-2:first-child, .column-6 .column-3:first-child, .column-6 .column-4:first-child, .column-6 .column-5:first-child, .column-5 .column-1:first-child, .column-5 .column-2:first-child, .column-5 .column-3:first-child, .column-5 .column-4:first-child, .column-4 .column-1:first-child, .column-4 .column-2:first-child, .column-4 .column-3:first-child, .column-3 .column-1:first-child, .column-3 .column-2:first-child, .column-2 .column-1:first-child { margin-left: 0; }
+.column-1, .column-2, .column-3, .column-4, .column-5, .column-6, .column-7, .column-8, .column-9, .column-10, .column-11 { display: block; float: left; min-height: 1px; position: relative; margin-left: 1.754%; }
 
 .column-1 { width: 6.725%; }
 
@@ -147,6 +146,26 @@ Copyright (c) 2012, Pete Browne
 .column-11 .prefix-8 { padding-left: 74.121%; }
 .column-11 .prefix-9 { padding-left: 83.387%; }
 .column-11 .prefix-10 { padding-left: 92.652%; }
+.column-11 .push-1 { left: 9.265%; }
+.column-11 .push-2 { left: 18.53%; }
+.column-11 .push-3 { left: 27.796%; }
+.column-11 .push-4 { left: 37.061%; }
+.column-11 .push-5 { left: 46.326%; }
+.column-11 .push-6 { left: 55.591%; }
+.column-11 .push-7 { left: 64.856%; }
+.column-11 .push-8 { left: 74.121%; }
+.column-11 .push-9 { left: 83.387%; }
+.column-11 .push-10 { left: 92.652%; }
+.column-11 .pull-1 { right: 9.265%; }
+.column-11 .pull-2 { right: 18.53%; }
+.column-11 .pull-3 { right: 27.796%; }
+.column-11 .pull-4 { right: 37.061%; }
+.column-11 .pull-5 { right: 46.326%; }
+.column-11 .pull-6 { right: 55.591%; }
+.column-11 .pull-7 { right: 64.856%; }
+.column-11 .pull-8 { right: 74.121%; }
+.column-11 .pull-9 { right: 83.387%; }
+.column-11 .pull-10 { right: 92.652%; }
 
 .column-10 .column-1, .column-10 .column-2, .column-10 .column-3, .column-10 .column-4, .column-10 .column-5, .column-10 .column-6, .column-10 .column-7, .column-10 .column-8, .column-10 .column-9 { margin-left: 2.113%; }
 .column-10 .column-1 { width: 8.099%; }
@@ -167,6 +186,24 @@ Copyright (c) 2012, Pete Browne
 .column-10 .prefix-7 { padding-left: 71.479%; }
 .column-10 .prefix-8 { padding-left: 81.69%; }
 .column-10 .prefix-9 { padding-left: 91.901%; }
+.column-10 .push-1 { left: 10.211%; }
+.column-10 .push-2 { left: 20.423%; }
+.column-10 .push-3 { left: 30.634%; }
+.column-10 .push-4 { left: 40.845%; }
+.column-10 .push-5 { left: 51.056%; }
+.column-10 .push-6 { left: 61.268%; }
+.column-10 .push-7 { left: 71.479%; }
+.column-10 .push-8 { left: 81.69%; }
+.column-10 .push-9 { left: 91.901%; }
+.column-10 .pull-1 { right: 10.211%; }
+.column-10 .pull-2 { right: 20.423%; }
+.column-10 .pull-3 { right: 30.634%; }
+.column-10 .pull-4 { right: 40.845%; }
+.column-10 .pull-5 { right: 51.056%; }
+.column-10 .pull-6 { right: 61.268%; }
+.column-10 .pull-7 { right: 71.479%; }
+.column-10 .pull-8 { right: 81.69%; }
+.column-10 .pull-9 { right: 91.901%; }
 
 .column-9 .column-1, .column-9 .column-2, .column-9 .column-3, .column-9 .column-4, .column-9 .column-5, .column-9 .column-6, .column-9 .column-7, .column-9 .column-8 { margin-left: 2.353%; }
 .column-9 .column-1 { width: 9.02%; }
@@ -185,6 +222,22 @@ Copyright (c) 2012, Pete Browne
 .column-9 .prefix-6 { padding-left: 68.235%; }
 .column-9 .prefix-7 { padding-left: 79.608%; }
 .column-9 .prefix-8 { padding-left: 90.98%; }
+.column-9 .push-1 { left: 11.373%; }
+.column-9 .push-2 { left: 22.745%; }
+.column-9 .push-3 { left: 34.118%; }
+.column-9 .push-4 { left: 45.49%; }
+.column-9 .push-5 { left: 56.863%; }
+.column-9 .push-6 { left: 68.235%; }
+.column-9 .push-7 { left: 79.608%; }
+.column-9 .push-8 { left: 90.98%; }
+.column-9 .pull-1 { right: 11.373%; }
+.column-9 .pull-2 { right: 22.745%; }
+.column-9 .pull-3 { right: 34.118%; }
+.column-9 .pull-4 { right: 45.49%; }
+.column-9 .pull-5 { right: 56.863%; }
+.column-9 .pull-6 { right: 68.235%; }
+.column-9 .pull-7 { right: 79.608%; }
+.column-9 .pull-8 { right: 90.98%; }
 
 .column-8 .column-1, .column-8 .column-2, .column-8 .column-3, .column-8 .column-4, .column-8 .column-5, .column-8 .column-6, .column-8 .column-7 { margin-left: 2.655%; }
 .column-8 .column-1 { width: 10.177%; }
@@ -201,6 +254,20 @@ Copyright (c) 2012, Pete Browne
 .column-8 .prefix-5 { padding-left: 64.159%; }
 .column-8 .prefix-6 { padding-left: 76.991%; }
 .column-8 .prefix-7 { padding-left: 89.823%; }
+.column-8 .push-1 { left: 12.832%; }
+.column-8 .push-2 { left: 25.664%; }
+.column-8 .push-3 { left: 38.496%; }
+.column-8 .push-4 { left: 51.327%; }
+.column-8 .push-5 { left: 64.159%; }
+.column-8 .push-6 { left: 76.991%; }
+.column-8 .push-7 { left: 89.823%; }
+.column-8 .pull-1 { right: 12.832%; }
+.column-8 .pull-2 { right: 25.664%; }
+.column-8 .pull-3 { right: 38.496%; }
+.column-8 .pull-4 { right: 51.327%; }
+.column-8 .pull-5 { right: 64.159%; }
+.column-8 .pull-6 { right: 76.991%; }
+.column-8 .pull-7 { right: 89.823%; }
 
 .column-7 .column-1, .column-7 .column-2, .column-7 .column-3, .column-7 .column-4, .column-7 .column-5, .column-7 .column-6 { margin-left: 3.046%; }
 .column-7 .column-1 { width: 11.675%; }
@@ -215,6 +282,18 @@ Copyright (c) 2012, Pete Browne
 .column-7 .prefix-4 { padding-left: 58.883%; }
 .column-7 .prefix-5 { padding-left: 73.604%; }
 .column-7 .prefix-6 { padding-left: 88.325%; }
+.column-7 .push-1 { left: 14.721%; }
+.column-7 .push-2 { left: 29.442%; }
+.column-7 .push-3 { left: 44.162%; }
+.column-7 .push-4 { left: 58.883%; }
+.column-7 .push-5 { left: 73.604%; }
+.column-7 .push-6 { left: 88.325%; }
+.column-7 .pull-1 { right: 14.721%; }
+.column-7 .pull-2 { right: 29.442%; }
+.column-7 .pull-3 { right: 44.162%; }
+.column-7 .pull-4 { right: 58.883%; }
+.column-7 .pull-5 { right: 73.604%; }
+.column-7 .pull-6 { right: 88.325%; }
 
 .column-6 .column-1, .column-6 .column-2, .column-6 .column-3, .column-6 .column-4, .column-6 .column-5 { margin-left: 3.571%; }
 .column-6 .column-1 { width: 13.69%; }
@@ -227,6 +306,16 @@ Copyright (c) 2012, Pete Browne
 .column-6 .prefix-3 { padding-left: 51.786%; }
 .column-6 .prefix-4 { padding-left: 69.048%; }
 .column-6 .prefix-5 { padding-left: 86.31%; }
+.column-6 .push-1 { left: 17.262%; }
+.column-6 .push-2 { left: 34.524%; }
+.column-6 .push-3 { left: 51.786%; }
+.column-6 .push-4 { left: 69.048%; }
+.column-6 .push-5 { left: 86.31%; }
+.column-6 .pull-1 { right: 17.262%; }
+.column-6 .pull-2 { right: 34.524%; }
+.column-6 .pull-3 { right: 51.786%; }
+.column-6 .pull-4 { right: 69.048%; }
+.column-6 .pull-5 { right: 86.31%; }
 
 .column-5 .column-1, .column-5 .column-2, .column-5 .column-3, .column-5 .column-4 { margin-left: 4.317%; }
 .column-5 .column-1 { width: 16.547%; }
@@ -237,6 +326,14 @@ Copyright (c) 2012, Pete Browne
 .column-5 .prefix-2 { padding-left: 41.727%; }
 .column-5 .prefix-3 { padding-left: 62.59%; }
 .column-5 .prefix-4 { padding-left: 83.453%; }
+.column-5 .push-1 { left: 20.863%; }
+.column-5 .push-2 { left: 41.727%; }
+.column-5 .push-3 { left: 62.59%; }
+.column-5 .push-4 { left: 83.453%; }
+.column-5 .pull-1 { right: 20.863%; }
+.column-5 .pull-2 { right: 41.727%; }
+.column-5 .pull-3 { right: 62.59%; }
+.column-5 .pull-4 { right: 83.453%; }
 
 .column-4 .column-1, .column-4 .column-2, .column-4 .column-3 { margin-left: 5.455%; }
 .column-4 .column-1 { width: 20.909%; }
@@ -245,16 +342,28 @@ Copyright (c) 2012, Pete Browne
 .column-4 .prefix-1 { padding-left: 26.364%; }
 .column-4 .prefix-2 { padding-left: 52.727%; }
 .column-4 .prefix-3 { padding-left: 79.091%; }
+.column-4 .push-1 { left: 26.364%; }
+.column-4 .push-2 { left: 52.727%; }
+.column-4 .push-3 { left: 79.091%; }
+.column-4 .pull-1 { right: 26.364%; }
+.column-4 .pull-2 { right: 52.727%; }
+.column-4 .pull-3 { right: 79.091%; }
 
 .column-3 .column-1, .column-3 .column-2 { margin-left: 7.407%; }
 .column-3 .column-1 { width: 28.395%; }
 .column-3 .column-2 { width: 64.198%; }
 .column-3 .prefix-1 { padding-left: 35.802%; }
 .column-3 .prefix-2 { padding-left: 71.605%; }
+.column-3 .push-1 { left: 35.802%; }
+.column-3 .push-2 { left: 71.605%; }
+.column-3 .pull-1 { right: 35.802%; }
+.column-3 .pull-2 { right: 71.605%; }
 
 .column-2 .column-1 { margin-left: 11.538%; }
 .column-2 .column-1 { width: 44.231%; }
 .column-2 .prefix-1 { padding-left: 55.769%; }
+.column-2 .push-1 { left: 55.769%; }
+.column-2 .pull-1 { right: 55.769%; }
 
 @media screen and (max-width: 767px) { .row { margin-left: 0; margin-right: 0; width: 100%; }
   .reset-column, .column-11, .column-11 .column-1, .column-11 .column-2, .column-11 .column-3, .column-11 .column-4, .column-11 .column-5, .column-11 .column-6, .column-11 .column-7, .column-11 .column-8, .column-11 .column-9, .column-11 .column-10, .column-10, .column-10 .column-1, .column-10 .column-2, .column-10 .column-3, .column-10 .column-4, .column-10 .column-5, .column-10 .column-6, .column-10 .column-7, .column-10 .column-8, .column-10 .column-9, .column-9, .column-9 .column-1, .column-9 .column-2, .column-9 .column-3, .column-9 .column-4, .column-9 .column-5, .column-9 .column-6, .column-9 .column-7, .column-9 .column-8, .column-8, .column-8 .column-1, .column-8 .column-2, .column-8 .column-3, .column-8 .column-4, .column-8 .column-5, .column-8 .column-6, .column-8 .column-7, .column-7, .column-7 .column-1, .column-7 .column-2, .column-7 .column-3, .column-7 .column-4, .column-7 .column-5, .column-7 .column-6, .column-6, .column-6 .column-1, .column-6 .column-2, .column-6 .column-3, .column-6 .column-4, .column-6 .column-5, .column-5, .column-5 .column-1, .column-5 .column-2, .column-5 .column-3, .column-5 .column-4, .column-4, .column-4 .column-1, .column-4 .column-2, .column-4 .column-3, .column-3, .column-3 .column-1, .column-3 .column-2, .column-2, .column-2 .column-1, .column-1 { float: none; margin-left: 0; margin-right: 0; width: auto; padding-left: 0; padding-right: 0; left: auto; right: auto; }

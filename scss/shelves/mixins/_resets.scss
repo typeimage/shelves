@@ -1,0 +1,42 @@
+// Reset a row to expand to the full width of
+// its container and remove margins.
+@mixin reset-row {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+// Resets a column to expand to the full width of
+// its container and remove float & margins.
+@mixin reset-column {
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+  width: auto;
+}
+
+// Removes the gutter of a column in a grid. This is usually added
+// to the first column in a row.
+@mixin reset-column-gutter {
+  margin-left: 0;
+}
+
+// Removes the padding prefix added to a column.
+@mixin reset-column-prefix {
+  padding-left: 0;
+}
+
+// Removes the padding suffix added to a column.
+@mixin reset-column-suffix {
+  padding-right: 0;
+}
+
+// Removes the column shifting added with a column-push($n).
+@mixin reset-column-push {
+  left: auto;
+}
+
+// Removes the column shifting added with a column-pull($n).
+@mixin reset-column-pull {
+  right: auto;
+}

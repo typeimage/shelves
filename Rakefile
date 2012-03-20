@@ -15,7 +15,7 @@ task :generate do
   env = Sprockets::Environment.new
   env.append_path 'scss'
   
-  shelves = env['shelves/grid.css']
+  shelves = env['shelves-grid.css']
   
   File.open 'css/shelves.css', 'w' do |f|
     f.write shelves.to_s

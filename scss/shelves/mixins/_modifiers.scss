@@ -1,0 +1,43 @@
+// Adds a padding suffix (which shifts the column to the right)
+// spanning the given number of columns.
+//
+//   $n       - The number of columns to pad.
+//   $context - The number of columns encapsulating the element.
+//              Defaults to the full width of the grid.
+//
+@mixin column-prefix($n, $context: $shelves-columns) {
+  padding-left: columns-distance($n, $context);
+}
+
+// Adds a padding suffix (which shifts the column to the left)
+// spanning the given number of columns.
+//
+//   $n       - The number of columns to pad.
+//   $context - The number of columns encapsulating the element.
+//              Defaults to the full width of the grid.
+//
+@mixin column-suffix($n, $context: $shelves-columns) {
+  padding-right: columns-distance($n, $context);
+}
+
+// Reorder the content by shifting the column to the right. This
+// is often used in conjunction with column-pull($n).
+//
+//   $n       - The number of columns to shift.
+//   $context - The number of columns encapsulating the element.
+//              Defaults to the full width of the grid.
+//
+@mixin column-push($n, $context: $shelves-columns) {
+  left: columns-distance($n, $context);
+}
+
+// Reorder the content by shifting the column to the left. This
+// is often used in conjunction with column-push($n).
+//
+//   $n       - The number of columns to shift.
+//   $context - The number of columns encapsulating the element.
+//              Defaults to the full width of the grid.
+//
+@mixin column-pull($n, $context: $shelves-columns) {
+  right: columns-distance($n, $context);
+}

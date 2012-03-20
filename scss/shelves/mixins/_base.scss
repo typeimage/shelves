@@ -1,0 +1,77 @@
+// Includes the styles for the container element - namely
+// some outer margins for fluid sizes.
+//
+//   $margin - The outer margins. Defaults to $shelves-margin.
+//
+@mixin container($margin: $shelves-margin) {
+  padding-left: $margin;
+  padding-right: $margin;
+}
+
+// Includes the styles for the row element. This includes
+// a clearfix, widths, and centering.
+//
+//   $width - The max width of the row element. If this is
+//            false, the row is completely fluid. Defaults
+//            to $shelves-width.
+//
+@mixin row($max-width: $shelves-width) {
+  @include pie-clearfix;
+  width: 100%;
+  
+  @if $max-width != false {
+    max-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Creates a column that spans the given number of
+// grid columns.
+//
+//   $n       - The number of columns the element should span.
+//   $context - The number of columns encapsulating the element.
+//              Defaults to the full width of the grid.
+//
+@mixin column($n, $context: $shelves-columns) {
+  @include column-base($context);
+  @include column-gutter($context);
+  @include columns-width($n, $context);
+}
+
+// Sets up an element to be a column in the grid system.
+// This is used internally to generate grids, Use column($n)
+// instead to create fully functioning columns.
+@mixin column-base {
+  display: block;
+  float: left;
+  min-height: 1px;
+  position: relative;
+}
+
+// Sets the width of the element to the given number of columns.
+//
+//   $n       - The number of columns the element should span.
+//   $context - The number of columns encapsulating the element.
+//              Defaults to the full width of the grid.
+//
+@mixin columns-width($n, $context: $shelves-columns) {
+  width: columns-width($n, $context);
+}
+
+// Includes the gutter for a column on the grid.
+//
+//   $context              - The number of columns encapsulating the element.
+//                           Defaults to the full width of the grid.
+//   $include-first-column - Includes the styles for removing the gutter
+//                           on the first column in a row. Defaults to true.
+//
+@mixin column-gutter($context: $shelves-columns, $include-first-column: true) {
+  margin-left: column-gutter($context);
+  
+  @if $include-first-column == true {
+    &:first-child {
+      @include reset-column-gutter;
+    }
+  }
+}
