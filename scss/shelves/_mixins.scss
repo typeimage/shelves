@@ -70,8 +70,8 @@
 }
 
 //
-@mixin column-offset($n, $context: $shelves-columns, $first: false) {
-  margin-left: columns-width($n, $context) + column-gutter($context) * if($first, 1, 2);
+@mixin column-offset($n, $context: $shelves-columns) {
+  padding-left: columns-width($n, $context) + column-gutter($context);
 }
 
 //
@@ -145,10 +145,6 @@
   @for $i from 1 to $shelves-columns  {
     #{$offset-selector}#{$separator}#{$i} {
       @include column-offset($i);
-      
-      &:first-child {
-        @include column-offset($i, $first: true);
-      }
     }
   }
     
@@ -185,22 +181,6 @@
       @for $j from 1 to $i {
         #{$offset-selector}#{$separator}#{$j} {
           @include column-offset($j, $i);
-          
-          &:first-child {
-            @include column-offset($j, $i, true);
-          }
-        }
-      }
-        
-      @for $j from 1 to $i {
-        #{$push-selector}#{$separator}#{$j} {
-          @include column-push($j, $i);
-        }
-      }
-        
-      @for $j from 1 to $i {
-        #{$pull-selector}#{$separator}#{$j} {
-          @include column-pull($j, $i);
         }
       }
     }

@@ -38,38 +38,27 @@ Copyright (c) 2012, Pete Browne
 
 .span-11 { width: 91.52%; }
 
-.offset-1 { margin-left: 10.234%; }
-.offset-1:first-child { margin-left: 8.48%; }
+.offset-1 { padding-left: 8.48%; }
 
-.offset-2 { margin-left: 18.713%; }
-.offset-2:first-child { margin-left: 16.959%; }
+.offset-2 { padding-left: 16.959%; }
 
-.offset-3 { margin-left: 27.193%; }
-.offset-3:first-child { margin-left: 25.439%; }
+.offset-3 { padding-left: 25.439%; }
 
-.offset-4 { margin-left: 35.673%; }
-.offset-4:first-child { margin-left: 33.918%; }
+.offset-4 { padding-left: 33.918%; }
 
-.offset-5 { margin-left: 44.152%; }
-.offset-5:first-child { margin-left: 42.398%; }
+.offset-5 { padding-left: 42.398%; }
 
-.offset-6 { margin-left: 52.632%; }
-.offset-6:first-child { margin-left: 50.877%; }
+.offset-6 { padding-left: 50.877%; }
 
-.offset-7 { margin-left: 61.111%; }
-.offset-7:first-child { margin-left: 59.357%; }
+.offset-7 { padding-left: 59.357%; }
 
-.offset-8 { margin-left: 69.591%; }
-.offset-8:first-child { margin-left: 67.836%; }
+.offset-8 { padding-left: 67.836%; }
 
-.offset-9 { margin-left: 78.07%; }
-.offset-9:first-child { margin-left: 76.316%; }
+.offset-9 { padding-left: 76.316%; }
 
-.offset-10 { margin-left: 86.55%; }
-.offset-10:first-child { margin-left: 84.795%; }
+.offset-10 { padding-left: 84.795%; }
 
-.offset-11 { margin-left: 95.029%; }
-.offset-11:first-child { margin-left: 93.275%; }
+.offset-11 { padding-left: 93.275%; }
 
 .push-1 { left: 8.48%; }
 
@@ -125,42 +114,15 @@ Copyright (c) 2012, Pete Browne
 .span-10 .span-7 { width: 69.366%; }
 .span-10 .span-8 { width: 79.577%; }
 .span-10 .span-9 { width: 89.789%; }
-.span-10 .offset-1 { margin-left: 12.324%; }
-.span-10 .offset-1:first-child { margin-left: 10.211%; }
-.span-10 .offset-2 { margin-left: 22.535%; }
-.span-10 .offset-2:first-child { margin-left: 20.423%; }
-.span-10 .offset-3 { margin-left: 32.746%; }
-.span-10 .offset-3:first-child { margin-left: 30.634%; }
-.span-10 .offset-4 { margin-left: 42.958%; }
-.span-10 .offset-4:first-child { margin-left: 40.845%; }
-.span-10 .offset-5 { margin-left: 53.169%; }
-.span-10 .offset-5:first-child { margin-left: 51.056%; }
-.span-10 .offset-6 { margin-left: 63.38%; }
-.span-10 .offset-6:first-child { margin-left: 61.268%; }
-.span-10 .offset-7 { margin-left: 73.592%; }
-.span-10 .offset-7:first-child { margin-left: 71.479%; }
-.span-10 .offset-8 { margin-left: 83.803%; }
-.span-10 .offset-8:first-child { margin-left: 81.69%; }
-.span-10 .offset-9 { margin-left: 94.014%; }
-.span-10 .offset-9:first-child { margin-left: 91.901%; }
-.span-10 .push-1 { left: 10.211%; }
-.span-10 .push-2 { left: 20.423%; }
-.span-10 .push-3 { left: 30.634%; }
-.span-10 .push-4 { left: 40.845%; }
-.span-10 .push-5 { left: 51.056%; }
-.span-10 .push-6 { left: 61.268%; }
-.span-10 .push-7 { left: 71.479%; }
-.span-10 .push-8 { left: 81.69%; }
-.span-10 .push-9 { left: 91.901%; }
-.span-10 .pull-1 { right: 10.211%; }
-.span-10 .pull-2 { right: 20.423%; }
-.span-10 .pull-3 { right: 30.634%; }
-.span-10 .pull-4 { right: 40.845%; }
-.span-10 .pull-5 { right: 51.056%; }
-.span-10 .pull-6 { right: 61.268%; }
-.span-10 .pull-7 { right: 71.479%; }
-.span-10 .pull-8 { right: 81.69%; }
-.span-10 .pull-9 { right: 91.901%; }
+.span-10 .offset-1 { padding-left: 10.211%; }
+.span-10 .offset-2 { padding-left: 20.423%; }
+.span-10 .offset-3 { padding-left: 30.634%; }
+.span-10 .offset-4 { padding-left: 40.845%; }
+.span-10 .offset-5 { padding-left: 51.056%; }
+.span-10 .offset-6 { padding-left: 61.268%; }
+.span-10 .offset-7 { padding-left: 71.479%; }
+.span-10 .offset-8 { padding-left: 81.69%; }
+.span-10 .offset-9 { padding-left: 91.901%; }
 
 .span-9 .span-1, .span-9 .span-2, .span-9 .span-3, .span-9 .span-4, .span-9 .span-5, .span-9 .span-6, .span-9 .span-7, .span-9 .span-8, .span-9 .span-9 { margin-left: 2.353%; }
 .span-9 .span-1 { width: 9.02%; }
@@ -171,38 +133,14 @@ Copyright (c) 2012, Pete Browne
 .span-9 .span-6 { width: 65.882%; }
 .span-9 .span-7 { width: 77.255%; }
 .span-9 .span-8 { width: 88.627%; }
-.span-9 .offset-1 { margin-left: 13.725%; }
-.span-9 .offset-1:first-child { margin-left: 11.373%; }
-.span-9 .offset-2 { margin-left: 25.098%; }
-.span-9 .offset-2:first-child { margin-left: 22.745%; }
-.span-9 .offset-3 { margin-left: 36.471%; }
-.span-9 .offset-3:first-child { margin-left: 34.118%; }
-.span-9 .offset-4 { margin-left: 47.843%; }
-.span-9 .offset-4:first-child { margin-left: 45.49%; }
-.span-9 .offset-5 { margin-left: 59.216%; }
-.span-9 .offset-5:first-child { margin-left: 56.863%; }
-.span-9 .offset-6 { margin-left: 70.588%; }
-.span-9 .offset-6:first-child { margin-left: 68.235%; }
-.span-9 .offset-7 { margin-left: 81.961%; }
-.span-9 .offset-7:first-child { margin-left: 79.608%; }
-.span-9 .offset-8 { margin-left: 93.333%; }
-.span-9 .offset-8:first-child { margin-left: 90.98%; }
-.span-9 .push-1 { left: 11.373%; }
-.span-9 .push-2 { left: 22.745%; }
-.span-9 .push-3 { left: 34.118%; }
-.span-9 .push-4 { left: 45.49%; }
-.span-9 .push-5 { left: 56.863%; }
-.span-9 .push-6 { left: 68.235%; }
-.span-9 .push-7 { left: 79.608%; }
-.span-9 .push-8 { left: 90.98%; }
-.span-9 .pull-1 { right: 11.373%; }
-.span-9 .pull-2 { right: 22.745%; }
-.span-9 .pull-3 { right: 34.118%; }
-.span-9 .pull-4 { right: 45.49%; }
-.span-9 .pull-5 { right: 56.863%; }
-.span-9 .pull-6 { right: 68.235%; }
-.span-9 .pull-7 { right: 79.608%; }
-.span-9 .pull-8 { right: 90.98%; }
+.span-9 .offset-1 { padding-left: 11.373%; }
+.span-9 .offset-2 { padding-left: 22.745%; }
+.span-9 .offset-3 { padding-left: 34.118%; }
+.span-9 .offset-4 { padding-left: 45.49%; }
+.span-9 .offset-5 { padding-left: 56.863%; }
+.span-9 .offset-6 { padding-left: 68.235%; }
+.span-9 .offset-7 { padding-left: 79.608%; }
+.span-9 .offset-8 { padding-left: 90.98%; }
 
 .span-8 .span-1, .span-8 .span-2, .span-8 .span-3, .span-8 .span-4, .span-8 .span-5, .span-8 .span-6, .span-8 .span-7, .span-8 .span-8 { margin-left: 2.655%; }
 .span-8 .span-1 { width: 10.177%; }
@@ -212,34 +150,13 @@ Copyright (c) 2012, Pete Browne
 .span-8 .span-5 { width: 61.504%; }
 .span-8 .span-6 { width: 74.336%; }
 .span-8 .span-7 { width: 87.168%; }
-.span-8 .offset-1 { margin-left: 15.487%; }
-.span-8 .offset-1:first-child { margin-left: 12.832%; }
-.span-8 .offset-2 { margin-left: 28.319%; }
-.span-8 .offset-2:first-child { margin-left: 25.664%; }
-.span-8 .offset-3 { margin-left: 41.15%; }
-.span-8 .offset-3:first-child { margin-left: 38.496%; }
-.span-8 .offset-4 { margin-left: 53.982%; }
-.span-8 .offset-4:first-child { margin-left: 51.327%; }
-.span-8 .offset-5 { margin-left: 66.814%; }
-.span-8 .offset-5:first-child { margin-left: 64.159%; }
-.span-8 .offset-6 { margin-left: 79.646%; }
-.span-8 .offset-6:first-child { margin-left: 76.991%; }
-.span-8 .offset-7 { margin-left: 92.478%; }
-.span-8 .offset-7:first-child { margin-left: 89.823%; }
-.span-8 .push-1 { left: 12.832%; }
-.span-8 .push-2 { left: 25.664%; }
-.span-8 .push-3 { left: 38.496%; }
-.span-8 .push-4 { left: 51.327%; }
-.span-8 .push-5 { left: 64.159%; }
-.span-8 .push-6 { left: 76.991%; }
-.span-8 .push-7 { left: 89.823%; }
-.span-8 .pull-1 { right: 12.832%; }
-.span-8 .pull-2 { right: 25.664%; }
-.span-8 .pull-3 { right: 38.496%; }
-.span-8 .pull-4 { right: 51.327%; }
-.span-8 .pull-5 { right: 64.159%; }
-.span-8 .pull-6 { right: 76.991%; }
-.span-8 .pull-7 { right: 89.823%; }
+.span-8 .offset-1 { padding-left: 12.832%; }
+.span-8 .offset-2 { padding-left: 25.664%; }
+.span-8 .offset-3 { padding-left: 38.496%; }
+.span-8 .offset-4 { padding-left: 51.327%; }
+.span-8 .offset-5 { padding-left: 64.159%; }
+.span-8 .offset-6 { padding-left: 76.991%; }
+.span-8 .offset-7 { padding-left: 89.823%; }
 
 .span-7 .span-1, .span-7 .span-2, .span-7 .span-3, .span-7 .span-4, .span-7 .span-5, .span-7 .span-6, .span-7 .span-7 { margin-left: 3.046%; }
 .span-7 .span-1 { width: 11.675%; }
@@ -248,30 +165,12 @@ Copyright (c) 2012, Pete Browne
 .span-7 .span-4 { width: 55.838%; }
 .span-7 .span-5 { width: 70.558%; }
 .span-7 .span-6 { width: 85.279%; }
-.span-7 .offset-1 { margin-left: 17.766%; }
-.span-7 .offset-1:first-child { margin-left: 14.721%; }
-.span-7 .offset-2 { margin-left: 32.487%; }
-.span-7 .offset-2:first-child { margin-left: 29.442%; }
-.span-7 .offset-3 { margin-left: 47.208%; }
-.span-7 .offset-3:first-child { margin-left: 44.162%; }
-.span-7 .offset-4 { margin-left: 61.929%; }
-.span-7 .offset-4:first-child { margin-left: 58.883%; }
-.span-7 .offset-5 { margin-left: 76.65%; }
-.span-7 .offset-5:first-child { margin-left: 73.604%; }
-.span-7 .offset-6 { margin-left: 91.371%; }
-.span-7 .offset-6:first-child { margin-left: 88.325%; }
-.span-7 .push-1 { left: 14.721%; }
-.span-7 .push-2 { left: 29.442%; }
-.span-7 .push-3 { left: 44.162%; }
-.span-7 .push-4 { left: 58.883%; }
-.span-7 .push-5 { left: 73.604%; }
-.span-7 .push-6 { left: 88.325%; }
-.span-7 .pull-1 { right: 14.721%; }
-.span-7 .pull-2 { right: 29.442%; }
-.span-7 .pull-3 { right: 44.162%; }
-.span-7 .pull-4 { right: 58.883%; }
-.span-7 .pull-5 { right: 73.604%; }
-.span-7 .pull-6 { right: 88.325%; }
+.span-7 .offset-1 { padding-left: 14.721%; }
+.span-7 .offset-2 { padding-left: 29.442%; }
+.span-7 .offset-3 { padding-left: 44.162%; }
+.span-7 .offset-4 { padding-left: 58.883%; }
+.span-7 .offset-5 { padding-left: 73.604%; }
+.span-7 .offset-6 { padding-left: 88.325%; }
 
 .span-6 .span-1, .span-6 .span-2, .span-6 .span-3, .span-6 .span-4, .span-6 .span-5, .span-6 .span-6 { margin-left: 3.571%; }
 .span-6 .span-1 { width: 13.69%; }
@@ -279,83 +178,38 @@ Copyright (c) 2012, Pete Browne
 .span-6 .span-3 { width: 48.214%; }
 .span-6 .span-4 { width: 65.476%; }
 .span-6 .span-5 { width: 82.738%; }
-.span-6 .offset-1 { margin-left: 20.833%; }
-.span-6 .offset-1:first-child { margin-left: 17.262%; }
-.span-6 .offset-2 { margin-left: 38.095%; }
-.span-6 .offset-2:first-child { margin-left: 34.524%; }
-.span-6 .offset-3 { margin-left: 55.357%; }
-.span-6 .offset-3:first-child { margin-left: 51.786%; }
-.span-6 .offset-4 { margin-left: 72.619%; }
-.span-6 .offset-4:first-child { margin-left: 69.048%; }
-.span-6 .offset-5 { margin-left: 89.881%; }
-.span-6 .offset-5:first-child { margin-left: 86.31%; }
-.span-6 .push-1 { left: 17.262%; }
-.span-6 .push-2 { left: 34.524%; }
-.span-6 .push-3 { left: 51.786%; }
-.span-6 .push-4 { left: 69.048%; }
-.span-6 .push-5 { left: 86.31%; }
-.span-6 .pull-1 { right: 17.262%; }
-.span-6 .pull-2 { right: 34.524%; }
-.span-6 .pull-3 { right: 51.786%; }
-.span-6 .pull-4 { right: 69.048%; }
-.span-6 .pull-5 { right: 86.31%; }
+.span-6 .offset-1 { padding-left: 17.262%; }
+.span-6 .offset-2 { padding-left: 34.524%; }
+.span-6 .offset-3 { padding-left: 51.786%; }
+.span-6 .offset-4 { padding-left: 69.048%; }
+.span-6 .offset-5 { padding-left: 86.31%; }
 
 .span-5 .span-1, .span-5 .span-2, .span-5 .span-3, .span-5 .span-4, .span-5 .span-5 { margin-left: 4.317%; }
 .span-5 .span-1 { width: 16.547%; }
 .span-5 .span-2 { width: 37.41%; }
 .span-5 .span-3 { width: 58.273%; }
 .span-5 .span-4 { width: 79.137%; }
-.span-5 .offset-1 { margin-left: 25.18%; }
-.span-5 .offset-1:first-child { margin-left: 20.863%; }
-.span-5 .offset-2 { margin-left: 46.043%; }
-.span-5 .offset-2:first-child { margin-left: 41.727%; }
-.span-5 .offset-3 { margin-left: 66.906%; }
-.span-5 .offset-3:first-child { margin-left: 62.59%; }
-.span-5 .offset-4 { margin-left: 87.77%; }
-.span-5 .offset-4:first-child { margin-left: 83.453%; }
-.span-5 .push-1 { left: 20.863%; }
-.span-5 .push-2 { left: 41.727%; }
-.span-5 .push-3 { left: 62.59%; }
-.span-5 .push-4 { left: 83.453%; }
-.span-5 .pull-1 { right: 20.863%; }
-.span-5 .pull-2 { right: 41.727%; }
-.span-5 .pull-3 { right: 62.59%; }
-.span-5 .pull-4 { right: 83.453%; }
+.span-5 .offset-1 { padding-left: 20.863%; }
+.span-5 .offset-2 { padding-left: 41.727%; }
+.span-5 .offset-3 { padding-left: 62.59%; }
+.span-5 .offset-4 { padding-left: 83.453%; }
 
 .span-4 .span-1, .span-4 .span-2, .span-4 .span-3, .span-4 .span-4 { margin-left: 5.455%; }
 .span-4 .span-1 { width: 20.909%; }
 .span-4 .span-2 { width: 47.273%; }
 .span-4 .span-3 { width: 73.636%; }
-.span-4 .offset-1 { margin-left: 31.818%; }
-.span-4 .offset-1:first-child { margin-left: 26.364%; }
-.span-4 .offset-2 { margin-left: 58.182%; }
-.span-4 .offset-2:first-child { margin-left: 52.727%; }
-.span-4 .offset-3 { margin-left: 84.545%; }
-.span-4 .offset-3:first-child { margin-left: 79.091%; }
-.span-4 .push-1 { left: 26.364%; }
-.span-4 .push-2 { left: 52.727%; }
-.span-4 .push-3 { left: 79.091%; }
-.span-4 .pull-1 { right: 26.364%; }
-.span-4 .pull-2 { right: 52.727%; }
-.span-4 .pull-3 { right: 79.091%; }
+.span-4 .offset-1 { padding-left: 26.364%; }
+.span-4 .offset-2 { padding-left: 52.727%; }
+.span-4 .offset-3 { padding-left: 79.091%; }
 
 .span-3 .span-1, .span-3 .span-2, .span-3 .span-3 { margin-left: 7.407%; }
 .span-3 .span-1 { width: 28.395%; }
 .span-3 .span-2 { width: 64.198%; }
-.span-3 .offset-1 { margin-left: 43.21%; }
-.span-3 .offset-1:first-child { margin-left: 35.802%; }
-.span-3 .offset-2 { margin-left: 79.012%; }
-.span-3 .offset-2:first-child { margin-left: 71.605%; }
-.span-3 .push-1 { left: 35.802%; }
-.span-3 .push-2 { left: 71.605%; }
-.span-3 .pull-1 { right: 35.802%; }
-.span-3 .pull-2 { right: 71.605%; }
+.span-3 .offset-1 { padding-left: 35.802%; }
+.span-3 .offset-2 { padding-left: 71.605%; }
 
 .span-2 .span-1, .span-2 .span-2 { margin-left: 11.538%; }
 .span-2 .span-1 { width: 44.231%; }
-.span-2 .offset-1 { margin-left: 67.308%; }
-.span-2 .offset-1:first-child { margin-left: 55.769%; }
-.span-2 .push-1 { left: 55.769%; }
-.span-2 .pull-1 { right: 55.769%; }
+.span-2 .offset-1 { padding-left: 55.769%; }
 
 .span-1 .span-1 { margin-left: 26.087%; }
