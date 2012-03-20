@@ -4,6 +4,7 @@
 //   $margin - The outer margins. Defaults to $shelves-margin.
 //
 @mixin container($margin: $shelves-margin) {
+  @include pie-clearfix;
   padding-left: $margin;
   padding-right: $margin;
 }
@@ -11,11 +12,16 @@
 // Includes the styles for the row element. This includes
 // a clearfix, widths, and centering.
 //
-//   $width - The max width of the row element. If this is
-//            false, the row is completely fluid. Defaults
-//            to $shelves-width.
+//   $max-width    - The max width of the row element. If this is
+//                   false, the row is completely fluid. Defaults
+//                   to $shelves-width.
+//   $min-width    - The min width, for browsers that don't support
+//                   media queries.
+//   $row-selector - Customize the selector for the row element.
+//                   Necessary when setting the $min-width.
+//                   Defaults to ".row".
 //
-@mixin row($max-width: $shelves-width) {
+@mixin row($max-width: $shelves-width, $min-width: false, $row-selector: $shelves-row-selector) {
   @include pie-clearfix;
   width: 100%;
   
@@ -23,6 +29,14 @@
     max-width: $max-width;
     margin-left: auto;
     margin-right: auto;
+  }
+  
+  @if $min-width != false {
+    min-width: $min-width;
+    
+    #{$row-selector} {
+      min-width: 0;
+    }
   }
 }
 
@@ -47,6 +61,10 @@
   float: left;
   min-height: 1px;
   position: relative;
+  
+  @if $legacy-support-for-ie7 {
+    *margin-right: -1px;
+  }
 }
 
 // Sets the width of the element to the given number of columns.
