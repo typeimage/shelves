@@ -1,5 +1,7 @@
 // Default Grid Settings
 $shelves-width:          1140px !default;
+$shelves-max-width:      $shelves-width !default;
+$shelves-min-width:      767px !default;
 $shelves-columns:        12 !default;
 $shelves-mobile-columns: 4 !default;
 $shelves-margin:         20px !default;
@@ -7,20 +9,19 @@ $shelves-gutter:         20px !default;
 
 // Calculate the column width and gutter
 @if unit($shelves-gutter) != "%" {
-  $shelves-gutter: percentage($shelves-gutter / $shelves-width);
+  $shelves-gutter: percentage($shelves-gutter / $shelves-max-width);
 }
-$shelves-column-width: (100% - ($shelves-columns - 1) * $shelves-gutter) / $shelves-columns;
+$shelves-column-width: (100% - ($shelves-columns - 1) * $shelves-gutter) / $shelves-columns !default;
 
 // Default Class Names
 // (Note the lack of the preceding ".")
-$shelves-container-name:     "container";
-$shelves-row-name:           "row";
-$shelves-column-name:        "column";
-$shelves-prefix-name:        "prefix";
-$shelves-suffix-name:        "suffix";
-$shelves-push-name:          "push";
-$shelves-pull-name:          "pull";
-$shelves-separator:          "-";
-$shelves-mobile-column-name: "mobile-column";
-$shelves-reset-column-name:  "reset-column";
-$shelves-reset-gutter-name:  "reset-gutter";
+$shelves-container-name:     "container" !default;
+$shelves-row-name:           "row" !default;
+$shelves-column-name:        "column" !default;
+$shelves-prefix-name:        "prefix" !default;
+$shelves-suffix-name:        "suffix" !default;
+$shelves-push-name:          "push" !default;
+$shelves-pull-name:          "pull" !default;
+$shelves-separator:          "-" !default;
+$shelves-mobile-column-name: "mobile-column" !default;
+$shelves-columns-selector:   "[class*=\"#{$shelves-column-name}#{$shelves-separator}\"]" !default;

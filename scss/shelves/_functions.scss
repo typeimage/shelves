@@ -64,3 +64,41 @@
 @function columns-distance($n, $context: $shelves-columns) {
   @return columns-width($n, $context) + column-gutter($context);
 }
+
+// Returns a column selector with the given class name,
+// appended with the given index.
+//
+//   $class-name - The class name to build the selector from.
+//                 It should NOT have a preceding ".".
+//   $index      - The index to append at the end. It will
+//                 be separated by $separator.
+//   $separator  - The separator between the class name and index.
+//                 Defaults to $shelves-separator.
+//
+@function column-selector($class-name, $index, $separator: $shelves-separator) {
+  @return ".#{$class-name}#{$separator}#{$index}";
+}
+
+// Returns a list consisting of a range of numbers leading up to
+// the last number.
+//
+//   range(1, 6); // 1, 2, 3, 4, 5
+//   range(1, 6, $step: 2); // 1, 3, 5
+//
+// Arguments:
+//
+//   $start - The start of the range.
+//   $end   - The end of the range. This is exclusive, so this
+//            number will not be in the returned range.
+//   $step  - Step by the given number to create the range.
+//            Defaults to 1.
+//
+@function range($start, $end, $step: 1) {
+  $list: $start;
+  $i: $start + $step;
+  @while $i < $end {
+    $list: join($list, $i);
+    $i: $i + $step;
+  }
+  @return $list;
+}

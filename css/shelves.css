@@ -312,8 +312,7 @@ Copyright (c) 2012, Pete Browne
 
 @media screen and (max-width: 767px) { .row { margin-left: 0; margin-right: 0; width: 100%; min-width: 0; }
   [class*="column-"], [class*="column-"] [class*="column-"] { margin-left: 0; padding-left: 0; padding-right: 0; left: auto; right: auto; float: none; width: auto; *margin-right: 0px; }
-  .mobile-column-base, .mobile-column.column-3, .mobile-column.column-6, .mobile-column.column-9 { display: block; float: left; min-height: 1px; position: relative; *margin-right: -1px; margin-left: 1.754%; }
-  .mobile-column-base:first-child, .mobile-column.column-3:first-child, .mobile-column.column-6:first-child, .mobile-column.column-9:first-child { margin-left: 0; }
+  .mobile-column { display: block; float: left; min-height: 1px; position: relative; *margin-right: -1px; margin-left: 1.754%; }
   .mobile-column.column-3 { width: 23.684%; }
   .mobile-column.column-6 { width: 49.123%; }
   .mobile-column.column-9 { width: 74.561%; } }

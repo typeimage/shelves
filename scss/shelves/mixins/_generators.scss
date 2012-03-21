@@ -49,7 +49,7 @@
       // to cascade the nested column properties.
       $i: $shelves-columns - $i;
     
-      .#{$shelves-column-name}#{$shelves-separator}#{$i} {
+      #{column-selector($shelves-column-name, $i)} {
         @include shelves-columns(
           $start:                 1,
           $end:                   $i,
@@ -82,15 +82,15 @@
   }
   
   .#{$shelves-row-name} {
-    @include row($min-width: 767px);
+    @include row($mobile-reset: false);
   }
   
-  [class*="#{$shelves-column-name}#{$shelves-separator}"], {
-    @include column-base;
+  #{$shelves-columns-selector}, {
+    @include column-base($mobile-reset: false);
     @include column-gutter($include-first-column: false);
     
     &,
-    & [class*="#{$shelves-column-name}#{$shelves-separator}"] {
+    & #{$shelves-columns-selector} {
       &:first-child {
         @include reset-column-gutter;
       }
@@ -124,20 +124,20 @@
   $include-pull:          true
 ) {
   @if $include-column-gutter {
-    [class*="#{$shelves-column-name}#{$shelves-separator}"] {
+    #{$shelves-columns-selector} {
       @include column-gutter($context, false);
     }
   }
 
   @for $i from $start to $end  {
-    .#{$shelves-column-name}#{$shelves-separator}#{$i} {
+    #{column-selector($shelves-column-name, $i)} {
       @include columns-width($i, $context);
     }
   }
     
   @if $include-prefix == true {
     @for $i from $start to $end  {
-      .#{$shelves-prefix-name}#{$shelves-separator}#{$i} {
+      #{column-selector($shelves-prefix-name, $i)} {
         @include column-prefix($i, $context);
       }
     }
@@ -145,7 +145,7 @@
     
   @if $include-suffix == true {
     @for $i from $start to $end  {
-      .#{$shelves-suffix-name}#{$shelves-separator}#{$i} {
+      #{column-selector($shelves-suffix-name, $i)} {
         @include column-suffix($i, $context);
       }
     }
@@ -153,7 +153,7 @@
     
   @if $include-push == true {
     @for $i from $start to $end  {
-      .#{$shelves-push-name}#{$shelves-separator}#{$i} {
+      #{column-selector($shelves-push-name, $i)} {
         @include column-push($i, $context);
       }
     }
@@ -161,7 +161,7 @@
     
   @if $include-pull == true {
     @for $i from $start to $end  {
-      .#{$shelves-pull-name}#{$shelves-separator}#{$i} {
+      #{column-selector($shelves-pull-name, $i)} {
         @include column-pull($i, $context);
       }
     }
@@ -176,9 +176,9 @@
     @include reset-row;
   }
   
-  [class*="#{$shelves-column-name}#{$shelves-separator}"] {
+  #{$shelves-columns-selector} {
     &,
-    & [class*="#{$shelves-column-name}#{$shelves-separator}"] {
+    & #{$shelves-columns-selector} {
       @include reset-column;
     }
   }
@@ -186,28 +186,15 @@
 
 // Generates the classes for columns on mobile devices.
 @mixin shelves-mobile-columns {
-  $base-class: ".#{$shelves-mobile-column-name}#{$shelves-separator}base";
-  
-  #{$base-class} {
-    @include column-base;
-    @include column-gutter($include-first-column: false);
-  
-    &:first-child {
-      @include reset-column-gutter;
-    }
-  }
-    
   .#{$shelves-mobile-column-name} {
-    $mobile-step: floor($shelves-columns / $shelves-mobile-columns);
-    $i: $mobile-step;
+    @include column-base($mobile-reset: false);
+    @include column-gutter($include-first-column: false);
     
-    @while $i < $shelves-columns {
-      &.#{$shelves-column-name}#{$shelves-separator}#{$i} {
-        @extend #{$base-class};
+    $mobile-step: floor($shelves-columns / $shelves-mobile-columns);
+    @each $i in range($start: $mobile-step, $end: $shelves-columns, $step: $mobile-step) {
+      &#{column-selector($shelves-column-name, $i)} {
         @include columns-width($i);
       }
-      
-      $i: $i + $mobile-step;
     }
   }
 }
