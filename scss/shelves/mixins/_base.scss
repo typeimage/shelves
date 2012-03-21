@@ -47,7 +47,7 @@
 //              Defaults to the full width of the grid.
 //
 @mixin column($n, $context: $shelves-columns) {
-  @include column-base($context);
+  @include column-base;
   @include column-gutter($context);
   @include columns-width($n, $context);
 }

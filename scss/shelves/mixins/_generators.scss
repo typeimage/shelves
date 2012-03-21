@@ -1,125 +1,96 @@
 // Generates the entire grid, made up of reusable classes for a modular OOCSS
-// approach to using the grid. All of the names can be customized.
+// approach to using the grid. All of the class names can be customized.
 //
-//   $container-name     - Customize the name for the container element.
-//                         Defaults to "container".
-//   $row-name           - Customize the name for the row element.
-//                         Defaults to "row".
-//   $column-name        - Customize the name for the columns.
-//                         Defaults to "column".
-//   $prefix-name        - Customize the name for the prefix modifier.
-//                         Defaults to "prefix".
-//   $suffix-name        - Customize the name for the suffix modifier.
-//                         Defaults to "suffix".
-//   $push-name          - Customize the name for the push modifier.
-//                         Defaults to "push".
-//   $pull-name          - Customize the name for the pull modifier.
-//                         Defaults to "pull".
-//   $separator          - Customize the seperator used in the names.
-//                         Defaults to "-".
-//   $mobile-column-name - Customize the name for mobile columns.
-//                         Defaults to "mobile-column".
+//   $include-nested-columns - Include nested columns in the default grid.
+//                             Defaults to true.
+//   $include-mobile-resets  - Include mobile resets (remove grid for mobile
+//                             sizes). Defaults to true.
+//   $include-mobile-columns - Include mobile columns (special column classes
+//                             for mobile sizes). Defaults to true.
+//   $include-prefix         - Include prefix classes. Deafults to true.
+//   $include-suffix         - Include suffix classes. Deafults to true.
+//   $include-push           - Include push classes. Deafults to true.
+//   $include-pull           - Include pull classes. Deafults to true.
+//   $include-nested-prefix  - Include prefix classes for neseted columns.
+//                             Defaults to true.
+//   $include-nested-suffix  - Include suffix classes  for neseted columns.
+//                             Defaults to true.
+//   $include-nested-push    - Include push classes for neseted columns.
+//                             Defaults to false.
+//   $include-nested-pull    - Include pull classes for neseted columns.
+//                             Defaults to false.
 //
 @mixin shelves(
-  $container-name:     $shelves-container-name,
-  $row-name:           $shelves-row-name,
-  $column-name:        $shelves-column-name,
-  $prefix-name:        $shelves-prefix-name,
-  $suffix-name:        $shelves-suffix-name,
-  $push-name:          $shelves-push-name,
-  $pull-name:          $shelves-pull-name,
-  $separator:          $shelves-separator,
-  $mobile-column-name: $shelves-mobile-column-name
+  $include-nested-columns: true,
+  $include-mobile-resets:  true,
+  $include-mobile-columns: true,
+  $include-prefix:         true,
+  $include-suffix:         true,
+  $include-push:           true,
+  $include-pull:           true,
+  $include-nested-prefix:  true,
+  $include-nested-suffix:  true,
+  $include-nested-push:    false,
+  $include-nested-pull:    false
 ) {
   
-  @include shelves-base(
-    $container-name: $container-name,
-    $row-name:       $row-name
-  );
-  
+  @include shelves-base;
   @include shelves-columns(
     $include-column-gutter: false,
-    $column-name:           $column-name,
-    $prefix-name:           $prefix-name,
-    $suffix-name:           $suffix-name,
-    $push-name:             $push-name,
-    $pull-name:             $pull-name,
-    $separator:             $separator
+    $include-prefix:        $include-prefix,
+    $include-suffix:        $include-suffix,
+    $include-push:          $include-push,
+    $include-pull:          $include-pull
   );
   
-  @for $i from 1 to $shelves-columns - 1  {
-    // Loop background through the columns
-    // to cascade the nested column properties.
-    $i: $shelves-columns - $i;
+  @if $include-nested-columns == true {
+    @for $i from 1 to $shelves-columns - 1  {
+      // Loop background through the columns
+      // to cascade the nested column properties.
+      $i: $shelves-columns - $i;
     
-    .#{$column-name}#{$separator}#{$i} {
-      @include shelves-columns(
-        $start:                 1,
-        $end:                   $i,
-        $context:               $i,
-        $include-column-gutter: true,
-        $include-prefix:        true,
-        $include-suffix:        true,
-        $include-push:          false,
-        $include-pull:          false,
-        $column-name:           $column-name,
-        $prefix-name:           $prefix-name,
-        $suffix-name:           $suffix-name,
-        $push-name:             $push-name,
-        $pull-name:             $pull-name,
-        $separator:             $separator
-      );
-    } 
+      .#{$shelves-column-name}#{$shelves-separator}#{$i} {
+        @include shelves-columns(
+          $start:                 1,
+          $end:                   $i,
+          $context:               $i,
+          $include-column-gutter: true,
+          $include-prefix:        $include-nested-prefix,
+          $include-suffix:        $include-nested-suffix,
+          $include-push:          $include-nested-push,
+          $include-pull:          $include-nested-pull
+        );
+      } 
+    }
   }
   
   @media screen and (max-width: 767px) {
-    @include shelves-resets(
-      $row-name:     $row-name,
-      $column-name:  $column-name,
-      $separator:    $separator
-    );
-    
-    @include shelves-mobile-columns(
-      $column-name:        $column-name,
-      $separator:          $separator,
-      $mobile-column-name: $mobile-column-name
-    );
+    @if $include-mobile-resets == true {
+      @include shelves-resets;
+    }
+    @if $include-mobile-columns == true {
+      @include shelves-mobile-columns;
+    }
   }
 }
 
 // Generates the grid's base classes, namely the
 // the row and container elements.
-//
-//   $container-name - Customize the name for the container element.
-//                     Defaults to "container".
-//   $row-name       - Customize the name for the row element.
-//                     Defaults to "row".
-//   $container-name - Customize the name for the container element.
-//                     Defaults to "container".
-//   $separator      - Customize the seperator used in the names.
-//                     Defaults to "-".
-//
-@mixin shelves-base(
-  $container-name: $shelves-container-name,
-  $row-name:       $shelves-row-name,
-  $column-name:    $shelves-column-name,
-  $separator:      $shelves-separator
-) {
-  
-  .#{$container-name} {
+@mixin shelves-base {
+  .#{$shelves-container-name} {
     @include container;
   }
   
-  .#{$row-name} {
-    @include row($min-width: 767px, $row-name: $row-name);
+  .#{$shelves-row-name} {
+    @include row($min-width: 767px);
   }
   
-  [class*="#{$column-name}#{$separator}"], {
+  [class*="#{$shelves-column-name}#{$shelves-separator}"], {
     @include column-base;
     @include column-gutter($include-first-column: false);
     
     &,
-    & [class*="#{$column-name}#{$separator}"] {
+    & [class*="#{$shelves-column-name}#{$shelves-separator}"] {
       &:first-child {
         @include reset-column-gutter;
       }
@@ -131,18 +102,16 @@
 // the columns. This can be used in different contexts, varying
 // the number of columns if necessary.
 //
-//   $column-name - Customize the name for the columns.
-//                  Defaults to "column".
-//   $prefix-name - Customize the name for the prefix modifier.
-//                  Defaults to "prefix".
-//   $suffix-name - Customize the name for the suffix modifier.
-//                  Defaults to "suffix".
-//   $push-name   - Customize the name for the push modifier.
-//                  Defaults to "push".
-//   $pull-name   - Customize the name for the pull modifier.
-//                  Defaults to "pull".
-//   $separator   - Customize the seperator used in the names.
-//                  Defaults to "-".
+//   $start                 - Index to start the loop at. Defaults to 1.
+//   $end                   - Where to end the loop. Defaults to $shelves-columns.
+//   $context               - The context of generated classes.
+//                            Defaults to $shelves-columns.
+//   $include-column-gutter - Include generic column gutter for the given context.
+//                            Defaults to true.
+//   $include-prefix        - Include prefix classes. Deafults to true.
+//   $include-suffix        - Include suffix classes. Deafults to true.
+//   $include-push          - Include push classes. Deafults to true.
+//   $include-pull          - Include pull classes. Deafults to true.
 //
 @mixin shelves-columns(
   $start:                 1,
@@ -152,29 +121,23 @@
   $include-prefix:        true,
   $include-suffix:        true,
   $include-push:          true,
-  $include-pull:          true,
-  $column-name:           $shelves-column-name,
-  $prefix-name:           $shelves-prefix-name,
-  $suffix-name:           $shelves-suffix-name,
-  $push-name:             $shelves-push-name,
-  $pull-name:             $shelves-pull-name,
-  $separator:             $shelves-separator
+  $include-pull:          true
 ) {
   @if $include-column-gutter {
-    [class*="#{$column-name}#{$separator}"] {
+    [class*="#{$shelves-column-name}#{$shelves-separator}"] {
       @include column-gutter($context, false);
     }
   }
 
   @for $i from $start to $end  {
-    .#{$column-name}#{$separator}#{$i} {
+    .#{$shelves-column-name}#{$shelves-separator}#{$i} {
       @include columns-width($i, $context);
     }
   }
     
   @if $include-prefix == true {
     @for $i from $start to $end  {
-      .#{$prefix-name}#{$separator}#{$i} {
+      .#{$shelves-prefix-name}#{$shelves-separator}#{$i} {
         @include column-prefix($i, $context);
       }
     }
@@ -182,7 +145,7 @@
     
   @if $include-suffix == true {
     @for $i from $start to $end  {
-      .#{$suffix-name}#{$separator}#{$i} {
+      .#{$shelves-suffix-name}#{$shelves-separator}#{$i} {
         @include column-suffix($i, $context);
       }
     }
@@ -190,7 +153,7 @@
     
   @if $include-push == true {
     @for $i from $start to $end  {
-      .#{$push-name}#{$separator}#{$i} {
+      .#{$shelves-push-name}#{$shelves-separator}#{$i} {
         @include column-push($i, $context);
       }
     }
@@ -198,55 +161,34 @@
     
   @if $include-pull == true {
     @for $i from $start to $end  {
-      .#{$pull-name}#{$separator}#{$i} {
+      .#{$shelves-pull-name}#{$shelves-separator}#{$i} {
         @include column-pull($i, $context);
       }
     }
   }
 }
 
-// 
-//
-//   $row-name    - Customize the name for the row element.
-//                  Defaults to "row".
-//   $column-name - Customize the name for the columns.
-//                  Defaults to "column".
-//   $separator   - Customize the seperator used in the names.
-//                  Defaults to "-".
-//
-@mixin shelves-resets(
-  $row-name:    $shelves-row-name,
-  $column-name: $shelves-column-name,
-  $separator:   $shelves-separator
-) {
-  .#{$row-name} {
+// Resets the row and column elements so they take up
+// the full width of their parent element. All modifying
+// effects are removed from columns as well.
+@mixin shelves-resets {
+  .#{$shelves-row-name} {
     @include reset-row;
   }
   
-  [class*="#{$column-name}#{$separator}"] {
+  [class*="#{$shelves-column-name}#{$shelves-separator}"] {
     &,
-    & [class*="#{$column-name}#{$separator}"] {
+    & [class*="#{$shelves-column-name}#{$shelves-separator}"] {
       @include reset-column;
     }
   }
 }
 
-// Generates the default grid classes for a modular OOCSS
-// approach to using the grid. All of the names can be customized.
-//
-//   $column-name        - Customize the name for the columns.
-//                         Defaults to "column".
-//   $separator          - Customize the seperator used in the names.
-//                         Defaults to "-".
-//   $mobile-column-name - Customize the name for mobile columns.
-//                         Defaults to "mobile-column".
-//
-@mixin shelves-mobile-columns(
-  $column-name:        $shelves-column-name,
-  $separator:          $shelves-separator,
-  $mobile-column-name: $shelves-mobile-column-name
-) {
-  .#{$mobile-column-name}#{$separator}base {
+// Generates the classes for columns on mobile devices.
+@mixin shelves-mobile-columns {
+  $base-class: ".#{$shelves-mobile-column-name}#{$shelves-separator}base";
+  
+  #{$base-class} {
     @include column-base;
     @include column-gutter($include-first-column: false);
   
@@ -255,13 +197,13 @@
     }
   }
     
-  .#{$mobile-column-name} {
+  .#{$shelves-mobile-column-name} {
     $mobile-step: floor($shelves-columns / $shelves-mobile-columns);
     $i: $mobile-step;
     
     @while $i < $shelves-columns {
-      &.#{$column-name}#{$separator}#{$i} {
-        @extend .#{$mobile-column-name}#{$separator}base;
+      &.#{$shelves-column-name}#{$shelves-separator}#{$i} {
+        @extend #{$base-class};
         @include columns-width($i);
       }
       
