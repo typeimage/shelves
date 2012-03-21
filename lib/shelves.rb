@@ -15,9 +15,7 @@ end
 if defined? ::Rails
   require 'shelves/extensions/rails'
 elsif defined? ::Sprockets::Plugin
-  puts 'Using Sprockets::Plugin'
   require 'shelves/extensions/sprockets'
 else
-  puts 'Using Compass'
   require 'shelves/extensions/compass'
 end
