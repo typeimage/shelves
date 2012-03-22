@@ -1,12 +1,13 @@
 #!/usr/bin/env rake
 require 'bundler/gem_tasks'
-require 'sprockets'
-require 'sprockets-sass'
-require 'sass'
-require 'compass'
 
 desc 'Generate shelves.css'
 task :generate do
+  require 'sprockets'
+  require 'sprockets-sass'
+  require 'sass'
+  require 'compass'
+  
   Compass.configuration do |compass|
     compass.output_style  = :compact
     compass.line_comments = false
@@ -15,9 +16,7 @@ task :generate do
   env = Sprockets::Environment.new
   env.append_path 'scss'
   
-  shelves = env['shelves-grid.css']
-  
   File.open 'css/shelves.css', 'w' do |f|
-    f.write shelves.to_s
+    f.write env['shelves-grid.css'].to_s
   end
 end

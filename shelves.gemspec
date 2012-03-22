@@ -7,10 +7,10 @@ Gem::Specification.new do |gem|
   gem.email         = ['me@petebrowne.com']
   gem.description   = %q{The only responsive, fluid CSS grid with infinitely nestable columns.}
   gem.summary       = %q{The only responsive, fluid CSS grid with infinitely nestable columns.}
-  gem.homepage      = ''
+  gem.homepage      = 'https://github.com/petebrowne/shelves'
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  gem.files         = `git ls-files`.split("\n")
+  gem.files         = `git ls-files`.split("\n").reject{ |f| File.fnmatch?('css/*', f) }
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.name          = 'shelves'
   gem.require_paths = ['lib']

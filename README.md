@@ -1,29 +1,41 @@
-# Shelves
+Shelves CSS Grid
+================
 
-TODO: Write a gem description
+**The only responsive, fluid CSS grid with infinitely nestable columns.**
 
-## Installation
+TODO: Add longer description & Feature list.
 
-Add this line to your application's Gemfile:
 
-    gem 'shelves'
+Installation
+------------
 
-And then execute:
+### For CSS Users
 
-    $ bundle
+Download the latest distribution of [the CSS file](https://raw.github.com/petebrowne/shelves/master/css/shelves.css) and go to town.
 
-Or install it yourself as:
+### For SCSS Users (Compass & Rails)
 
-    $ gem install shelves
+Add the shelves gem to your Gemfile and import it:
 
-## Usage
+``` ruby
+# ...
+gem 'shelves'
+# ...
+```
 
-TODO: Write usage instructions here
+``` scss
+// @import "shelves";   // Import just the mixins
+@import "shelves-grid"; // Import mixins & default grid
+```
 
-## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Usage
+-----
+
+TODO...
+
+
+Copyright
+---------
+
+Copyright (c) 2012 [Pete Browne](http://petebrowne.com). See LICENSE for details.
