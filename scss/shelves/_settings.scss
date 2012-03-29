@@ -7,11 +7,10 @@ $shelves-mobile-columns: 4 !default;
 $shelves-margin:         20px !default;
 $shelves-gutter:         20px !default;
 
-// Calculate the column width and gutter
+// Convert the gutter to a percentage if necessary.
 @if unit($shelves-gutter) != "%" {
   $shelves-gutter: percentage($shelves-gutter / $shelves-max-width);
 }
-$shelves-column-width: (100% - ($shelves-columns - 1) * $shelves-gutter) / $shelves-columns !default;
 
 // Default Class Names
 // (Note the lack of the preceding ".")
@@ -24,4 +23,3 @@ $shelves-push-name:          "push" !default;
 $shelves-pull-name:          "pull" !default;
 $shelves-separator:          "-" !default;
 $shelves-mobile-column-name: "mobile-column" !default;
-$shelves-columns-selector:   "[class*=\"#{$shelves-column-name}#{$shelves-separator}\"]" !default;

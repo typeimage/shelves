@@ -3,14 +3,28 @@
 // width relative to that number of columns.
 //
 //   $context - The number of columns encapsulating the column.
-//              Defaults to the full width of the grid.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns. 
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
 //
-@function column-width($context: $shelves-columns) {
-  @if $context >= $shelves-columns {
-    @return $shelves-column-width;
+@function column-width($context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+  @if type-of($context) != 'number' or $context > $total {
+    $context: $total;
+  }
+  
+  @if $context <= 1 {
+    @return 100%;
+  }
+  @else if $context >= $total {
+    $column-gutter: column-gutter($total: $total, $gutter: $gutter);
+    @return (100% - ($total - 1) * $column-gutter) / $total;
   }
   @else {
-    @return $shelves-column-width * (100% / columns-width($context));
+    $column-width: column-width($total: $total, $gutter: $gutter);
+    $context-width: columns-width($n: $context, $total: $total, $gutter: $gutter);
+    @return $column-width * (100% / $context-width);
   }
 }
 
@@ -18,14 +32,26 @@
 // this returns the gutter width relative to that number of columns.
 //
 //   $context - The number of columns encapsulating the gutter.
-//              Defaults to the full width of the grid.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns. 
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
 //
-@function column-gutter($context: $shelves-columns) {
-  @if $context >= $shelves-columns {
-    @return $shelves-gutter;
+@function column-gutter($context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+  @if type-of($context) != 'number' or $context > $total {
+    $context: $total;
+  }
+  
+  @if $context <= 1 {
+    @return 0%;
+  }
+  @else if $context >= $total {
+    @return $gutter;
   }
   @else {
-    @return $shelves-gutter * (100% / columns-width($context));
+    $context-width: columns-width($n: $context, $total: $total);
+    @return $gutter * (100% / $context-width);
   }
 }
 
@@ -35,22 +61,29 @@
 //
 //   $n       - The number of columns to measure.
 //   $context - The number of columns encapsulating the columns.
-//              Defaults to the full width of the grid.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns. 
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
 //
-@function columns-width($n, $context: $shelves-columns) {
-  @if $n >= $shelves-columns {
+@function columns-width($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+  @if type-of($context) != 'number' or $context > $total {
+    $context: $total;
+  }
+  
+  @if $n <= 1 {
+    @return column-width($context, $total, $gutter);
+  }
+  @else if $n >= $context {
     @return 100%;
   }
-  
-  $column-width: $shelves-column-width;
-  $column-gutter: $shelves-gutter;
-  
-  @if $context < $shelves-columns {
-    $column-width: column-width($context);
-    $column-gutter: column-gutter($context);
+  @else {
+    $column-width: column-width($context, $total, $gutter);
+    $column-gutter: column-gutter($context, $total, $gutter);
+    
+    @return $column-width * $n + $column-gutter * ($n - 1);
   }
-  
-  @return $column-width * $n + $column-gutter * ($n - 1);
 }
 
 // Returns the total distance to shift a column the given
@@ -59,10 +92,14 @@
 //
 //   $n       - The number of columns to measure.
 //   $context - The number of columns encapsulating the columns.
-//              Defaults to the full width of the grid.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns. 
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
 //
-@function columns-distance($n, $context: $shelves-columns) {
-  @return columns-width($n, $context) + column-gutter($context);
+@function columns-distance($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+  @return columns-width($n, $context, $total, $gutter) + column-gutter($context, $total, $gutter);
 }
 
 // Returns a column selector with the given class name,
@@ -79,26 +116,13 @@
   @return ".#{$class-name}#{$separator}#{$index}";
 }
 
-// Returns a list consisting of a range of numbers leading up to
-// the last number.
+// Returns a selector that will select all columns with the given prefix.
 //
-//   range(1, 6); // 1, 2, 3, 4, 5
-//   range(1, 6, $step: 2); // 1, 3, 5
+//   $class-name - The class name to build the selector from.
+//                 It should NOT have a preceding ".".
+//   $separator  - The separator between the class name and index.
+//                 Defaults to $shelves-separator.
 //
-// Arguments:
-//
-//   $start - The start of the range.
-//   $end   - The end of the range. This is exclusive, so this
-//            number will not be in the returned range.
-//   $step  - Step by the given number to create the range.
-//            Defaults to 1.
-//
-@function range($start, $end, $step: 1) {
-  $list: $start;
-  $i: $start + $step;
-  @while $i < $end {
-    $list: join($list, $i);
-    $i: $i + $step;
-  }
-  @return $list;
+@function columns-selector($class-name, $separator: $shelves-separator) {
+  @return "[class*=\"#{$class-name}#{$separator}\"]";
 }
