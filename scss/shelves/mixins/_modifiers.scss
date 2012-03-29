@@ -9,7 +9,12 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin column-prefix($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+@mixin column-prefix(
+  $n,
+  $context: nil,
+  $total:   $shelves-columns,
+  $gutter:  $shelves-gutter
+) {
   padding-left: columns-distance($n, $context, $total, $gutter);
 }
 
@@ -24,7 +29,12 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin column-suffix($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+@mixin column-suffix(
+  $n,
+  $context: nil,
+  $total:   $shelves-columns,
+  $gutter:  $shelves-gutter
+) {
   padding-right: columns-distance($n, $context, $total, $gutter);
 }
 
@@ -39,7 +49,12 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin column-push($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+@mixin column-push(
+  $n,
+  $context: nil,
+  $total:   $shelves-columns,
+  $gutter:  $shelves-gutter
+) {
   left: columns-distance($n, $context, $total, $gutter);
 }
 
@@ -54,6 +69,11 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin column-pull($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+@mixin column-pull(
+  $n,
+  $context: nil,
+  $total:   $shelves-columns,
+  $gutter:  $shelves-gutter
+) {
   right: columns-distance($n, $context, $total, $gutter);
 }

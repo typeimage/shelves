@@ -9,7 +9,11 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@function column-width($context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+@function column-width(
+  $context: nil,
+  $total:   $shelves-columns,
+  $gutter:  $shelves-gutter
+) {
   @if type-of($context) != 'number' or $context > $total {
     $context: $total;
   }
@@ -38,7 +42,11 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@function column-gutter($context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+@function column-gutter(
+  $context: nil,
+  $total:   $shelves-columns,
+  $gutter:  $shelves-gutter
+) {
   @if type-of($context) != 'number' or $context > $total {
     $context: $total;
   }
@@ -67,7 +75,12 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@function columns-width($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+@function columns-width(
+  $n,
+  $context: nil,
+  $total:   $shelves-columns,
+  $gutter:  $shelves-gutter
+) {
   @if type-of($context) != 'number' or $context > $total {
     $context: $total;
   }
@@ -98,7 +111,12 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@function columns-distance($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+@function columns-distance(
+  $n,
+  $context: nil,
+  $total:   $shelves-columns,
+  $gutter:  $shelves-gutter
+) {
   @return columns-width($n, $context, $total, $gutter) + column-gutter($context, $total, $gutter);
 }
 
