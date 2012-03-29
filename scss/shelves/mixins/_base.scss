@@ -49,14 +49,18 @@
 //
 //   $n            - The number of columns the element should span.
 //   $context      - The number of columns encapsulating the element.
-//                   Defaults to the full width of the grid.
+//                   Defaults to the the value of $total.
+//   $total        - The total number of columns in the grid.
+//                   Defaults to the value of $shelves-columns. 
+//   $gutter       - The width of the gutter in the root context (in %).
+//                   Defaults to the value of $shelves-gutter.
 //   $mobile-reset - Include styles for resetting the column at
 //                   mobile sizes. Defaults to true.
 //
-@mixin column($n, $context: $shelves-columns, $mobile-reset: true) {
+@mixin column($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter, $mobile-reset: true) {
   @include column-base($mobile-reset);
-  @include column-gutter($context);
-  @include columns-width($n, $context);
+  @include column-gutter($context, $total, $gutter);
+  @include columns-width($n, $context, $total, $gutter);
 }
 
 // Sets up an element to be a column in the grid system.
@@ -87,21 +91,29 @@
 //
 //   $n       - The number of columns the element should span.
 //   $context - The number of columns encapsulating the element.
-//              Defaults to the full width of the grid.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns. 
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
 //
-@mixin columns-width($n, $context: $shelves-columns) {
-  width: columns-width($n, $context);
+@mixin columns-width($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+  width: columns-width($n, $context, $total, $gutter);
 }
 
 // Includes the gutter for a column on the grid.
 //
 //   $context              - The number of columns encapsulating the element.
-//                           Defaults to the full width of the grid.
+//                           Defaults to the the value of $total.
+//   $total                - The total number of columns in the grid.
+//                           Defaults to the value of $shelves-columns. 
+//   $gutter               - The width of the gutter in the root context (in %).
+//                           Defaults to the value of $shelves-gutter.
 //   $include-first-column - Includes the styles for removing the gutter
 //                           on the first column in a row. Defaults to true.
 //
-@mixin column-gutter($context: $shelves-columns, $include-first-column: true) {
-  margin-left: column-gutter($context);
+@mixin column-gutter($context: nil, $total: $shelves-columns, $gutter: $shelves-gutter, $include-first-column: true) {
+  margin-left: column-gutter($context, $total, $gutter);
   
   @if $include-first-column == true {
     &:first-child {

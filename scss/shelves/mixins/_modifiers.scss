@@ -3,10 +3,14 @@
 //
 //   $n       - The number of columns to pad.
 //   $context - The number of columns encapsulating the element.
-//              Defaults to the full width of the grid.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns. 
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
 //
-@mixin column-prefix($n, $context: $shelves-columns) {
-  padding-left: columns-distance($n, $context);
+@mixin column-prefix($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+  padding-left: columns-distance($n, $context, $total, $gutter);
 }
 
 // Adds a padding suffix (which shifts the column to the left)
@@ -14,10 +18,14 @@
 //
 //   $n       - The number of columns to pad.
 //   $context - The number of columns encapsulating the element.
-//              Defaults to the full width of the grid.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns. 
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
 //
-@mixin column-suffix($n, $context: $shelves-columns) {
-  padding-right: columns-distance($n, $context);
+@mixin column-suffix($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+  padding-right: columns-distance($n, $context, $total, $gutter);
 }
 
 // Reorder the content by shifting the column to the right. This
@@ -25,10 +33,14 @@
 //
 //   $n       - The number of columns to shift.
 //   $context - The number of columns encapsulating the element.
-//              Defaults to the full width of the grid.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns. 
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
 //
-@mixin column-push($n, $context: $shelves-columns) {
-  left: columns-distance($n, $context);
+@mixin column-push($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+  left: columns-distance($n, $context, $total, $gutter);
 }
 
 // Reorder the content by shifting the column to the left. This
@@ -36,8 +48,12 @@
 //
 //   $n       - The number of columns to shift.
 //   $context - The number of columns encapsulating the element.
-//              Defaults to the full width of the grid.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns. 
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
 //
-@mixin column-pull($n, $context: $shelves-columns) {
-  right: columns-distance($n, $context);
+@mixin column-pull($n, $context: nil, $total: $shelves-columns, $gutter: $shelves-gutter) {
+  right: columns-distance($n, $context, $total, $gutter);
 }
