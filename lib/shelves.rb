@@ -16,6 +16,8 @@ if defined? ::Rails
   require 'shelves/extensions/rails'
 elsif defined? ::Sprockets::Plugin
   require 'shelves/extensions/sprockets'
+elsif defined? ::Sprockets && Sprockets.respond_to?(:append_path)
+  Sprockets.append_path Shelves.stylesheets_path
 else
   require 'shelves/extensions/compass'
 end
