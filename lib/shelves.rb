@@ -12,12 +12,10 @@ module Shelves
   end
 end
 
-if defined? ::Rails
+if defined?(::Rails)
   require 'shelves/extensions/rails'
-elsif defined? ::Sprockets::Plugin
+elsif defined?(::Sprockets) && Sprockets.respond_to?(:append_path)
   require 'shelves/extensions/sprockets'
-elsif defined? ::Sprockets && Sprockets.respond_to?(:append_path)
-  Sprockets.append_path Shelves.stylesheets_path
 else
   require 'shelves/extensions/compass'
 end

@@ -1,9 +1,3 @@
-require 'sprockets/plugin'
+require 'sprockets'
 
-module Shelves
-  module Extensions
-    class Sprockets < ::Sprockets::Plugin
-      append_path Shelves.stylesheets_path
-    end
-  end
-end
+Sprockets.append_path Shelves.stylesheets_path
