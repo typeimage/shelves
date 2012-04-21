@@ -71,7 +71,7 @@
 //
 @mixin column(
   $n,
-  $context:         nil,
+  $context:         false,
   $total:           $shelves-columns,
   $gutter:          $shelves-gutter,
   $reset-if-tablet: true,
@@ -126,7 +126,7 @@
 //
 @mixin columns-width(
   $n,
-  $context: nil,
+  $context: false,
   $total:   $shelves-columns,
   $gutter:  $shelves-gutter
 ) {
@@ -145,7 +145,7 @@
 //                  Defaults to true.
 //
 @mixin column-gutter(
-  $context:     nil,
+  $context:     false,
   $total:       $shelves-columns,
   $gutter:      $shelves-gutter,
   $reset-first: true

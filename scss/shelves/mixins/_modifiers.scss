@@ -11,7 +11,7 @@
 //
 @mixin column-prefix(
   $n,
-  $context: nil,
+  $context: false,
   $total:   $shelves-columns,
   $gutter:  $shelves-gutter
 ) {
@@ -31,7 +31,7 @@
 //
 @mixin column-suffix(
   $n,
-  $context: nil,
+  $context: false,
   $total:   $shelves-columns,
   $gutter:  $shelves-gutter
 ) {
@@ -51,7 +51,7 @@
 //
 @mixin column-push(
   $n,
-  $context: nil,
+  $context: false,
   $total:   $shelves-columns,
   $gutter:  $shelves-gutter
 ) {
@@ -71,7 +71,7 @@
 //
 @mixin column-pull(
   $n,
-  $context: nil,
+  $context: false,
   $total:   $shelves-columns,
   $gutter:  $shelves-gutter
 ) {

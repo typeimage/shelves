@@ -10,11 +10,11 @@
 //              Defaults to the value of $shelves-gutter.
 //
 @function column-width(
-  $context: nil,
+  $context: false,
   $total:   $shelves-columns,
   $gutter:  $shelves-gutter
 ) {
-  @if type-of($context) != 'number' or $context > $total {
+  @if $context == false {
     $context: $total;
   }
   
@@ -43,11 +43,11 @@
 //              Defaults to the value of $shelves-gutter.
 //
 @function column-gutter(
-  $context: nil,
+  $context: false,
   $total:   $shelves-columns,
   $gutter:  $shelves-gutter
 ) {
-  @if type-of($context) != 'number' or $context > $total {
+  @if $context == false {
     $context: $total;
   }
   
@@ -77,11 +77,11 @@
 //
 @function columns-width(
   $n,
-  $context: nil,
+  $context: false,
   $total:   $shelves-columns,
   $gutter:  $shelves-gutter
 ) {
-  @if type-of($context) != 'number' or $context > $total {
+  @if $context == false or $context > $total {
     $context: $total;
   }
   
@@ -113,7 +113,7 @@
 //
 @function columns-distance(
   $n,
-  $context: nil,
+  $context: false,
   $total:   $shelves-columns,
   $gutter:  $shelves-gutter
 ) {

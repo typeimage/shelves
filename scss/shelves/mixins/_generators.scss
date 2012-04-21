@@ -203,8 +203,8 @@
 @mixin shelves-columns(
   $column-name: $shelves-column-name,
   $start:       1,
-  $end:         nil,
-  $context:     nil,
+  $end:         false,
+  $context:     false,
   $total:       $shelves-columns,
   $gutter:      $shelves-gutter,
   $prefixes:    true,
@@ -212,10 +212,10 @@
   $pushes:      true,
   $pulls:       true
 ) {
-  @if type-of($context) != 'number' or $context > $total {
+  @if $context == false or $context > $total {
     $context: $total;
   }
-  @if type-of($end) != 'number' or $end > $context {
+  @if $end == false or $end > $context {
     $end: $context;
   }
   @for $i from $start to $end  {
