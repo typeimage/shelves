@@ -27,7 +27,7 @@
   $reset-if-tablet: true,
   $reset-if-mobile: false
 ) {
-  @include pie-clearfix;
+  @include shelves-clearfix;
   width: 100%;
 
   @if type-of($max-width) == 'number' {
@@ -97,7 +97,7 @@
   min-height: 1px;
   position: relative;
 
-  @if $legacy-support-for-ie7 {
+  @if $shelves-ie7-support {
     // IE6-7 incorrectly rounds up percentage widths (breaking layouts)
     // http://ejohn.org/blog/sub-pixel-problems-in-css/
     *margin-right: -1px;
@@ -156,5 +156,23 @@
     &:first-child {
       @include reset-column-gutter;
     }
+  }
+}
+
+// Clearfix mixin based on micro-clearfix:
+// http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin shelves-clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  @if $shelves-ie7-support {
+    *zoom: 1;
   }
 }

@@ -9,7 +9,7 @@
 //                      Defaults to true.
 //   $nested-prefixes - Include prefix classes for neseted columns.
 //                      Defaults to true.
-//   $nested-suffixes - Include suffix classes  for neseted columns.
+//   $nested-suffixes - Include suffix classes for neseted columns.
 //                      Defaults to true.
 //   $nested-pushes   - Include push classes for neseted columns.
 //                      Defaults to false.
@@ -18,7 +18,7 @@
 //   $tablet          - Include tablet columns & resets. Defaults to true.
 //   $tablet-prefixes - Include prefix classes for tablet columns.
 //                      Defaults to false.
-//   $tablet-suffixes - Include suffix classes  for tablet columns.
+//   $tablet-suffixes - Include suffix classes for tablet columns.
 //                      Defaults to false.
 //   $tablet-pushes   - Include push classes for tablet columns.
 //                      Defaults to false.
@@ -27,7 +27,7 @@
 //   $mobile          - Include mobile columns & resets. Defaults to true.
 //   $mobile-prefixes - Include prefix classes for mobile columns.
 //                      Defaults to false.
-//   $mobile-suffixes - Include suffix classes  for mobile columns.
+//   $mobile-suffixes - Include suffix classes for mobile columns.
 //                      Defaults to false.
 //   $mobile-pushes   - Include push classes for mobile columns.
 //                      Defaults to false.
@@ -35,25 +35,25 @@
 //                      Defaults to false.
 //
 @mixin shelves(
-  $prefixes: true,
-  $suffixes: true,
-  $pushes: true,
-  $pulls: true,
-  $nested: true,
-  $nested-prefixes: true,
-  $nested-suffixes: true,
-  $nested-pushes: false,
-  $nested-pulls: false,
-  $tablet: true,
-  $tablet-prefixes: false,
-  $tablet-suffixes: false,
-  $tablet-pushes: false,
-  $tablet-pulls: false,
-  $mobile: true,
-  $mobile-prefixes: false,
-  $mobile-suffixes: false,
-  $mobile-pushes: false,
-  $mobile-pulls: false
+  $prefixes: $shelves-prefixes,
+  $suffixes: $shelves-suffixes,
+  $pushes: $shelves-pushes,
+  $pulls: $shelves-pulls,
+  $nested: $shelves-nested,
+  $nested-prefixes: $shelves-nested-prefixes,
+  $nested-suffixes: $shelves-nested-suffixes,
+  $nested-pushes: $shelves-nested-pushes,
+  $nested-pulls: $shelves-nested-pulls,
+  $tablet: $shelves-tablet,
+  $tablet-prefixes: $shelves-tablet-prefixes,
+  $tablet-suffixes: $shelves-tablet-suffixes,
+  $tablet-pushes: $shelves-tablet-pushes,
+  $tablet-pulls: $shelves-tablet-pulls,
+  $mobile: $shelves-mobile,
+  $mobile-prefixes: $shelves-mobile-prefixes,
+  $mobile-suffixes: $shelves-mobile-suffixes,
+  $mobile-pushes: $shelves-mobile-pushes,
+  $mobile-pulls: $shelves-mobile-pulls
 ) {
   @include shelves-base($reset-if-tablet: false, $reset-if-mobile: false);
   @include shelves-columns(

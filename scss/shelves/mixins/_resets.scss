@@ -17,8 +17,8 @@
   @include reset-column-pull;
   float: none;
   width: auto;
-  
-  @if $legacy-support-for-ie7 {
+
+  @if $shelves-ie7-support {
     *margin-right: 0px;
   }
 }
