@@ -22,14 +22,14 @@
 //                      mobile sizes. Defaults to false.
 //
 @mixin row(
-  $max-width:       $shelves-max-width,
-  $min-width:       $shelves-min-width,
+  $max-width: $shelves-max-width,
+  $min-width: $shelves-min-width,
   $reset-if-tablet: true,
   $reset-if-mobile: false
 ) {
   @include pie-clearfix;
   width: 100%;
-  
+
   @if type-of($max-width) == 'number' {
     max-width: $max-width;
     margin-left: auto;
@@ -37,7 +37,7 @@
   }
   @if type-of($min-width) == 'number' {
     min-width: $min-width;
-    
+
     .#{$shelves-row-name} {
       min-width: 0;
     }
@@ -61,7 +61,7 @@
 //   $context         - The number of columns encapsulating the element.
 //                      Defaults to the the value of $total.
 //   $total           - The total number of columns in the grid.
-//                      Defaults to the value of $shelves-columns. 
+//                      Defaults to the value of $shelves-columns.
 //   $gutter          - The width of the gutter in the root context (in %).
 //                      Defaults to the value of $shelves-gutter.
 //   $reset-if-tablet - Include styles for resetting the column at
@@ -71,9 +71,9 @@
 //
 @mixin column(
   $n,
-  $context:         false,
-  $total:           $shelves-columns,
-  $gutter:          $shelves-gutter,
+  $context: null,
+  $total: $shelves-columns,
+  $gutter: $shelves-gutter,
   $reset-if-tablet: true,
   $reset-if-mobile: false
 ) {
@@ -96,7 +96,7 @@
   float: left;
   min-height: 1px;
   position: relative;
-  
+
   @if $legacy-support-for-ie7 {
     // IE6-7 incorrectly rounds up percentage widths (breaking layouts)
     // http://ejohn.org/blog/sub-pixel-problems-in-css/
@@ -120,15 +120,15 @@
 //   $context - The number of columns encapsulating the element.
 //              Defaults to the the value of $total.
 //   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns. 
+//              Defaults to the value of $shelves-columns.
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin columns-width(
   $n,
-  $context: false,
-  $total:   $shelves-columns,
-  $gutter:  $shelves-gutter
+  $context: null,
+  $total: $shelves-columns,
+  $gutter: $shelves-gutter
 ) {
   width: columns-width($n, $context, $total, $gutter);
 }
@@ -138,20 +138,20 @@
 //   $context     - The number of columns encapsulating the element.
 //                  Defaults to the the value of $total.
 //   $total       - The total number of columns in the grid.
-//                  Defaults to the value of $shelves-columns. 
+//                  Defaults to the value of $shelves-columns.
 //   $gutter      - The width of the gutter in the root context (in %).
 //                  Defaults to the value of $shelves-gutter.
 //   $reset-first - Removes the gutter for the first column in a row.
 //                  Defaults to true.
 //
 @mixin column-gutter(
-  $context:     false,
-  $total:       $shelves-columns,
-  $gutter:      $shelves-gutter,
+  $context: null,
+  $total: $shelves-columns,
+  $gutter: $shelves-gutter,
   $reset-first: true
 ) {
   margin-left: column-gutter($context, $total, $gutter);
-  
+
   @if $reset-first {
     &:first-child {
       @include reset-column-gutter;

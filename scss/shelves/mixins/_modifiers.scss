@@ -5,15 +5,15 @@
 //   $context - The number of columns encapsulating the element.
 //              Defaults to the the value of $total.
 //   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns. 
+//              Defaults to the value of $shelves-columns.
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin column-prefix(
   $n,
-  $context: false,
-  $total:   $shelves-columns,
-  $gutter:  $shelves-gutter
+  $context: null,
+  $total: $shelves-columns,
+  $gutter: $shelves-gutter
 ) {
   padding-left: columns-distance($n, $context, $total, $gutter);
 }
@@ -25,15 +25,15 @@
 //   $context - The number of columns encapsulating the element.
 //              Defaults to the the value of $total.
 //   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns. 
+//              Defaults to the value of $shelves-columns.
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin column-suffix(
   $n,
-  $context: false,
-  $total:   $shelves-columns,
-  $gutter:  $shelves-gutter
+  $context: null,
+  $total: $shelves-columns,
+  $gutter: $shelves-gutter
 ) {
   padding-right: columns-distance($n, $context, $total, $gutter);
 }
@@ -45,15 +45,15 @@
 //   $context - The number of columns encapsulating the element.
 //              Defaults to the the value of $total.
 //   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns. 
+//              Defaults to the value of $shelves-columns.
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin column-push(
   $n,
-  $context: false,
-  $total:   $shelves-columns,
-  $gutter:  $shelves-gutter
+  $context: null,
+  $total: $shelves-columns,
+  $gutter: $shelves-gutter
 ) {
   left: columns-distance($n, $context, $total, $gutter);
 }
@@ -65,15 +65,15 @@
 //   $context - The number of columns encapsulating the element.
 //              Defaults to the the value of $total.
 //   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns. 
+//              Defaults to the value of $shelves-columns.
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin column-pull(
   $n,
-  $context: false,
-  $total:   $shelves-columns,
-  $gutter:  $shelves-gutter
+  $context: null,
+  $total: $shelves-columns,
+  $gutter: $shelves-gutter
 ) {
   right: columns-distance($n, $context, $total, $gutter);
 }

@@ -1,10 +1,10 @@
 // Default Grid Settings
-$shelves-width:          1040px !default;
-$shelves-max-width:      $shelves-width !default;
-$shelves-min-width:      767px !default;
-$shelves-columns:        12 !default;
-$shelves-margin:         32px !default;
-$shelves-gutter:         24px !default;
+$shelves-width: 1040px !default;
+$shelves-max-width: $shelves-width !default;
+$shelves-min-width: 767px !default;
+$shelves-columns: 12 !default;
+$shelves-margin: 32px !default;
+$shelves-gutter: 24px !default;
 
 // Convert the gutter to a percentage if necessary.
 @if unit($shelves-gutter) != "%" {
@@ -13,23 +13,23 @@ $shelves-gutter:         24px !default;
 
 // Default Tablet Settings
 $shelves-tablet-columns: 6 !default;
-$shelves-tablet-margin:  $shelves-margin * 0.75 !default;
-$shelves-tablet-gutter:  $shelves-gutter * 1.5 !default;
+$shelves-tablet-margin: $shelves-margin * 0.75 !default;
+$shelves-tablet-gutter: $shelves-gutter * 1.5 !default;
 
 // Default Mobile Settings
 $shelves-mobile-columns: 4 !default;
-$shelves-mobile-margin:  $shelves-margin * 0.5 !default;
-$shelves-mobile-gutter:  $shelves-gutter * 2.375 !default;
+$shelves-mobile-margin: $shelves-margin * 0.5 !default;
+$shelves-mobile-gutter: $shelves-gutter * 2.375 !default;
 
 // Default Class Names
 // (Note the lack of the preceding ".")
-$shelves-container-name:     "container" !default;
-$shelves-row-name:           "row" !default;
-$shelves-column-name:        "column" !default;
-$shelves-prefix-name:        "prefix" !default;
-$shelves-suffix-name:        "suffix" !default;
-$shelves-push-name:          "push" !default;
-$shelves-pull-name:          "pull" !default;
-$shelves-separator:          "-" !default;
+$shelves-container-name: "container" !default;
+$shelves-row-name: "row" !default;
+$shelves-column-name: "column" !default;
+$shelves-prefix-name: "prefix" !default;
+$shelves-suffix-name: "suffix" !default;
+$shelves-push-name: "push" !default;
+$shelves-pull-name: "pull" !default;
+$shelves-separator: "-" !default;
 $shelves-tablet-column-name: "tablet-column" !default;
 $shelves-mobile-column-name: "mobile-column" !default;

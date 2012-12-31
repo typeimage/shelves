@@ -35,57 +35,56 @@
 //                      Defaults to false.
 //
 @mixin shelves(
-  $prefixes:         true,
-  $suffixes:         true,
-  $pushes:           true,
-  $pulls:            true,
-  $nested:           true,
-  $nested-prefixes:  true,
-  $nested-suffixes:  true,
-  $nested-pushes:    false,
-  $nested-pulls:     false,
-  $tablet:           true,
-  $tablet-prefixes:  false,
-  $tablet-suffixes:  false,
-  $tablet-pushes:    false,
-  $tablet-pulls:     false,
-  $mobile:           true,
-  $mobile-prefixes:  false,
-  $mobile-suffixes:  false,
-  $mobile-pushes:    false,
-  $mobile-pulls:     false
+  $prefixes: true,
+  $suffixes: true,
+  $pushes: true,
+  $pulls: true,
+  $nested: true,
+  $nested-prefixes: true,
+  $nested-suffixes: true,
+  $nested-pushes: false,
+  $nested-pulls: false,
+  $tablet: true,
+  $tablet-prefixes: false,
+  $tablet-suffixes: false,
+  $tablet-pushes: false,
+  $tablet-pulls: false,
+  $mobile: true,
+  $mobile-prefixes: false,
+  $mobile-suffixes: false,
+  $mobile-pushes: false,
+  $mobile-pulls: false
 ) {
-  
   @include shelves-base($reset-if-tablet: false, $reset-if-mobile: false);
   @include shelves-columns(
     $prefixes: $prefixes,
     $suffixes: $suffixes,
-    $pushes:   $pushes,
-    $pulls:    $pulls
+    $pushes: $pushes,
+    $pulls: $pulls
   );
-  
+
   @if $nested {
     @for $i from 1 to $shelves-columns - 1  {
       // Loop background through the columns
       // to cascade the nested column properties.
       $i: $shelves-columns - $i;
-    
+
       #{column-selector($shelves-column-name, $i)} {
         #{columns-selector($shelves-column-name)} {
           @include column-gutter($i, $reset-first: false);
         }
-        
+
         @include shelves-columns(
-          $context:  $i,
+          $context: $i,
           $prefixes: $nested-prefixes,
           $suffixes: $nested-suffixes,
-          $pushes:   $nested-pushes,
-          $pulls:    $nested-pulls
+          $pushes: $nested-pushes,
+          $pulls: $nested-pulls
         );
-      } 
+      }
     }
   }
-  
+
   @if $tablet {
     @media screen and (max-width: 800px) {
       @if $shelves-tablet-margin != $shelves-margin {
@@ -93,9 +92,9 @@
           @include container($shelves-tablet-margin);
         }
       }
-      
+
       @include shelves-resets;
-      
+
       // Use the extra specificity from the row class
       // to apply tablet column properties even when nested
       .#{$shelves-row-name} {
@@ -103,20 +102,20 @@
           @include column-base($reset-if-tablet: false, $reset-if-mobile: false);
           @include column-gutter($total: $shelves-tablet-columns, $gutter: $shelves-tablet-gutter);
         }
-        
+
         @include shelves-columns(
           $column-name: $shelves-tablet-column-name,
-          $total:       $shelves-tablet-columns,
-          $gutter:      $shelves-tablet-gutter,
-          $prefixes:    $tablet-prefixes,
-          $suffixes:    $tablet-suffixes,
-          $pushes:      $tablet-pushes,
-          $pulls:       $tablet-pulls 
+          $total: $shelves-tablet-columns,
+          $gutter: $shelves-tablet-gutter,
+          $prefixes: $tablet-prefixes,
+          $suffixes: $tablet-suffixes,
+          $pushes: $tablet-pushes,
+          $pulls: $tablet-pulls
         );
       }
     }
   }
-  
+
   @if $mobile {
     @media screen and (max-width: 480px) {
       @if $shelves-mobile-margin != if($tablet, $shelves-margin, $shelves-tablet-margin) {
@@ -124,9 +123,9 @@
           @include container($shelves-mobile-margin);
         }
       }
-      
+
       @include shelves-resets($reset-row: $tablet == false);
-    
+
       // Use the extra specificity from the row class
       // to apply mobile column properties even when nested
       .#{$shelves-row-name} {
@@ -134,15 +133,15 @@
           @include column-base($reset-if-tablet: false, $reset-if-mobile: false);
           @include column-gutter($total: $shelves-mobile-columns, $gutter: $shelves-mobile-gutter);
         }
-      
+
         @include shelves-columns(
           $column-name: $shelves-mobile-column-name,
-          $total:       $shelves-mobile-columns,
-          $gutter:      $shelves-mobile-gutter,
-          $prefixes:    $mobile-prefixes,
-          $suffixes:    $mobile-suffixes,
-          $pushes:      $mobile-pushes,
-          $pulls:       $mobile-pulls
+          $total: $shelves-mobile-columns,
+          $gutter: $shelves-mobile-gutter,
+          $prefixes: $mobile-prefixes,
+          $suffixes: $mobile-suffixes,
+          $pushes: $mobile-pushes,
+          $pulls: $mobile-pulls
         );
       }
     }
@@ -161,16 +160,16 @@
   .#{$shelves-container-name} {
     @include container;
   }
-  
+
   .#{$shelves-row-name} {
     @include row($reset-if-tablet: $reset-if-tablet, $reset-if-mobile: $reset-if-mobile);
   }
-  
+
   #{columns-selector($shelves-column-name)} {
     @include column-base($reset-if-tablet: $reset-if-tablet, $reset-if-mobile: $reset-if-mobile);
     @include column-gutter($reset-first: false);
   }
-  
+
   .#{$shelves-row-name} {
     #{columns-selector($shelves-column-name)} {
       &:first-child {
@@ -192,7 +191,7 @@
 //   $context     - The context of generated classes.
 //                  Defaults to the value of $total.
 //   $total       - The total number of columns in the grid.
-//                  Defaults to the value of $shelves-columns. 
+//                  Defaults to the value of $shelves-columns.
 //   $gutter      - The width of the gutter in the root context (in %).
 //                  Defaults to the value of $shelves-gutter.
 //   $prefixes    - Include prefix classes. Deafults to true.
@@ -202,22 +201,19 @@
 //
 @mixin shelves-columns(
   $column-name: $shelves-column-name,
-  $start:       1,
-  $end:         false,
-  $context:     false,
-  $total:       $shelves-columns,
-  $gutter:      $shelves-gutter,
-  $prefixes:    true,
-  $suffixes:    true,
-  $pushes:      true,
-  $pulls:       true
+  $start: 1,
+  $end: null,
+  $context: null,
+  $total: $shelves-columns,
+  $gutter: $shelves-gutter,
+  $prefixes: true,
+  $suffixes: true,
+  $pushes: true,
+  $pulls: true
 ) {
-  @if $context == false or $context > $total {
-    $context: $total;
-  }
-  @if $end == false or $end > $context {
-    $end: $context;
-  }
+  $context: $total !default;
+  $end: $context !default;
+
   @for $i from $start to $end  {
     #{column-selector($column-name, $i)} {
       @include columns-width($i, $context, $total, $gutter);

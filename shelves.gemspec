@@ -15,8 +15,8 @@ Gem::Specification.new do |gem|
   gem.name          = 'shelves'
   gem.require_paths = ['lib']
   gem.version       = Shelves::VERSION
-  
-  gem.add_runtime_dependency     'sass',           '~> 3.1'
+
+  gem.add_runtime_dependency     'sass',           '~> 3.2'
   gem.add_runtime_dependency     'compass',        '~> 0.12'
   gem.add_development_dependency 'sprockets',      '~> 2.3'
   gem.add_development_dependency 'sprockets-sass', '~> 0.7'
