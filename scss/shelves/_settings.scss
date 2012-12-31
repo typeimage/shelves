@@ -5,6 +5,8 @@ $shelves-min-width: 767px !default;
 $shelves-columns: 12 !default;
 $shelves-margin: 32px !default;
 $shelves-gutter: 24px !default;
+$shelves-tablet-breakpoint: 800px !default;
+$shelves-mobile-breakpoint: 480px !default;
 
 // Convert the gutter to a percentage if necessary.
 @if unit($shelves-gutter) != "%" {

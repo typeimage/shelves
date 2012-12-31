@@ -43,12 +43,12 @@
     }
   }
   @if $reset-if-tablet {
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: $shelves-tablet-breakpoint) {
       @include reset-row;
     }
   }
   @if $reset-if-mobile {
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: $shelves-mobile-breakpoint) {
       @include reset-row;
     }
   }
@@ -103,12 +103,12 @@
     *margin-right: -1px;
   }
   @if $reset-if-tablet {
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: $shelves-tablet-breakpoint) {
       @include reset-column;
     }
   }
   @if $reset-if-mobile {
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: $shelves-mobile-breakpoint) {
       @include reset-column;
     }
   }
