@@ -35,26 +35,25 @@
 //                      Defaults to false.
 //
 @mixin shelves(
-  $prefixes: $shelves-prefixes,
-  $suffixes: $shelves-suffixes,
-  $pushes: $shelves-pushes,
-  $pulls: $shelves-pulls,
-  $nested: $shelves-nested,
-  $nested-prefixes: $shelves-nested-prefixes,
-  $nested-suffixes: $shelves-nested-suffixes,
-  $nested-pushes: $shelves-nested-pushes,
-  $nested-pulls: $shelves-nested-pulls,
-  $tablet: $shelves-tablet,
-  $tablet-prefixes: $shelves-tablet-prefixes,
-  $tablet-suffixes: $shelves-tablet-suffixes,
-  $tablet-pushes: $shelves-tablet-pushes,
-  $tablet-pulls: $shelves-tablet-pulls,
-  $mobile: $shelves-mobile,
-  $mobile-prefixes: $shelves-mobile-prefixes,
-  $mobile-suffixes: $shelves-mobile-suffixes,
-  $mobile-pushes: $shelves-mobile-pushes,
-  $mobile-pulls: $shelves-mobile-pulls
-) {
+    $prefixes: $shelves-prefixes,
+    $suffixes: $shelves-suffixes,
+    $pushes: $shelves-pushes,
+    $pulls: $shelves-pulls,
+    $nested: $shelves-nested,
+    $nested-prefixes: $shelves-nested-prefixes,
+    $nested-suffixes: $shelves-nested-suffixes,
+    $nested-pushes: $shelves-nested-pushes,
+    $nested-pulls: $shelves-nested-pulls,
+    $tablet: $shelves-tablet,
+    $tablet-prefixes: $shelves-tablet-prefixes,
+    $tablet-suffixes: $shelves-tablet-suffixes,
+    $tablet-pushes: $shelves-tablet-pushes,
+    $tablet-pulls: $shelves-tablet-pulls,
+    $mobile: $shelves-mobile,
+    $mobile-prefixes: $shelves-mobile-prefixes,
+    $mobile-suffixes: $shelves-mobile-suffixes,
+    $mobile-pushes: $shelves-mobile-pushes,
+    $mobile-pulls: $shelves-mobile-pulls) {
   @include shelves-base($reset-if-tablet: false, $reset-if-mobile: false);
   @include shelves-columns(
     $prefixes: $prefixes,
@@ -88,7 +87,7 @@
   @if $tablet {
     @media screen and (max-width: $shelves-tablet-breakpoint) {
       @if $shelves-tablet-margin != $shelves-margin {
-        .#{$shelves-container-name} {
+        .#{$shelves-row-name} {
           @include container($shelves-tablet-margin);
         }
       }
@@ -119,7 +118,7 @@
   @if $mobile {
     @media screen and (max-width: $shelves-mobile-breakpoint) {
       @if $shelves-mobile-margin != if($tablet, $shelves-margin, $shelves-tablet-margin) {
-        .#{$shelves-container-name} {
+        .#{$shelves-row-name} {
           @include container($shelves-mobile-margin);
         }
       }
@@ -157,12 +156,14 @@
 //                      mobile sizes. Defaults to false.
 //
 @mixin shelves-base($reset-if-tablet: true, $reset-if-mobile: false) {
-  .#{$shelves-container-name} {
-    @include container;
-  }
-
   .#{$shelves-row-name} {
+    @include container;
     @include row($reset-if-tablet: $reset-if-tablet, $reset-if-mobile: $reset-if-mobile);
+
+    .#{$shelves-row-name} {
+      @include reset-container;
+      @include reset-row;
+    }
   }
 
   #{columns-selector($shelves-column-name)} {
@@ -200,17 +201,16 @@
 //   $pulls       - Include pull classes. Deafults to true.
 //
 @mixin shelves-columns(
-  $column-name: $shelves-column-name,
-  $start: 1,
-  $end: null,
-  $context: null,
-  $total: $shelves-columns,
-  $gutter: $shelves-gutter,
-  $prefixes: true,
-  $suffixes: true,
-  $pushes: true,
-  $pulls: true
-) {
+    $column-name: $shelves-column-name,
+    $start: 1,
+    $end: null,
+    $context: null,
+    $total: $shelves-columns,
+    $gutter: $shelves-gutter,
+    $prefixes: true,
+    $suffixes: true,
+    $pushes: true,
+    $pulls: true) {
   $context: $total !default;
   $end: $context !default;
 

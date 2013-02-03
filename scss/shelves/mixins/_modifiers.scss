@@ -10,11 +10,10 @@
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin column-prefix(
-  $n,
-  $context: null,
-  $total: $shelves-columns,
-  $gutter: $shelves-gutter
-) {
+    $n,
+    $context: null,
+    $total: $shelves-columns,
+    $gutter: $shelves-gutter) {
   padding-left: columns-distance($n, $context, $total, $gutter);
 }
 
@@ -30,11 +29,10 @@
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin column-suffix(
-  $n,
-  $context: null,
-  $total: $shelves-columns,
-  $gutter: $shelves-gutter
-) {
+    $n,
+    $context: null,
+    $total: $shelves-columns,
+    $gutter: $shelves-gutter) {
   padding-right: columns-distance($n, $context, $total, $gutter);
 }
 
@@ -50,11 +48,10 @@
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin column-push(
-  $n,
-  $context: null,
-  $total: $shelves-columns,
-  $gutter: $shelves-gutter
-) {
+    $n,
+    $context: null,
+    $total: $shelves-columns,
+    $gutter: $shelves-gutter) {
   left: columns-distance($n, $context, $total, $gutter);
 }
 
@@ -70,10 +67,9 @@
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin column-pull(
-  $n,
-  $context: null,
-  $total: $shelves-columns,
-  $gutter: $shelves-gutter
-) {
+    $n,
+    $context: null,
+    $total: $shelves-columns,
+    $gutter: $shelves-gutter) {
   right: columns-distance($n, $context, $total, $gutter);
 }

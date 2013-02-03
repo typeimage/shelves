@@ -22,25 +22,19 @@
 //                      mobile sizes. Defaults to false.
 //
 @mixin row(
-  $max-width: $shelves-max-width,
-  $min-width: $shelves-min-width,
-  $reset-if-tablet: true,
-  $reset-if-mobile: false
-) {
+    $max-width: $shelves-max-width,
+    $min-width: $shelves-min-width,
+    $reset-if-tablet: true,
+    $reset-if-mobile: false) {
   @include shelves-clearfix;
-  width: 100%;
 
   @if type-of($max-width) == 'number' {
-    max-width: $max-width;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
+    max-width: $max-width;
   }
   @if type-of($min-width) == 'number' {
     min-width: $min-width;
-
-    .#{$shelves-row-name} {
-      min-width: 0;
-    }
   }
   @if $reset-if-tablet {
     @media screen and (max-width: $shelves-tablet-breakpoint) {
@@ -70,13 +64,12 @@
 //                      mobile sizes. Defaults to false.
 //
 @mixin column(
-  $n,
-  $context: null,
-  $total: $shelves-columns,
-  $gutter: $shelves-gutter,
-  $reset-if-tablet: true,
-  $reset-if-mobile: false
-) {
+    $n,
+    $context: null,
+    $total: $shelves-columns,
+    $gutter: $shelves-gutter,
+    $reset-if-tablet: true,
+    $reset-if-mobile: false) {
   @include column-base($reset-if-tablet, $reset-if-mobile);
   @include column-gutter($context, $total, $gutter);
   @include columns-width($n, $context, $total, $gutter);
@@ -125,11 +118,10 @@
 //              Defaults to the value of $shelves-gutter.
 //
 @mixin columns-width(
-  $n,
-  $context: null,
-  $total: $shelves-columns,
-  $gutter: $shelves-gutter
-) {
+    $n,
+    $context: null,
+    $total: $shelves-columns,
+    $gutter: $shelves-gutter) {
   width: columns-width($n, $context, $total, $gutter);
 }
 
@@ -145,11 +137,10 @@
 //                  Defaults to true.
 //
 @mixin column-gutter(
-  $context: null,
-  $total: $shelves-columns,
-  $gutter: $shelves-gutter,
-  $reset-first: true
-) {
+    $context: null,
+    $total: $shelves-columns,
+    $gutter: $shelves-gutter,
+    $reset-first: true) {
   margin-left: column-gutter($context, $total, $gutter);
 
   @if $reset-first {
