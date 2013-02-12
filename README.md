@@ -1,7 +1,7 @@
-Shelves CSS Grid
-================
+Shelves CSS Grid Framework
+==========================
 
-**The only responsive, fluid CSS grid with infinitely nestable columns.**
+**The only responsive, fluid CSS grid framework with infinitely nestable columns.**
 
 [See the Demo](http://shelves.petebrowne.com/)
 
@@ -9,6 +9,12 @@ TODO: Add longer description & Feature list.
 
 Installation
 ------------
+
+### For Bower Users
+
+``` bash
+$ bower install --save shelves
+```
 
 ### For CSS Users
 
@@ -39,7 +45,7 @@ $ gem install shelves
 $ shelves --width 1140px --columns 16 > grid.css
 ```
 
-Run width `--help` to see all of the available options:
+Run with `--help` to see all of the available options:
 
 ``` bash
 $ shelves --help
@@ -53,4 +59,4 @@ TODO...
 Copyright
 ---------
 
-Copyright (c) 2012 [Pete Browne](http://petebrowne.com). See LICENSE for details.
+Copyright (c) 2013 [Artifex](http://whoisartifex.com/). See LICENSE for details.
