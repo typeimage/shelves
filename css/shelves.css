@@ -6,12 +6,10 @@ The only responsive, fluid CSS grid with infinitely nestable columns.
 
 Copyright (c) 2012, Pete Browne
 */
-.container { padding-left: 20px; padding-right: 20px; }
-
-.row { *zoom: 1; width: 100%; max-width: 1060px; margin-left: auto; margin-right: auto; min-width: 767px; }
+.row { padding-left: 20px; padding-right: 20px; *zoom: 1; margin-right: auto; margin-left: auto; max-width: 1060px; min-width: 767px; }
 .row:before, .row:after { content: " "; display: table; }
 .row:after { clear: both; }
-.row .row { min-width: 0; }
+.row .row { padding-left: 0; padding-right: 0; margin-right: 0; margin-left: 0; min-width: 0; max-width: none; }
 
 [class*="column-"] { display: block; float: left; min-height: 1px; position: relative; *margin-right: -1px; margin-left: 1.88679%; }
 
@@ -202,8 +200,8 @@ Copyright (c) 2012, Pete Browne
 .column-2 [class*="column-"] { margin-left: 12.5%; }
 .column-2 .column-1 { width: 43.75%; }
 
-@media screen and (max-width: 800px) { .container { padding-left: 15px; padding-right: 15px; }
-  .row { margin-left: 0; margin-right: 0; width: 100%; min-width: 0; }
+@media screen and (max-width: 800px) { .row { padding-left: 15px; padding-right: 15px; }
+  .row { margin-right: 0; margin-left: 0; min-width: 0; max-width: none; }
   .row [class*="column-"] { margin-left: 0; padding-left: 0; padding-right: 0; left: auto; right: auto; float: none; width: auto; *margin-right: 0px; }
   .row [class*="tablet-column-"] { display: block; float: left; min-height: 1px; position: relative; *margin-right: -1px; margin-left: 2.83019%; }
   .row [class*="tablet-column-"]:first-child { margin-left: 0; }
@@ -212,7 +210,7 @@ Copyright (c) 2012, Pete Browne
   .row .tablet-column-3 { width: 48.58491%; }
   .row .tablet-column-4 { width: 65.72327%; }
   .row .tablet-column-5 { width: 82.86164%; } }
-@media screen and (max-width: 480px) { .container { padding-left: 10px; padding-right: 10px; }
+@media screen and (max-width: 480px) { .row { padding-left: 10px; padding-right: 10px; }
   .row [class*="column-"] { margin-left: 0; padding-left: 0; padding-right: 0; left: auto; right: auto; float: none; width: auto; *margin-right: 0px; }
   .row [class*="mobile-column-"] { display: block; float: left; min-height: 1px; position: relative; *margin-right: -1px; margin-left: 4.48113%; }
   .row [class*="mobile-column-"]:first-child { margin-left: 0; }

@@ -1,0 +1,13 @@
+{
+  "name": "shelves",
+  "version": "0.6.0",
+  "main": ["css/shelves.css", "scss/shelves.scss"],
+  "ignore": [
+    "*.gemspec",
+    "bin",
+    "lib",
+    "Gemfile",
+    "Gemfile.lock",
+    "Rakefile"
+  ]
+}
