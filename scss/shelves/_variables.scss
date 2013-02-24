@@ -14,6 +14,10 @@ $shelves-mobile-breakpoint: 480px !default;
   $shelves-gutter: percentage($shelves-gutter / $shelves-max-width);
 }
 
+// Default Breakout Settings
+$shelves-breakout-columns: 4 !default;
+$shelves-breakout-gutter: $shelves-gutter * 2 !default;
+
 // Default Tablet Settings
 $shelves-tablet-columns: 6 !default;
 $shelves-tablet-margin: $shelves-margin * 0.75 !default;
@@ -41,6 +45,7 @@ $shelves-prefixes: true !default;
 $shelves-suffixes: true !default;
 $shelves-pushes: true !default;
 $shelves-pulls: true !default;
+$shelves-breakout: true !default;
 $shelves-nested: true !default;
 $shelves-nested-prefixes: false !default;
 $shelves-nested-suffixes: false !default;
