@@ -8,11 +8,6 @@ $shelves-gutter: 20px !default;
 $shelves-tablet-breakpoint: 800px !default;
 $shelves-mobile-breakpoint: 480px !default;
 
-// Convert the gutter to a percentage if necessary.
-@if unit($shelves-gutter) != "%" {
-  $shelves-gutter: percentage($shelves-gutter / $shelves-max-width);
-}
-
 // Default Tablet Settings
 $shelves-tablet-columns: 6 !default;
 $shelves-tablet-margin: $shelves-margin * 0.75 !default;
@@ -26,14 +21,14 @@ $shelves-mobile-gutter: $shelves-gutter * 2.375 !default;
 // Default Class Names
 // (Note the lack of the preceding ".")
 $shelves-row-name: "row" !default;
-$shelves-column-name: "column" !default;
+$shelves-column-name: "c" !default;
 $shelves-prefix-name: "prefix" !default;
 $shelves-suffix-name: "suffix" !default;
 $shelves-push-name: "push" !default;
 $shelves-pull-name: "pull" !default;
 $shelves-separator: "-" !default;
-$shelves-tablet-column-name: "tablet-column" !default;
-$shelves-mobile-column-name: "mobile-column" !default;
+$shelves-tablet-column-name: "ct" !default;
+$shelves-mobile-column-name: "cm" !default;
 
 // Default options for the grid generator
 $shelves-prefixes: true !default;
@@ -59,3 +54,4 @@ $shelves-mobile-pulls: false !default;
 // Support IE7
 $legacy-support-for-ie7: true !default;
 $shelves-ie7-support: $legacy-support-for-ie7 !default;
+$shelves-border-box-polyfill-url: false !default;

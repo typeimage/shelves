@@ -1,62 +1,3 @@
-// Returns the width of a single column (without gutters) as
-// a percentage. If given a $context, this returns the column
-// width relative to that number of columns.
-//
-//   $context - The number of columns encapsulating the column.
-//              Defaults to the the value of $total.
-//   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns.
-//   $gutter  - The width of the gutter in the root context (in %).
-//              Defaults to the value of $shelves-gutter.
-//
-@function column-width(
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  $context: $total !default;
-
-  @if $context <= 1 {
-    @return 100%;
-  }
-  @else if $context >= $total {
-    $column-gutter: column-gutter($total: $total, $gutter: $gutter);
-    @return (100% - ($total - 1) * $column-gutter) / $total;
-  }
-  @else {
-    $column-width: column-width($total: $total, $gutter: $gutter);
-    $context-width: columns-width($n: $context, $total: $total, $gutter: $gutter);
-    @return $column-width * (100% / $context-width);
-  }
-}
-
-// Returns the width of the gutter as a percentage. If given a $context,
-// this returns the gutter width relative to that number of columns.
-//
-//   $context - The number of columns encapsulating the gutter.
-//              Defaults to the the value of $total.
-//   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns.
-//   $gutter  - The width of the gutter in the root context (in %).
-//              Defaults to the value of $shelves-gutter.
-//
-@function column-gutter(
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  $context: $total !default;
-
-  @if $context <= 1 {
-    @return 0%;
-  }
-  @else if $context >= $total {
-    @return $gutter;
-  }
-  @else {
-    $context-width: columns-width($n: $context, $total: $total);
-    @return $gutter * (100% / $context-width);
-  }
-}
-
 // Returns the total width (including gutters) of the given
 // number of columns. If given a $context, this returns the
 // width relative to that number of columns.
@@ -69,45 +10,9 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@function columns-width(
-    $n,
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  $context: $total !default;
-
-  @if $n <= 1 {
-    @return column-width($context, $total, $gutter);
-  }
-  @else if $n >= $context {
-    @return 100%;
-  }
-  @else {
-    $column-width: column-width($context, $total, $gutter);
-    $column-gutter: column-gutter($context, $total, $gutter);
-
-    @return $column-width * $n + $column-gutter * ($n - 1);
-  }
-}
-
-// Returns the total distance to shift a column the given
-// number of columns. If given a $context, this returns the
-// distance relative to that number of columns.
-//
-//   $n       - The number of columns to measure.
-//   $context - The number of columns encapsulating the columns.
-//              Defaults to the the value of $total.
-//   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns.
-//   $gutter  - The width of the gutter in the root context (in %).
-//              Defaults to the value of $shelves-gutter.
-//
-@function columns-distance(
-    $n,
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  @return columns-width($n, $context, $total, $gutter) + column-gutter($context, $total, $gutter);
+@function column-width($n, $context: $shelves-columns) {
+  $n: min(max($n, 1), $context);
+  @return percentage($n / $context);
 }
 
 // Returns a column selector with the given class name,

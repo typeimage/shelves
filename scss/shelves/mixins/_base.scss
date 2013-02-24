@@ -3,9 +3,11 @@
 //
 //   $margin - The outer margins. Defaults to $shelves-margin.
 //
-@mixin container($margin: $shelves-margin) {
-  padding-left: $margin;
-  padding-right: $margin;
+@mixin container($margin: $shelves-margin, $gutter: $shelves-gutter) {
+  $margin-minus-padding: $margin - $gutter / 2;
+
+  padding-left: $margin-minus-padding;
+  padding-right: $margin-minus-padding;
 }
 
 // Includes the styles for the row element. This includes
@@ -28,21 +30,21 @@
     $reset-if-mobile: false) {
   @include shelves-clearfix;
 
-  @if type-of($max-width) == 'number' {
+  @if type-of($max-width) == "number" {
     margin-right: auto;
     margin-left: auto;
     max-width: $max-width;
   }
-  @if type-of($min-width) == 'number' {
+  @if type-of($min-width) == "number" {
     min-width: $min-width;
   }
   @if $reset-if-tablet {
-    @media screen and (max-width: $shelves-tablet-breakpoint) {
+    @include tablet {
       @include reset-row;
     }
   }
   @if $reset-if-mobile {
-    @media screen and (max-width: $shelves-mobile-breakpoint) {
+    @include mobile {
       @include reset-row;
     }
   }
@@ -65,14 +67,13 @@
 //
 @mixin column(
     $n,
-    $context: null,
-    $total: $shelves-columns,
+    $context: $shelves-columns,
     $gutter: $shelves-gutter,
     $reset-if-tablet: true,
     $reset-if-mobile: false) {
   @include column-base($reset-if-tablet, $reset-if-mobile);
-  @include column-gutter($context, $total, $gutter);
-  @include columns-width($n, $context, $total, $gutter);
+  @include column-gutter($gutter);
+  @include column-width($n, $context);
 }
 
 // Sets up an element to be a column in the grid system.
@@ -85,23 +86,18 @@
 //                      mobile sizes. Defaults to false.
 //
 @mixin column-base($reset-if-tablet: true, $reset-if-mobile: false) {
+  @include shelves-border-box;
+  position: relative;
   display: block;
   float: left;
-  min-height: 1px;
-  position: relative;
 
-  @if $shelves-ie7-support {
-    // IE6-7 incorrectly rounds up percentage widths (breaking layouts)
-    // http://ejohn.org/blog/sub-pixel-problems-in-css/
-    *margin-right: -1px;
-  }
   @if $reset-if-tablet {
-    @media screen and (max-width: $shelves-tablet-breakpoint) {
+    @include tablet {
       @include reset-column;
     }
   }
   @if $reset-if-mobile {
-    @media screen and (max-width: $shelves-mobile-breakpoint) {
+    @include mobile {
       @include reset-column;
     }
   }
@@ -117,12 +113,8 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin columns-width(
-    $n,
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  width: columns-width($n, $context, $total, $gutter);
+@mixin column-width($n, $context: $shelves-columns) {
+  width: column-width($n, $context);
 }
 
 // Includes the gutter for a column on the grid.
@@ -136,34 +128,9 @@
 //   $reset-first - Removes the gutter for the first column in a row.
 //                  Defaults to true.
 //
-@mixin column-gutter(
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter,
-    $reset-first: true) {
-  margin-left: column-gutter($context, $total, $gutter);
+@mixin column-gutter($gutter: $shelves-gutter) {
+  $gutter-half: $gutter / 2;
 
-  @if $reset-first {
-    &:first-child {
-      @include reset-column-gutter;
-    }
-  }
-}
-
-// Clearfix mixin based on micro-clearfix:
-// http://nicolasgallagher.com/micro-clearfix-hack/
-@mixin shelves-clearfix {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
-
-  @if $shelves-ie7-support {
-    *zoom: 1;
-  }
+  padding-left: $gutter-half;
+  padding-right: $gutter-half;
 }

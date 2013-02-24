@@ -9,12 +9,8 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin column-prefix(
-    $n,
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  padding-left: columns-distance($n, $context, $total, $gutter);
+@mixin column-prefix($n, $context: $shelves-columns) {
+  margin-left: column-width($n, $context);
 }
 
 // Adds a padding suffix (which shifts the column to the left)
@@ -28,12 +24,8 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin column-suffix(
-    $n,
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  padding-right: columns-distance($n, $context, $total, $gutter);
+@mixin column-suffix($n, $context: $shelves-columns) {
+  margin-right: column-width($n, $context);
 }
 
 // Reorder the content by shifting the column to the right. This
@@ -47,12 +39,8 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin column-push(
-    $n,
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  left: columns-distance($n, $context, $total, $gutter);
+@mixin column-push($n, $context: $shelves-columns) {
+  left: column-width($n, $context);
 }
 
 // Reorder the content by shifting the column to the left. This
@@ -66,10 +54,6 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin column-pull(
-    $n,
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  right: columns-distance($n, $context, $total, $gutter);
+@mixin column-pull($n, $context: $shelves-columns) {
+  right: column-width($n, $context);
 }
