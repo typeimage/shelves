@@ -168,7 +168,7 @@
       // Use the extra specificity from the row class
       // to apply tablet column properties even when nested
       .#{$shelves-row-name} {
-        #{columns-selector($shelves-tablet-column-name)} {
+        #{columns-selector($shelves-tablet-column-name)}, {
           @include column-base($reset-if-tablet: false, $reset-if-mobile: false);
           @include column-gutter($total: $shelves-tablet-columns, $gutter: $shelves-tablet-gutter);
 
