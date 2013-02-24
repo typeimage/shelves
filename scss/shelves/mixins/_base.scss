@@ -37,12 +37,12 @@
     min-width: $min-width;
   }
   @if $reset-if-tablet {
-    @media screen and (max-width: $shelves-tablet-breakpoint) {
+    @include tablet {
       @include reset-row;
     }
   }
   @if $reset-if-mobile {
-    @media screen and (max-width: $shelves-mobile-breakpoint) {
+    @include mobile {
       @include reset-row;
     }
   }
@@ -96,12 +96,12 @@
     *margin-right: -1px;
   }
   @if $reset-if-tablet {
-    @media screen and (max-width: $shelves-tablet-breakpoint) {
+    @include tablet {
       @include reset-column;
     }
   }
   @if $reset-if-mobile {
-    @media screen and (max-width: $shelves-mobile-breakpoint) {
+    @include mobile {
       @include reset-column;
     }
   }
@@ -147,23 +147,5 @@
     &:first-child {
       @include reset-column-gutter;
     }
-  }
-}
-
-// Clearfix mixin based on micro-clearfix:
-// http://nicolasgallagher.com/micro-clearfix-hack/
-@mixin shelves-clearfix {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
-
-  @if $shelves-ie7-support {
-    *zoom: 1;
   }
 }

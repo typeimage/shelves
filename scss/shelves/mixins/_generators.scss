@@ -85,7 +85,7 @@
   }
 
   @if $tablet {
-    @media screen and (max-width: $shelves-tablet-breakpoint) {
+    @include tablet {
       @if $shelves-tablet-margin != $shelves-margin {
         .#{$shelves-row-name} {
           @include container($shelves-tablet-margin);
@@ -116,7 +116,7 @@
   }
 
   @if $mobile {
-    @media screen and (max-width: $shelves-mobile-breakpoint) {
+    @include mobile {
       @if $shelves-mobile-margin != if($tablet, $shelves-margin, $shelves-tablet-margin) {
         .#{$shelves-row-name} {
           @include container($shelves-mobile-margin);

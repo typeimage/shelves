@@ -1,0 +1,52 @@
+// Media query shortcut for min-width breakpoints.
+//
+//   $min-width - The min width to use as a breakpoint
+//
+@mixin min-screen($min-width) {
+  @media screen and (min-width: $min-width) {
+    @content;
+  }
+}
+
+// Media query shortcut for max-width breakpoints.
+//
+//   $max-width - The max width to use as a breakpoint
+//
+@mixin max-screen($max-width) {
+  @media screen and (max-width: $max-width) {
+    @content;
+  }
+}
+
+// Media query shortcut for min-width & max-width breakpoints.
+//
+//   $min-width - The min width to use as a breakpoint
+//   $max-width - The max width to use as a breakpoint
+//
+@mixin min-screen($min-width, $max-width) {
+  @media screen and (min-width: $min-width) and (max-width: $max-width) {
+    @content;
+  }
+}
+
+// Media query shortcut for tablet widths
+//
+//   $max-width - The max width to use as a breakpoint.
+//                Defaults to the value of $shelves-tablet-breakpoint.
+
+@mixin tablet($max-width: $shelves-tablet-breakpoint) {
+  @include max-screen($max-width) {
+    @content;
+  }
+}
+
+// Media query shortcut for mobile widths
+//
+//   $max-width - The max width to use as a breakpoint.
+//                Defaults to the value of $shelves-mobile-breakpoint.
+
+@mixin mobile($max-width: $shelves-mobile-breakpoint) {
+  @include max-screen($max-width) {
+    @content;
+  }
+}
