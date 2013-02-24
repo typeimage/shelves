@@ -1,7 +1,7 @@
 // Reset container by removing the outer padding.
 @mixin reset-container {
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
 }
 
 // Reset a row to expand to the full width of
@@ -15,7 +15,11 @@
 
 // Resets a column to expand to the full width of
 // its container and remove float & margins.
-@mixin reset-column {
+//
+//   $vertical-margin - The amount of vertical margin to add between reset
+//                      columns. Defaults to the value
+//                      of $shelves-reset-vertical-margin.
+@mixin reset-column($vertical-margin: $shelves-reset-vertical-margin) {
   @include reset-column-gutter;
   @include reset-column-prefix;
   @include reset-column-suffix;
@@ -23,6 +27,14 @@
   @include reset-column-pull;
   float: none;
   width: auto;
+
+  @if $vertical-margin and $vertical-margin != 0 {
+    margin-top: $vertical-margin;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 
   @if $shelves-ie7-support {
     *margin-right: 0px;

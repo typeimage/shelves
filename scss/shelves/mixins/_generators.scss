@@ -102,6 +102,10 @@
         #{columns-selector($shelves-tablet-column-name)} {
           @include column-base($reset-if-tablet: false, $reset-if-mobile: false);
           @include column-gutter($total: $shelves-tablet-columns, $gutter: $shelves-tablet-gutter);
+
+          @if $shelves-reset-vertical-margin {
+            margin-top: 0;
+          }
         }
 
         @include shelves-columns(
@@ -135,6 +139,10 @@
         #{columns-selector($shelves-mobile-column-name)} {
           @include column-base($reset-if-tablet: false, $reset-if-mobile: false);
           @include column-gutter($total: $shelves-mobile-columns, $gutter: $shelves-mobile-gutter);
+
+          @if $shelves-reset-vertical-margin {
+            margin-top: 0;
+          }
         }
 
         @include shelves-columns(
