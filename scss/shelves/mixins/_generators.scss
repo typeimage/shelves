@@ -93,7 +93,9 @@
       }
 
       @include shelves-resets;
+    }
 
+    @include screen(if($mobile, $shelves-mobile-breakpoint, null), $shelves-tablet-breakpoint) {
       // Use the extra specificity from the row class
       // to apply tablet column properties even when nested
       .#{$shelves-row-name} {
@@ -123,7 +125,9 @@
         }
       }
 
-      @include shelves-resets($reset-row: $tablet == false);
+      @if not $tablet {
+        @include shelves-resets($reset-row: $tablet == false);
+      }
 
       // Use the extra specificity from the row class
       // to apply mobile column properties even when nested

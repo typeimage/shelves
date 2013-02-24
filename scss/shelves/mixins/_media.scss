@@ -23,9 +23,21 @@
 //   $min-width - The min width to use as a breakpoint
 //   $max-width - The max width to use as a breakpoint
 //
-@mixin min-screen($min-width, $max-width) {
-  @media screen and (min-width: $min-width) and (max-width: $max-width) {
-    @content;
+@mixin screen($min-width: null, $max-width: null) {
+  @if $min-width and $max-width {
+    @media screen and (min-width: $min-width) and (max-width: $max-width) {
+      @content;
+    }
+  }
+  @else if $min-width {
+    @include min-screen($min-width) {
+      @content;
+    }
+  }
+  @else if $max-width {
+    @include max-screen($max-width) {
+      @content;
+    }
   }
 }
 
