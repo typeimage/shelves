@@ -32,3 +32,15 @@
     }
   }
 }
+
+// Makes the media (generally used on <img>s) fully fluid.
+@mixin fluid-media {
+  max-width: 100%;
+  height: auto;
+
+  @if $shelves-ie8-support {
+    @media \0screen {
+      width: auto;
+    }
+  }
+}

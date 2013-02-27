@@ -45,6 +45,8 @@ $shelves-prefixes: true !default;
 $shelves-suffixes: true !default;
 $shelves-pushes: true !default;
 $shelves-pulls: true !default;
+$shelves-fluid-img: true !default;
+$shelves-fix-snap-mode: true !default;
 $shelves-breakout: true !default;
 $shelves-nested: true !default;
 $shelves-nested-prefixes: false !default;
@@ -64,4 +66,6 @@ $shelves-mobile-pulls: false !default;
 
 // Support IE7
 $legacy-support-for-ie7: true !default;
+$legacy-support-for-ie8: true !default;
 $shelves-ie7-support: $legacy-support-for-ie7 !default;
+$shelves-ie8-support: $legacy-support-for-ie8 !default;
