@@ -57,6 +57,7 @@
     $mobile-suffixes: $shelves-mobile-suffixes,
     $mobile-pushes: $shelves-mobile-pushes,
     $mobile-pulls: $shelves-mobile-pulls) {
+  @include fix-snap-mode;
   @include shelves-base($reset-if-tablet: false, $reset-if-mobile: false);
   @include shelves-columns(
     $prefixes: $prefixes,

@@ -15,3 +15,20 @@
     *zoom: 1;
   }
 }
+
+// This fixes IE 10's "Snap Mode". See for more information:
+// http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+//
+//   width     - Customize the width used. In the future, "device-width" may
+//               work better, but explicitly setting to 320px is recommended.
+//               Defaults to 320px.
+//   max-width - The media query max-width used to detect "Snap Mode".
+//               Defaults to 400px.
+//
+@mixin fix-snap-mode($width: 320px, $max-width: 400px) {
+  @include max-screen($max-width) {
+    @-ms-viewport {
+      width: $width;
+    }
+  }
+}
