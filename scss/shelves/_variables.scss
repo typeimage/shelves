@@ -39,6 +39,8 @@ $shelves-pull-name: "pull" !default;
 $shelves-separator: "-" !default;
 $shelves-tablet-column-name: "tablet-column" !default;
 $shelves-mobile-column-name: "mobile-column" !default;
+$shelves-visible-name: "visible" !default;
+$shelves-hidden-name: "hidden" !default;
 
 // Default options for the grid generator
 $shelves-prefixes: true !default;
@@ -48,6 +50,7 @@ $shelves-pulls: true !default;
 $shelves-fluid-img: true !default;
 $shelves-fix-snap-mode: true !default;
 $shelves-breakout: true !default;
+$shelves-visibility: true !default;
 $shelves-nested: true !default;
 $shelves-nested-prefixes: false !default;
 $shelves-nested-suffixes: false !default;

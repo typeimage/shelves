@@ -44,3 +44,13 @@
     }
   }
 }
+
+// Forces the element to not be visible. This is used in the visibility helpers.
+@mixin force-hidden {
+  display: none !important;
+}
+
+// Forces the element to be visible. This is used in the visibility helpers.
+@mixin force-visible {
+  display: inherit !important;
+}

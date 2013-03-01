@@ -10,6 +10,7 @@
 //                      Defaults to true.
 //   $breakout        - Include breakout columns in the default grid.
 //                      Defaults to true.
+//   $visibility      - Include responsive visibility helpers. Defaults to true.
 //   $nested          - Include nested columns in the default grid.
 //                      Defaults to true.
 //   $nested-prefixes - Include prefix classes for neseted columns.
@@ -47,6 +48,7 @@
     $fluid-img: $shelves-fluid-img,
     $fix-snap-mode: $shelves-fix-snap-mode,
     $breakout: $shelves-breakout,
+    $visibility: $shelves-visibility,
     $nested: $shelves-nested,
     $nested-prefixes: $shelves-nested-prefixes,
     $nested-suffixes: $shelves-nested-suffixes,
@@ -123,6 +125,28 @@
     }
   }
 
+  @if $visibility and ($tablet or $mobile) {
+    %force-hidden-on-desktop {
+      @include force-hidden;
+    }
+
+    .#{$shelves-hidden-name}#{$shelves-separator}desktop {
+      @extend %force-hidden-on-desktop;
+    }
+
+    @if $tablet {
+      .#{$shelves-visible-name}#{$shelves-separator}tablet {
+        @extend %force-hidden-on-desktop;
+      }
+    }
+
+    @if $mobile {
+      .#{$shelves-visible-name}#{$shelves-separator}mobile {
+        @extend %force-hidden-on-desktop;
+      }
+    }
+  }
+
   @if $tablet {
     @include tablet {
       @if $shelves-tablet-margin != $shelves-margin {
@@ -132,6 +156,12 @@
       }
 
       @include shelves-resets;
+
+      @if $visibility {
+        .#{$shelves-visible-name}#{$shelves-separator}desktop {
+          @include force-hidden;
+        }
+      }
     }
 
     @include screen(if($mobile, $shelves-mobile-breakpoint, null), $shelves-tablet-breakpoint) {
@@ -156,6 +186,15 @@
           $pushes: $tablet-pushes,
           $pulls: $tablet-pulls
         );
+      }
+
+      @if $visibility {
+        .#{$shelves-visible-name}#{$shelves-separator}tablet {
+          @include force-visible;
+        }
+        .#{$shelves-hidden-name}#{$shelves-separator}tablet {
+          @include force-hidden;
+        }
       }
     }
   }
@@ -193,6 +232,26 @@
           $pushes: $mobile-pushes,
           $pulls: $mobile-pulls
         );
+      }
+
+      @if $visibility {
+        %force-hidden-on-mobile {
+          @include force-hidden;
+        }
+
+        .#{$shelves-visible-name}#{$shelves-separator}mobile {
+          @include force-visible;
+        }
+
+        .#{$shelves-hidden-name}#{$shelves-separator}mobile {
+          @extend %force-hidden-on-mobile;
+        }
+
+        @if not $tablet {
+          .#{$shelves-visible-name}#{$shelves-separator}desktop {
+            @extend %force-hidden-on-mobile;
+          }
+        }
       }
     }
   }
