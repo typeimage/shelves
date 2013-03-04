@@ -47,6 +47,11 @@
   margin-left: 0;
 }
 
+// Removes the vertical margin added when columns are reset.
+@mixin reset-column-vertical-margin {
+  margin-top: 0;
+}
+
 // Removes the padding prefix added to a column.
 @mixin reset-column-prefix {
   padding-left: 0;

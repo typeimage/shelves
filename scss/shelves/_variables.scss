@@ -28,19 +28,34 @@ $shelves-mobile-columns: 4 !default;
 $shelves-mobile-margin: $shelves-margin * 0.5 !default;
 $shelves-mobile-gutter: $shelves-gutter * 2.375 !default;
 
+// Default Naming Conventions
+$shelves-separator: "-" !default;
+$shelves-desktop-name: "desktop" !default;
+$shelves-tablet-name: "tablet" !default;
+$shelves-mobile-name: "mobile" !default;
+$shelves-visible-name: "visible" !default;
+$shelves-hidden-name: "hidden" !default;
+
 // Default Class Names
 // (Note the lack of the preceding ".")
 $shelves-row-name: "row" !default;
 $shelves-column-name: "column" !default;
+$shelves-tablet-column-name: "#{$shelves-tablet-name}#{$shelves-separator}#{$shelves-column-name}" !default;
+$shelves-mobile-column-name: "#{$shelves-mobile-name}#{$shelves-separator}#{$shelves-column-name}" !default;
 $shelves-prefix-name: "prefix" !default;
 $shelves-suffix-name: "suffix" !default;
 $shelves-push-name: "push" !default;
 $shelves-pull-name: "pull" !default;
-$shelves-separator: "-" !default;
-$shelves-tablet-column-name: "tablet-column" !default;
-$shelves-mobile-column-name: "mobile-column" !default;
-$shelves-visible-name: "visible" !default;
-$shelves-hidden-name: "hidden" !default;
+$shelves-first-name: "first" !default;
+$shelves-first-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-column-name}" !default;
+$shelves-first-tablet-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-tablet-column-name}" !default;
+$shelves-first-mobile-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-mobile-column-name}" !default;
+$shelves-visible-desktop-name: "#{$shelves-visible-name}#{$shelves-separator}#{$shelves-desktop-name}" !default;
+$shelves-visible-tablet-name: "#{$shelves-visible-name}#{$shelves-separator}#{$shelves-tablet-name}" !default;
+$shelves-visible-mobile-name: "#{$shelves-visible-name}#{$shelves-separator}#{$shelves-mobile-name}" !default;
+$shelves-hidden-desktop-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-desktop-name}" !default;
+$shelves-hidden-tablet-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-tablet-name}" !default;
+$shelves-hidden-mobile-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-mobile-name}" !default;
 
 // Default options for the grid generator
 $shelves-prefixes: true !default;

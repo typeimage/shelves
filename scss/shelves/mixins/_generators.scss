@@ -130,18 +130,18 @@
       @include force-hidden;
     }
 
-    .#{$shelves-hidden-name}#{$shelves-separator}desktop {
+    .#{$shelves-hidden-desktop-name} {
       @extend %force-hidden-on-desktop;
     }
 
     @if $tablet {
-      .#{$shelves-visible-name}#{$shelves-separator}tablet {
+      .#{$shelves-visible-tablet-name} {
         @extend %force-hidden-on-desktop;
       }
     }
 
     @if $mobile {
-      .#{$shelves-visible-name}#{$shelves-separator}mobile {
+      .#{$shelves-visible-mobile-name} {
         @extend %force-hidden-on-desktop;
       }
     }
@@ -158,7 +158,7 @@
       @include shelves-resets;
 
       @if $visibility {
-        .#{$shelves-visible-name}#{$shelves-separator}desktop {
+        .#{$shelves-visible-desktop-name} {
           @include force-hidden;
         }
       }
@@ -170,11 +170,20 @@
       .#{$shelves-row-name} {
         #{columns-selector($shelves-tablet-column-name)} {
           @include column-base($reset-if-tablet: false, $reset-if-mobile: false);
-          @include column-gutter($total: $shelves-tablet-columns, $gutter: $shelves-tablet-gutter);
+          @include column-gutter(
+            $total: $shelves-tablet-columns,
+            $gutter: $shelves-tablet-gutter,
+            $reset-first: false
+          );
 
           @if $shelves-reset-vertical-margin {
-            margin-top: 0;
+            @include reset-column-vertical-margin;
           }
+        }
+
+        #{columns-selector($shelves-tablet-column-name)}:first-child,
+        .#{$shelves-first-tablet-column-name} {
+          @include reset-column-gutter;
         }
 
         @include shelves-columns(
@@ -189,10 +198,10 @@
       }
 
       @if $visibility {
-        .#{$shelves-visible-name}#{$shelves-separator}tablet {
+        .#{$shelves-visible-tablet-name} {
           @include force-visible;
         }
-        .#{$shelves-hidden-name}#{$shelves-separator}tablet {
+        .#{$shelves-hidden-tablet-name} {
           @include force-hidden;
         }
       }
@@ -216,11 +225,20 @@
       .#{$shelves-row-name} {
         #{columns-selector($shelves-mobile-column-name)} {
           @include column-base($reset-if-tablet: false, $reset-if-mobile: false);
-          @include column-gutter($total: $shelves-mobile-columns, $gutter: $shelves-mobile-gutter);
+          @include column-gutter(
+            $total: $shelves-mobile-columns,
+            $gutter: $shelves-mobile-gutter,
+            $reset-first: false
+          );
 
           @if $shelves-reset-vertical-margin {
-            margin-top: 0;
+            @include reset-column-vertical-margin;
           }
+        }
+
+        #{columns-selector($shelves-mobile-column-name)}:first-child,
+        .#{$shelves-first-mobile-column-name} {
+          @include reset-column-gutter;
         }
 
         @include shelves-columns(
@@ -239,16 +257,16 @@
           @include force-hidden;
         }
 
-        .#{$shelves-visible-name}#{$shelves-separator}mobile {
+        .#{$shelves-visible-mobile-name} {
           @include force-visible;
         }
 
-        .#{$shelves-hidden-name}#{$shelves-separator}mobile {
+        .#{$shelves-hidden-mobile-name} {
           @extend %force-hidden-on-mobile;
         }
 
         @if not $tablet {
-          .#{$shelves-visible-name}#{$shelves-separator}desktop {
+          .#{$shelves-visible-desktop-name} {
             @extend %force-hidden-on-mobile;
           }
         }
@@ -282,10 +300,9 @@
   }
 
   .#{$shelves-row-name} {
-    #{columns-selector($shelves-column-name)} {
-      &:first-child {
-        @include reset-column-gutter;
-      }
+    #{columns-selector($shelves-column-name)}:first-child,
+    .#{$shelves-first-column-name} {
+      @include reset-column-gutter;
     }
   }
 }
