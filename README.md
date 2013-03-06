@@ -18,7 +18,7 @@ $ bower install --save shelves
 
 ### For CSS Users
 
-Download the latest distribution of [the CSS file](https://raw.github.com/petebrowne/shelves/master/css/shelves.css) and go to town.
+Download the latest distribution of [the CSS file](https://github.com/whoisartifex/shelves/raw/master/css/shelves.css) and go to town.
 
 ### For Sass Users (Compass & Rails)
 
