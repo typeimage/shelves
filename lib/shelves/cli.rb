@@ -135,19 +135,19 @@ BANNER
   separator ''
   separator 'Advanced Options:'
 
-  option 'skip-breakout' do
-    long '--skip-breakout'
-    desc 'Do not include breakout columns.'
+  option 'breakout' do
+    long '--breakout'
+    desc 'Include breakout columns.'
+  end
+
+  option 'centered' do
+    long '--centered'
+    desc 'Include centered column helpers.'
   end
 
   option 'skip-visibility' do
     long '--skip-visibility'
     desc 'Do not include visibility helpers.'
-  end
-
-  option 'skip-centered' do
-    long '--skip-centered'
-    desc 'Do not include centered column helpers.'
   end
 
   option 'skip-ie7-support' do

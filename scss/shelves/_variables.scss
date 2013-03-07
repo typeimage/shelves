@@ -65,8 +65,8 @@ $shelves-centered-mobile-column-name: "#{$shelves-centered-name}#{$shelves-separ
 $shelves-fluid-img: true !default;
 $shelves-fix-snap-mode: true !default;
 $shelves-visibility: true !default;
-$shelves-centered: true !default;
-$shelves-breakout: true !default;
+$shelves-centered: false !default;
+$shelves-breakout: false !default;
 $shelves-nested: true !default;
 $shelves-tablet: true !default;
 $shelves-mobile: true !default;
