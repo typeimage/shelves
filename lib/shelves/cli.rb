@@ -135,6 +135,21 @@ BANNER
   separator ''
   separator 'Advanced Options:'
 
+  option 'skip-breakout' do
+    long '--skip-breakout'
+    desc 'Do not include breakout columns.'
+  end
+
+  option 'skip-visibility' do
+    long '--skip-visibility'
+    desc 'Do not include visibility helpers.'
+  end
+
+  option 'skip-centered' do
+    long '--skip-centered'
+    desc 'Do not include centered column helpers.'
+  end
+
   option 'skip-ie7-support' do
     long '--skip-ie7-support'
     desc 'Skip legacy support for IE7.'
@@ -243,8 +258,7 @@ module Shelves
 <% settings.each do |setting, value| %>
 $shelves-<%= setting %>: <%= value %>;
 <% end %>
-@import "shelves";
-@include shelves;
+@import "shelves-grid";
 TEMPLATE
         template.result(binding)
       end

@@ -149,3 +149,20 @@
     }
   }
 }
+
+// Centers the column by removing the float and setting the horizontal
+// margins to auto.
+//
+//   $reset-first - Force margin-left: auto; on first-child columns.
+//
+@mixin center-column($reset-first: true) {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+
+  @if $reset-first {
+    &:first-child {
+      margin-left: auto;
+    }
+  }
+}
