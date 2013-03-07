@@ -117,12 +117,6 @@
 
     @include shelves-resets;
 
-    @if $shelves-centered {
-      .#{$shelves-row-name} .#{$shelves-centered-tablet-column-name} {
-        @include center-column;
-      }
-    }
-
     @if $shelves-visibility {
       .#{$shelves-visible-desktop-name} {
         @include force-hidden;
@@ -154,6 +148,12 @@
       #{columns-selector($shelves-tablet-column-name)}:first-child,
       .#{$shelves-first-tablet-column-name} {
         @include reset-column-gutter;
+      }
+
+      @if $shelves-centered {
+        .#{$shelves-centered-tablet-column-name} {
+          @include center-column;
+        }
       }
 
       @include shelves-columns(
@@ -196,12 +196,6 @@
       @include shelves-resets($reset-row: $shelves-tablet == false);
     }
 
-    @if $shelves-centered {
-      .#{$shelves-row-name} .#{$shelves-centered-mobile-column-name} {
-        @include center-column;
-      }
-    }
-
     // Mobile Columns
     // ------------------------------------------------------------------------
 
@@ -224,6 +218,12 @@
       #{columns-selector($shelves-mobile-column-name)}:first-child,
       .#{$shelves-first-mobile-column-name} {
         @include reset-column-gutter;
+      }
+
+      @if $shelves-centered {
+        .#{$shelves-centered-mobile-column-name} {
+          @include center-column;
+        }
       }
 
       @include shelves-columns(
