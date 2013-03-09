@@ -36,6 +36,7 @@ $shelves-mobile-name: "mobile" !default;
 $shelves-visible-name: "visible" !default;
 $shelves-hidden-name: "hidden" !default;
 $shelves-centered-name: "centered" !default;
+$shelves-full-name: "full" !default;
 
 // Default Class Names
 // (Note the lack of the preceding ".")
@@ -60,6 +61,9 @@ $shelves-hidden-mobile-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$she
 $shelves-centered-column-name: "#{$shelves-centered-name}#{$shelves-separator}#{$shelves-column-name}" !default;
 $shelves-centered-tablet-column-name: "#{$shelves-centered-name}#{$shelves-separator}#{$shelves-tablet-column-name}" !default;
 $shelves-centered-mobile-column-name: "#{$shelves-centered-name}#{$shelves-separator}#{$shelves-mobile-column-name}" !default;
+$shelves-full-column-name: "#{$shelves-full-name}#{$shelves-separator}#{$shelves-column-name}" !default;
+$shelves-full-tablet-column-name: "#{$shelves-full-name}#{$shelves-separator}#{$shelves-tablet-column-name}" !default;
+$shelves-full-mobile-column-name: "#{$shelves-full-name}#{$shelves-separator}#{$shelves-mobile-column-name}" !default;
 
 // Default options for the grid generator
 $shelves-fluid-img: true !default;

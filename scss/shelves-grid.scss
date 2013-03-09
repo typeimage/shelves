@@ -79,6 +79,16 @@
   }
 }
 
+// Full Column
+// ----------------------------------------------------------------------------
+
+.#{$shelves-row-name} {
+  .#{$shelves-full-column-name} {
+    @include reset-column;
+    @include shelves-clearfix;
+  }
+}
+
 // Desktop Visibility Helpers
 // ----------------------------------------------------------------------------
 
