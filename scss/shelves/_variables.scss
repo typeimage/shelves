@@ -58,12 +58,12 @@ $shelves-visible-mobile-name: "#{$shelves-visible-name}#{$shelves-separator}#{$s
 $shelves-hidden-desktop-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-desktop-name}" !default;
 $shelves-hidden-tablet-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-tablet-name}" !default;
 $shelves-hidden-mobile-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-mobile-name}" !default;
-$shelves-centered-column-name: "#{$shelves-centered-name}#{$shelves-separator}#{$shelves-column-name}" !default;
-$shelves-centered-tablet-column-name: "#{$shelves-centered-name}#{$shelves-separator}#{$shelves-tablet-column-name}" !default;
-$shelves-centered-mobile-column-name: "#{$shelves-centered-name}#{$shelves-separator}#{$shelves-mobile-column-name}" !default;
-$shelves-full-column-name: "#{$shelves-full-name}#{$shelves-separator}#{$shelves-column-name}" !default;
-$shelves-full-tablet-column-name: "#{$shelves-full-name}#{$shelves-separator}#{$shelves-tablet-column-name}" !default;
-$shelves-full-mobile-column-name: "#{$shelves-full-name}#{$shelves-separator}#{$shelves-mobile-column-name}" !default;
+$shelves-centered-column-name: "#{$shelves-column-name}#{$shelves-separator}#{$shelves-centered-name}" !default;
+$shelves-centered-tablet-column-name: "#{$shelves-tablet-column-name}#{$shelves-separator}#{$shelves-centered-name}" !default;
+$shelves-centered-mobile-column-name: "#{$shelves-mobile-column-name}#{$shelves-separator}#{$shelves-centered-name}" !default;
+$shelves-full-column-name: "#{$shelves-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
+$shelves-full-tablet-column-name: "#{$shelves-tablet-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
+$shelves-full-mobile-column-name: "#{$shelves-mobile-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
 
 // Default options for the grid generator
 $shelves-fluid-img: true !default;

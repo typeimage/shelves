@@ -84,7 +84,7 @@
 
 .#{$shelves-row-name} {
   .#{$shelves-full-column-name} {
-    @include reset-column;
+    @include reset-column($vertical-margin: false);
     @include shelves-clearfix;
   }
 }
@@ -175,6 +175,13 @@
         $pushes: $shelves-tablet-pushes,
         $pulls: $shelves-tablet-pulls
       );
+
+      .#{$shelves-row-name} {
+        .#{$shelves-full-tablet-column-name} {
+          @include reset-column($vertical-margin: false);
+          @include shelves-clearfix;
+        }
+      }
     }
 
     // Tablet Visibility Helpers
@@ -245,6 +252,13 @@
         $pushes: $shelves-mobile-pushes,
         $pulls: $shelves-mobile-pulls
       );
+
+      .#{$shelves-row-name} {
+        .#{$shelves-full-mobile-column-name} {
+          @include reset-column($vertical-margin: false);
+          @include shelves-clearfix;
+        }
+      }
     }
 
     // Mobile Visibility Helpers
