@@ -15,7 +15,7 @@
 // Shelves Base
 // ----------------------------------------------------------------------------
 
-@include shelves-base($reset-if-tablet: false, $reset-if-mobile: false);
+@include shelves-base;
 
 @include shelves-columns(
   $prefixes: $shelves-prefixes,
@@ -147,7 +147,7 @@
     // to apply tablet column properties even when nested
     .#{$shelves-row-name} {
       #{columns-selector($shelves-tablet-column-name)} {
-        @include column-base($reset-if-tablet: false, $reset-if-mobile: false);
+        @include column-base;
         @include column-gutter(
           $total: $shelves-tablet-columns,
           $gutter: $shelves-tablet-gutter,
@@ -224,7 +224,7 @@
     // to apply mobile column properties even when nested
     .#{$shelves-row-name} {
       #{columns-selector($shelves-mobile-column-name)} {
-        @include column-base($reset-if-tablet: false, $reset-if-mobile: false);
+        @include column-base;
         @include column-gutter(
           $total: $shelves-mobile-columns,
           $gutter: $shelves-mobile-gutter,

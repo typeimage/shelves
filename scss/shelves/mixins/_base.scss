@@ -27,7 +27,6 @@
     $reset-if-tablet: true,
     $reset-if-mobile: false) {
   @include shelves-clearfix;
-
   @if type-of($max-width) == 'number' {
     margin-right: auto;
     margin-left: auto;
@@ -54,24 +53,29 @@
 //   $n               - The number of columns the element should span.
 //   $context         - The number of columns encapsulating the element.
 //                      Defaults to the the value of $total.
+//   $first           - Does not apply the column-gutter, because this it the
+//                      first column on the row. Defaults to false.
 //   $total           - The total number of columns in the grid.
 //                      Defaults to the value of $shelves-columns.
 //   $gutter          - The width of the gutter in the root context (in %).
 //                      Defaults to the value of $shelves-gutter.
 //   $reset-if-tablet - Include styles for resetting the column at
-//                      tablet sizes. Defaults to true.
+//                      tablet sizes. Defaults to false.
 //   $reset-if-mobile - Include styles for resetting the column at
 //                      mobile sizes. Defaults to false.
 //
 @mixin column(
     $n,
     $context: null,
+    $first: false,
     $total: $shelves-columns,
     $gutter: $shelves-gutter,
-    $reset-if-tablet: true,
+    $reset-if-tablet: false,
     $reset-if-mobile: false) {
   @include column-base($reset-if-tablet, $reset-if-mobile);
-  @include column-gutter($context, $total, $gutter);
+  @if not $first {
+    @include column-gutter($context, $total, $gutter);
+  }
   @include columns-width($n, $context, $total, $gutter);
 }
 
@@ -80,11 +84,11 @@
 // instead to create fully functioning columns.
 //
 //   $reset-if-tablet - Include styles for resetting the column at
-//                      tablet sizes. Defaults to true.
+//                      tablet sizes. Defaults to false.
 //   $reset-if-mobile - Include styles for resetting the column at
 //                      mobile sizes. Defaults to false.
 //
-@mixin column-base($reset-if-tablet: true, $reset-if-mobile: false) {
+@mixin column-base($reset-if-tablet: false, $reset-if-mobile: false) {
   display: block;
   float: left;
   min-height: 1px;
