@@ -3,13 +3,8 @@
 // Responsive Base
 // ----------------------------------------------------------------------------
 
-@if $shelves-fluid-img {
-  img {
-    @include fluid-media;
-  }
-}
-@if $shelves-fix-snap-mode {
-  @include fix-snap-mode;
+@if $shelves-responsive-base {
+  @include responsive-base;
 }
 
 // Shelves Base
@@ -118,7 +113,7 @@
 // ----------------------------------------------------------------------------
 
 @if $shelves-tablet {
-  @include tablet {
+  @include on-tablet-down {
     @if $shelves-tablet-margin != $shelves-margin {
       .#{$shelves-row-name} {
         @include container($shelves-tablet-margin);
@@ -138,7 +133,7 @@
     }
   }
 
-  @include screen(if($shelves-mobile, $shelves-mobile-breakpoint, null), $shelves-tablet-breakpoint) {
+  @include on-tablet(if($shelves-mobile, $shelves-mobile-breakpoint, null)) {
 
     // Tablet Columns
     // ------------------------------------------------------------------------
@@ -206,7 +201,7 @@
 // ----------------------------------------------------------------------------
 
 @if $shelves-mobile {
-  @include mobile {
+  @include on-mobile {
     @if $shelves-mobile-margin != if($shelves-tablet, $shelves-margin, $shelves-tablet-margin) {
       .#{$shelves-row-name} {
         @include container($shelves-mobile-margin);

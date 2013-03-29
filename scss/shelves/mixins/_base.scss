@@ -1,3 +1,13 @@
+// Adds some non-grid related responsive styles. It fixes IE 10's
+// "Snap Mode" and making images fluid.
+@mixin responsive-base {
+  @include fix-snap-mode;
+
+  img {
+    @include fluid-media;
+  }
+}
+
 // Includes the styles for the container element - namely
 // some outer margins for fluid sizes.
 //
@@ -16,16 +26,16 @@
 //                      to $shelves-max-width.
 //   $min-width       - The min width, for browsers that don't support
 //                      media queries. Defaults to $shelves-min-width.
-//   $reset-if-tablet - Include styles for resetting the row at
-//                      tablet sizes. Defaults to true.
-//   $reset-if-mobile - Include styles for resetting the row at
+//   $reset-on-tablet - Include styles for resetting the row at
+//                      tablet sizes. Defaults to false.
+//   $reset-on-mobile - Include styles for resetting the row at
 //                      mobile sizes. Defaults to false.
 //
 @mixin row(
     $max-width: $shelves-max-width,
     $min-width: $shelves-min-width,
-    $reset-if-tablet: true,
-    $reset-if-mobile: false) {
+    $reset-on-tablet: false,
+    $reset-on-mobile: false) {
   @include shelves-clearfix;
   @if type-of($max-width) == 'number' {
     margin-right: auto;
@@ -35,13 +45,13 @@
   @if type-of($min-width) == 'number' {
     min-width: $min-width;
   }
-  @if $reset-if-tablet {
-    @include tablet {
+  @if $reset-on-tablet {
+    @include on-tablet-down {
       @include reset-row;
     }
   }
-  @if $reset-if-mobile {
-    @include mobile {
+  @if $reset-on-mobile {
+    @include on-mobile {
       @include reset-row;
     }
   }
@@ -59,36 +69,37 @@
 //                      Defaults to the value of $shelves-columns.
 //   $gutter          - The width of the gutter in the root context (in %).
 //                      Defaults to the value of $shelves-gutter.
-//   $reset-if-tablet - Include styles for resetting the column at
+//   $reset-on-tablet - Include styles for resetting the column at
 //                      tablet sizes. Defaults to false.
-//   $reset-if-mobile - Include styles for resetting the column at
+//   $reset-on-mobile - Include styles for resetting the column at
 //                      mobile sizes. Defaults to false.
 //
 @mixin column(
     $n,
-    $context: null,
+    $context: $shelves-context,
     $first: false,
     $total: $shelves-columns,
     $gutter: $shelves-gutter,
-    $reset-if-tablet: false,
-    $reset-if-mobile: false) {
-  @include column-base($reset-if-tablet, $reset-if-mobile);
+    $reset-on-tablet: false,
+    $reset-on-mobile: false) {
+  @include column-base($reset-on-tablet, $reset-on-mobile);
+  @include column-width($n, $context, $total, $gutter);
+
   @if not $first {
     @include column-gutter($context, $total, $gutter);
   }
-  @include columns-width($n, $context, $total, $gutter);
 }
 
 // Sets up an element to be a column in the grid system.
 // This is used internally to generate grids, Use column($n)
 // instead to create fully functioning columns.
 //
-//   $reset-if-tablet - Include styles for resetting the column at
+//   $reset-on-tablet - Include styles for resetting the column at
 //                      tablet sizes. Defaults to false.
-//   $reset-if-mobile - Include styles for resetting the column at
+//   $reset-on-mobile - Include styles for resetting the column at
 //                      mobile sizes. Defaults to false.
 //
-@mixin column-base($reset-if-tablet: false, $reset-if-mobile: false) {
+@mixin column-base($reset-on-tablet: false, $reset-on-mobile: false) {
   display: block;
   float: left;
   min-height: 1px;
@@ -99,13 +110,13 @@
     // http://ejohn.org/blog/sub-pixel-problems-in-css/
     *margin-right: -1px;
   }
-  @if $reset-if-tablet {
-    @include tablet {
+  @if $reset-on-tablet {
+    @include on-tablet-down {
       @include reset-column;
     }
   }
-  @if $reset-if-mobile {
-    @include mobile {
+  @if $reset-on-mobile {
+    @include on-mobile {
       @include reset-column;
     }
   }
@@ -121,12 +132,12 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin columns-width(
+@mixin column-width(
     $n,
-    $context: null,
+    $context: $shelves-context,
     $total: $shelves-columns,
     $gutter: $shelves-gutter) {
-  width: columns-width($n, $context, $total, $gutter);
+  width: column-width($n, $context, $total, $gutter);
 }
 
 // Includes the gutter for a column on the grid.
@@ -138,35 +149,18 @@
 //   $gutter      - The width of the gutter in the root context (in %).
 //                  Defaults to the value of $shelves-gutter.
 //   $reset-first - Removes the gutter for the first column in a row.
-//                  Defaults to true.
+//                  Defaults to false.
 //
 @mixin column-gutter(
-    $context: null,
+    $context: $shelves-context,
     $total: $shelves-columns,
     $gutter: $shelves-gutter,
-    $reset-first: true) {
+    $reset-first: false) {
   margin-left: column-gutter($context, $total, $gutter);
 
   @if $reset-first {
     &:first-child {
       @include reset-column-gutter;
-    }
-  }
-}
-
-// Centers the column by removing the float and setting the horizontal
-// margins to auto.
-//
-//   $reset-first - Force margin-left: auto; on first-child columns.
-//
-@mixin center-column($reset-first: true) {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-
-  @if $reset-first {
-    &:first-child {
-      margin-left: auto;
     }
   }
 }

@@ -1,75 +1,105 @@
+// Centers the column by removing the float and setting the horizontal
+// margins to auto.
+//
+//   $reset-first - Force margin-left: auto; on first-child columns.
+//                  Defaults to false.
+//
+@mixin center-column($reset-first: false) {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+
+  @if $reset-first {
+    &:first-child {
+      margin-left: auto;
+    }
+  }
+}
+
 // Adds a padding suffix (which shifts the column to the right)
 // spanning the given number of columns.
 //
-//   $n       - The number of columns to pad.
-//   $context - The number of columns encapsulating the element.
-//              Defaults to the the value of $total.
-//   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns.
-//   $gutter  - The width of the gutter in the root context (in %).
-//              Defaults to the value of $shelves-gutter.
+//   $n           - The number of columns to pad.
+//   $context     - The number of columns encapsulating the element.
+//                  Defaults to the the value of $total.
+//   $total       - The total number of columns in the grid.
+//                  Defaults to the value of $shelves-columns.
+//   $gutter      - The width of the gutter in the root context (in %).
+//                  Defaults to the value of $shelves-gutter.
+//   $with-gutter - Include an extra gutter in the calculation.
+//                  Defaults to true.
 //
-@mixin column-prefix(
+@mixin prefix-column(
     $n,
-    $context: null,
+    $context: $shelves-context,
     $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  padding-left: columns-distance($n, $context, $total, $gutter);
+    $gutter: $shelves-gutter,
+    $with-gutter: true) {
+  padding-left: columns-distance($n, $context, $total, $gutter, $with-gutter);
 }
 
 // Adds a padding suffix (which shifts the column to the left)
 // spanning the given number of columns.
 //
-//   $n       - The number of columns to pad.
-//   $context - The number of columns encapsulating the element.
-//              Defaults to the the value of $total.
-//   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns.
-//   $gutter  - The width of the gutter in the root context (in %).
-//              Defaults to the value of $shelves-gutter.
+//   $n           - The number of columns to pad.
+//   $context     - The number of columns encapsulating the element.
+//                  Defaults to the the value of $total.
+//   $total       - The total number of columns in the grid.
+//                  Defaults to the value of $shelves-columns.
+//   $gutter      - The width of the gutter in the root context (in %).
+//                  Defaults to the value of $shelves-gutter.
+//   $with-gutter - Include an extra gutter in the calculation.
+//                  Defaults to true.
 //
-@mixin column-suffix(
+@mixin suffix-column(
     $n,
-    $context: null,
+    $context: $shelves-context,
     $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  padding-right: columns-distance($n, $context, $total, $gutter);
+    $gutter: $shelves-gutter,
+    $with-gutter: true) {
+  padding-right: columns-distance($n, $context, $total, $gutter, $with-gutter);
 }
 
 // Reorder the content by shifting the column to the right. This
 // is often used in conjunction with column-pull($n).
 //
-//   $n       - The number of columns to shift.
-//   $context - The number of columns encapsulating the element.
-//              Defaults to the the value of $total.
-//   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns.
-//   $gutter  - The width of the gutter in the root context (in %).
-//              Defaults to the value of $shelves-gutter.
+//   $n           - The number of columns to shift.
+//   $context     - The number of columns encapsulating the element.
+//                  Defaults to the the value of $total.
+//   $total       - The total number of columns in the grid.
+//                  Defaults to the value of $shelves-columns.
+//   $gutter      - The width of the gutter in the root context (in %).
+//                  Defaults to the value of $shelves-gutter.
+//   $with-gutter - Include an extra gutter in the calculation.
+//                  Defaults to true.
 //
-@mixin column-push(
+@mixin push-column(
     $n,
-    $context: null,
+    $context: $shelves-context,
     $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  left: columns-distance($n, $context, $total, $gutter);
+    $gutter: $shelves-gutter,
+    $with-gutter: true) {
+  left: columns-distance($n, $context, $total, $gutter, $with-gutter);
 }
 
 // Reorder the content by shifting the column to the left. This
 // is often used in conjunction with column-push($n).
 //
-//   $n       - The number of columns to shift.
-//   $context - The number of columns encapsulating the element.
-//              Defaults to the the value of $total.
-//   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns.
-//   $gutter  - The width of the gutter in the root context (in %).
-//              Defaults to the value of $shelves-gutter.
+//   $n           - The number of columns to shift.
+//   $context     - The number of columns encapsulating the element.
+//                  Defaults to the the value of $total.
+//   $total       - The total number of columns in the grid.
+//                  Defaults to the value of $shelves-columns.
+//   $gutter      - The width of the gutter in the root context (in %).
+//                  Defaults to the value of $shelves-gutter.
+//   $with-gutter - Include an extra gutter in the calculation.
+//                  Defaults to true.
 //
-@mixin column-pull(
+@mixin pull-column(
     $n,
-    $context: null,
+    $context: $shelves-context,
     $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  right: columns-distance($n, $context, $total, $gutter);
+    $gutter: $shelves-gutter,
+    $with-gutter: true) {
+  right: columns-distance($n, $context, $total, $gutter, $with-gutter);
 }

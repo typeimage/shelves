@@ -6,8 +6,9 @@ $shelves-columns: 12 !default;
 $shelves-margin: 20px !default;
 $shelves-gutter: 20px !default;
 $shelves-reset-vertical-margin: 20px !default;
-$shelves-tablet-breakpoint: 799px !default;
-$shelves-mobile-breakpoint: 479px !default;
+$shelves-tablet-breakpoint: 800px !default;
+$shelves-mobile-breakpoint: 480px !default;
+$shelves-context: null;
 
 // Convert the gutter to a percentage if necessary.
 @if unit($shelves-gutter) != "%" {
@@ -66,8 +67,7 @@ $shelves-full-tablet-column-name: "#{$shelves-tablet-column-name}#{$shelves-sepa
 $shelves-full-mobile-column-name: "#{$shelves-mobile-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
 
 // Default options for the grid generator
-$shelves-fluid-img: true !default;
-$shelves-fix-snap-mode: true !default;
+$shelves-responsive-base: true !default;
 $shelves-visibility: true !default;
 $shelves-centered: false !default;
 $shelves-breakout: false !default;
