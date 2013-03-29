@@ -1,286 +1,204 @@
 @import "shelves";
 
-// Responsive Base
+// Shelves Base
 // ----------------------------------------------------------------------------
 
 @if $shelves-responsive-base {
   @include responsive-base;
 }
 
-// Shelves Base
-// ----------------------------------------------------------------------------
-
-@include shelves-base;
-
-@include shelves-columns(
-  $prefixes: $shelves-prefixes,
-  $suffixes: $shelves-suffixes,
-  $pushes: $shelves-pushes,
-  $pulls: $shelves-pulls
-);
-
-@if $shelves-centered {
-  .#{$shelves-row-name} .#{$shelves-centered-column-name} {
-    @include center-column;
-  }
-}
-
-// Nested Columns
-// ----------------------------------------------------------------------------
-
-@if $shelves-nested {
-  @for $i from 1 to $shelves-columns - 1  {
-    // Loop background through the columns
-    // to cascade the nested column properties.
-    $i: $shelves-columns - $i;
-
-    #{column-selector($shelves-column-name, $i)} {
-      #{columns-selector($shelves-column-name)} {
-        @include column-gutter($i, $reset-first: false);
-      }
-
-      @include shelves-columns(
-        $context: $i,
-        $prefixes: $shelves-nested-prefixes,
-        $suffixes: $shelves-nested-suffixes,
-        $pushes: $shelves-nested-pushes,
-        $pulls: $shelves-nested-pulls
-      );
-    }
-  }
-}
-
-// Breakout Columns
-// ----------------------------------------------------------------------------
-
-@if $shelves-breakout {
-  #{columns-selector($shelves-row-name)} {
-    #{columns-selector($shelves-column-name)} {
-      @include column-gutter($gutter: $shelves-breakout-gutter, $reset-first: false);
-    }
-  }
-
-  @for $i from 2 through $shelves-breakout-columns {
-    #{column-selector($shelves-row-name, $i)} {
-      @include shelves-columns(
-        $total: $i,
-        $gutter: $shelves-breakout-gutter,
-        $prefixes: false,
-        $suffixes: false,
-        $pushes: false,
-        $pulls: false
-      );
-    }
-  }
-}
-
-// Full Column
-// ----------------------------------------------------------------------------
-
 .#{$shelves-row-name} {
-  .#{$shelves-full-column-name} {
-    @include reset-column($vertical-margin: false);
-    @include shelves-clearfix;
+  @include row;
+
+  .#{$shelves-row-name} {
+    @include reset-row;
   }
 }
 
-// Desktop Visibility Helpers
+// Mobile
 // ----------------------------------------------------------------------------
 
-@if $shelves-visibility and ($shelves-tablet or $shelves-mobile) {
-  %force-hidden-on-desktop {
+@include with-mobile-grid {
+
+  // Mobile Columns
+
+  @if $shelves-mobile {
+    #{columns-selector($shelves-mobile-column-name)} {
+      @include column-base;
+      @include column-gutter;
+    }
+
+    @include shelves-columns(
+      $column-name: $shelves-mobile-column-name,
+      $prefixes: $shelves-mobile-prefixes,
+      $suffixes: $shelves-mobile-suffixes,
+      $pushes: $shelves-mobile-pushes,
+      $pulls: $shelves-mobile-pulls
+    );
+  }
+}
+
+// Mobile Visibility Helpers
+
+@if $shelves-visibility {
+  .#{$shelves-visible-desktop-name} {
     @include force-hidden;
   }
 
-  .#{$shelves-hidden-desktop-name} {
-    @extend %force-hidden-on-desktop;
+  @include on-mobile {
+    .#{$shelves-visible-mobile-name} {
+      @include force-visible;
+    }
+
+    .#{$shelves-hidden-mobile-name},
+    .#{$shelves-visible-tablet-name} {
+      @include force-hidden;
+    }
   }
+}
+
+// Tablet
+// ----------------------------------------------------------------------------
+
+@include on-tablet-up {
+
+  // Tablet Columns
 
   @if $shelves-tablet {
-    .#{$shelves-visible-tablet-name} {
-      @extend %force-hidden-on-desktop;
+    #{columns-selector($shelves-tablet-column-name)} {
+      @include column-base;
+      @include column-gutter;
     }
+
+    @include shelves-columns(
+      $column-name: $shelves-tablet-column-name,
+      $prefixes: $shelves-tablet-prefixes,
+      $suffixes: $shelves-tablet-suffixes,
+      $pushes: $shelves-tablet-pushes,
+      $pulls: $shelves-tablet-pulls
+    );
   }
 
-  @if $shelves-mobile {
+  // Tablet Visibility
+
+  @if $shelves-visibility {
     .#{$shelves-visible-mobile-name} {
-      @extend %force-hidden-on-desktop;
+      @include force-hidden;
     }
   }
 }
 
-// Tablet Breakpoint
-// ----------------------------------------------------------------------------
+@include on-tablet {
 
-@if $shelves-tablet {
-  @include on-tablet-down {
-    @if $shelves-tablet-margin != $shelves-margin {
-      .#{$shelves-row-name} {
-        @include container($shelves-tablet-margin);
-      }
+  // Tablet Visibility (cont.)
+
+  @if $shelves-visibility {
+    .#{$shelves-visible-tablet-name} {
+      @include force-visible;
     }
 
-    @include shelves-resets;
-
-    @if $shelves-visibility {
-      .#{$shelves-hidden-desktop-name} {
-        @include force-visible;
-      }
-
-      .#{$shelves-visible-desktop-name} {
-        @include force-hidden;
-      }
-    }
-  }
-
-  @include on-tablet(if($shelves-mobile, $shelves-mobile-breakpoint, null)) {
-
-    // Tablet Columns
-    // ------------------------------------------------------------------------
-
-    // Use the extra specificity from the row class
-    // to apply tablet column properties even when nested
-    .#{$shelves-row-name} {
-      #{columns-selector($shelves-tablet-column-name)} {
-        @include column-base;
-        @include column-gutter(
-          $total: $shelves-tablet-columns,
-          $gutter: $shelves-tablet-gutter,
-          $reset-first: false
-        );
-
-        @if $shelves-reset-vertical-margin {
-          @include reset-column-vertical-margin;
-        }
-      }
-
-      #{columns-selector($shelves-tablet-column-name)}:first-child,
-      .#{$shelves-first-tablet-column-name} {
-        @include reset-column-gutter;
-      }
-
-      @if $shelves-centered {
-        .#{$shelves-centered-tablet-column-name} {
-          @include center-column;
-        }
-      }
-
-      @include shelves-columns(
-        $column-name: $shelves-tablet-column-name,
-        $total: $shelves-tablet-columns,
-        $gutter: $shelves-tablet-gutter,
-        $prefixes: $shelves-tablet-prefixes,
-        $suffixes: $shelves-tablet-suffixes,
-        $pushes: $shelves-tablet-pushes,
-        $pulls: $shelves-tablet-pulls
-      );
-
-      .#{$shelves-row-name} {
-        .#{$shelves-full-tablet-column-name} {
-          @include reset-column($vertical-margin: false);
-          @include shelves-clearfix;
-        }
-      }
-    }
-
-    // Tablet Visibility Helpers
-    // ------------------------------------------------------------------------
-
-    @if $shelves-visibility {
-      .#{$shelves-visible-tablet-name} {
-        @include force-visible;
-      }
-      .#{$shelves-hidden-tablet-name} {
-        @include force-hidden;
-      }
+    .#{$shelves-hidden-tablet-name} {
+      @include force-hidden;
     }
   }
 }
 
-// Mobile Breakpoint
+// Desktop
 // ----------------------------------------------------------------------------
 
-@if $shelves-mobile {
-  @include on-mobile {
-    @if $shelves-mobile-margin != if($shelves-tablet, $shelves-margin, $shelves-tablet-margin) {
-      .#{$shelves-row-name} {
-        @include container($shelves-mobile-margin);
+@include on-desktop {
+
+  // Desktop Columns
+
+  @if $shelves-desktop {
+    #{columns-selector($shelves-column-name)} {
+      @include column-base;
+      @include column-gutter;
+    }
+
+    @include shelves-columns(
+      $column-name: $shelves-column-name,
+      $prefixes: $shelves-prefixes,
+      $suffixes: $shelves-suffixes,
+      $pushes: $shelves-pushes,
+      $pulls: $shelves-pulls
+    );
+
+    @if $shelves-nested {
+      @for $i from 1 to $shelves-columns - 1  {
+        // Loop background through the columns
+        // to cascade the nested column properties.
+        $i: $shelves-columns - $i;
+
+        #{column-selector($shelves-column-name, $i)} {
+          #{columns-selector($shelves-column-name)} {
+            @include column-gutter($i);
+          }
+
+          @include shelves-columns(
+            $context: $i,
+            $prefixes: $shelves-nested-prefixes,
+            $suffixes: $shelves-nested-suffixes,
+            $pushes: $shelves-nested-pushes,
+            $pulls: $shelves-nested-pulls
+          );
+        }
+      }
+    }
+  }
+
+  // Breakout Columns
+
+  @if $shelves-breakout {
+    #{columns-selector($shelves-row-name)} {
+      #{columns-selector($shelves-column-name)} {
+        @include column-gutter($gutter: $shelves-breakout-gutter);
       }
     }
 
-    @if not $shelves-tablet {
-      @include shelves-resets($reset-row: $shelves-tablet == false);
-    }
-
-    // Mobile Columns
-    // ------------------------------------------------------------------------
-
-    // Use the extra specificity from the row class
-    // to apply mobile column properties even when nested
-    .#{$shelves-row-name} {
-      #{columns-selector($shelves-mobile-column-name)} {
-        @include column-base;
-        @include column-gutter(
-          $total: $shelves-mobile-columns,
-          $gutter: $shelves-mobile-gutter,
-          $reset-first: false
+    @for $i from 2 through $shelves-breakout-columns {
+      #{column-selector($shelves-row-name, $i)} {
+        @include shelves-columns(
+          $total: $i,
+          $gutter: $shelves-breakout-gutter,
+          $prefixes: false,
+          $suffixes: false,
+          $pushes: false,
+          $pulls: false
         );
-
-        @if $shelves-reset-vertical-margin {
-          @include reset-column-vertical-margin;
-        }
-      }
-
-      #{columns-selector($shelves-mobile-column-name)}:first-child,
-      .#{$shelves-first-mobile-column-name} {
-        @include reset-column-gutter;
-      }
-
-      @if $shelves-centered {
-        .#{$shelves-centered-mobile-column-name} {
-          @include center-column;
-        }
-      }
-
-      @include shelves-columns(
-        $column-name: $shelves-mobile-column-name,
-        $total: $shelves-mobile-columns,
-        $gutter: $shelves-mobile-gutter,
-        $prefixes: $shelves-mobile-prefixes,
-        $suffixes: $shelves-mobile-suffixes,
-        $pushes: $shelves-mobile-pushes,
-        $pulls: $shelves-mobile-pulls
-      );
-
-      .#{$shelves-row-name} {
-        .#{$shelves-full-mobile-column-name} {
-          @include reset-column($vertical-margin: false);
-          @include shelves-clearfix;
-        }
       }
     }
+  }
 
-    // Mobile Visibility Helpers
-    // ------------------------------------------------------------------------
+  // Desktop Visibility
 
-    @if $shelves-visibility {
-      %force-hidden-on-mobile {
-        @include force-hidden;
-      }
-
-      .#{$shelves-visible-mobile-name} {
-        @include force-visible;
-      }
-
-      .#{$shelves-hidden-mobile-name} {
-        @extend %force-hidden-on-mobile;
-      }
-
-      @if not $shelves-tablet {
-        .#{$shelves-visible-desktop-name} {
-          @extend %force-hidden-on-mobile;
-        }
-      }
+  @if $shelves-visibility {
+    .#{$shelves-visible-desktop-name} {
+      @include force-visible;
     }
+
+    .#{$shelves-hidden-desktop-name},
+    .#{$shelves-visible-tablet-name} {
+      @include force-hidden;
+    }
+  }
+}
+
+// Global Column Gutter Reset
+
+.#{$shelves-row-name} {
+  #{columns-selector($shelves-column-name)}:first-child,
+  .#{$shelves-first-column-name} {
+    @include reset-column-gutter;
+  }
+}
+
+// Global Full Column
+
+.#{$shelves-row-name} {
+  .#{$shelves-full-column-name} {
+    @include reset-column-width;
+    @include reset-column-gutter;
+    @include row-base;
   }
 }

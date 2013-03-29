@@ -1,3 +1,13 @@
+// Adds some non-grid related responsive styles. It fixes IE 10's
+// "Snap Mode" and making images fluid.
+@mixin responsive-base {
+  @include fix-snap-mode;
+
+  img {
+    @include fluid-media;
+  }
+}
+
 // Generates the grid's base classes, namely the
 // the row and container elements.
 //

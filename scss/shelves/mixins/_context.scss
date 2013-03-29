@@ -32,9 +32,7 @@
 //   $gutter  - The width of the gutter in the grid.
 //              Defaults to the value of $shelves-gutter.
 //
-@mixin with-desktop-grid(
-    $columns: $shelves-columns,
-    $gutter: $shelves-gutter) {
+@mixin with-desktop-grid($columns: $shelves-columns, $gutter: $shelves-gutter) {
   @include with-grid($columns, $gutter) {
     @content;
   }
