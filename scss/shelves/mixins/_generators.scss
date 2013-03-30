@@ -1,6 +1,25 @@
+// Generates the grid's base classes.
+//
+//   $responsive-base - Include the responsive base styles.
+//                      Defaults to the value of $shelves-responsive-base.
+//
+@mixin shelves-base($responsive-base: $shelves-responsive-base) {
+  @if $responsive-base {
+    @include shelves-responsive-base;
+  }
+
+  .#{$shelves-row-name} {
+    @include row;
+
+    .#{$shelves-row-name} {
+      @include reset-row;
+    }
+  }
+}
+
 // Adds some non-grid related responsive styles. It fixes IE 10's
 // "Snap Mode" and making images fluid.
-@mixin responsive-base {
+@mixin shelves-responsive-base {
   @include fix-snap-mode;
 
   img {
@@ -8,34 +27,30 @@
   }
 }
 
-// Generates the grid's base classes, namely the
-// the row and container elements.
-//
-//   $reset-on-tablet - Include styles for resetting the grid at
-//                      tablet sizes. Defaults to false.
-//   $reset-on-mobile - Include styles for resetting the grid at
-//                      mobile sizes. Defaults to false.
-//
-@mixin shelves-base($reset-on-tablet: false, $reset-on-mobile: false) {
-  .#{$shelves-row-name} {
-    @include container;
-    @include row($reset-on-tablet: $reset-on-tablet, $reset-on-mobile: $reset-on-mobile);
-
-    .#{$shelves-row-name} {
-      @include reset-container;
-      @include reset-row;
+// Include visibility helpers for showing/hiding content based on
+// device size.
+@mixin shelves-visibility-helpers {
+  @include on-mobile {
+    .#{$shelves-hidden-mobile-name},
+    .#{$shelves-visible-tablet-name},
+    .#{$shelves-visible-desktop-name} {
+      @include force-hidden;
     }
   }
 
-  #{columns-selector($shelves-column-name)} {
-    @include column-base($reset-on-tablet: $reset-on-tablet, $reset-on-mobile: $reset-on-mobile);
-    @include column-gutter($reset-first: false);
+  @include on-tablet {
+    .#{$shelves-visible-mobile-name},
+    .#{$shelves-hidden-tablet-name},
+    .#{$shelves-visible-desktop-name} {
+      @include force-hidden;
+    }
   }
 
-  .#{$shelves-row-name} {
-    #{columns-selector($shelves-column-name)}:first-child,
-    .#{$shelves-first-column-name} {
-      @include reset-column-gutter;
+  @include on-desktop {
+    .#{$shelves-visible-mobile-name},
+    .#{$shelves-visible-tablet-name},
+    .#{$shelves-hidden-desktop-name} {
+      @include force-hidden;
     }
   }
 }
@@ -55,10 +70,10 @@
 //                  Defaults to the value of $shelves-columns.
 //   $gutter      - The width of the gutter in the root context (in %).
 //                  Defaults to the value of $shelves-gutter.
-//   $prefixes    - Include prefix classes. Defaults to true.
-//   $suffixes    - Include suffix classes. Defaults to true.
-//   $pushes      - Include push classes. Defaults to true.
-//   $pulls       - Include pull classes. Defaults to true.
+//   $prefixes    - Include prefix classes. Defaults to false.
+//   $suffixes    - Include suffix classes. Defaults to false.
+//   $pushes      - Include push classes. Defaults to false.
+//   $pulls       - Include pull classes. Defaults to false.
 //
 @mixin shelves-columns(
     $column-name: $shelves-column-name,
@@ -67,15 +82,19 @@
     $context: $shelves-context,
     $total: $shelves-columns,
     $gutter: $shelves-gutter,
-    $prefixes: true,
-    $suffixes: true,
-    $pushes: true,
-    $pulls: true) {
+    $prefixes: false,
+    $suffixes: false,
+    $pushes: false,
+    $pulls: false,
+    $base-placeholder: null) {
   $context: $total !default;
   $end: $context !default;
 
   @for $i from $start to $end  {
     #{column-selector($column-name, $i)} {
+      @if $base-placeholder {
+        @extend %#{$base-placeholder};
+      }
       @include column-width($i, $context, $total, $gutter);
     }
   }
@@ -104,27 +123,6 @@
     @for $i from $start to $end  {
       #{column-selector($shelves-pull-name, $i)} {
         @include pull-column($i, $context, $total, $gutter);
-      }
-    }
-  }
-}
-
-// Resets the row and column elements so they take up
-// the full width of their parent element. All modifying
-// effects are removed from columns as well.
-//
-//   $reset-row     - Reset the row. Defaults to true.
-//   $reset-columns - Reset columns (including nested columns).
-//                    Defaults to true
-//
-@mixin shelves-resets($reset-row: true, $reset-columns: true) {
-  .#{$shelves-row-name} {
-    @if $reset-row {
-      @include reset-row;
-    }
-    @if $reset-columns {
-      #{columns-selector($shelves-column-name)} {
-        @include reset-column;
       }
     }
   }

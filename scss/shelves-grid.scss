@@ -1,31 +1,33 @@
 @import "shelves";
 
-// Shelves Base
-// ----------------------------------------------------------------------------
-
-@if $shelves-responsive-base {
-  @include responsive-base;
-}
-
-.#{$shelves-row-name} {
-  @include row;
-
-  .#{$shelves-row-name} {
-    @include reset-row;
-  }
-}
+@include shelves-base;
 
 // Mobile
 // ----------------------------------------------------------------------------
 
-@include with-mobile-grid {
-
-  // Mobile Columns
-
-  @if $shelves-mobile {
-    #{columns-selector($shelves-mobile-column-name)} {
+@if $shelves-mobile-columns != false {
+  @include with-mobile-grid {
+    %shelves-mobile-column-base {
       @include column-base;
       @include column-gutter;
+
+      .#{$shelves-row-name} &:first-child {
+        @extend %shelves-mobile-first-column;
+      }
+    }
+
+    %shelves-mobile-first-column {
+      @include reset-column-gutter;
+    }
+
+    .#{$shelves-first-mobile-column-name} {
+      @extend %shelves-mobile-first-column;
+    }
+
+    @if $shelves-center {
+      .#{$shelves-center-mobile-column-name} {
+        @include center-column;
+      }
     }
 
     @include shelves-columns(
@@ -33,41 +35,38 @@
       $prefixes: $shelves-mobile-prefixes,
       $suffixes: $shelves-mobile-suffixes,
       $pushes: $shelves-mobile-pushes,
-      $pulls: $shelves-mobile-pulls
+      $pulls: $shelves-mobile-pulls,
+      $base-placeholder: "shelves-mobile-column-base"
     );
-  }
-}
-
-// Mobile Visibility Helpers
-
-@if $shelves-visibility {
-  .#{$shelves-visible-desktop-name} {
-    @include force-hidden;
-  }
-
-  @include on-mobile {
-    .#{$shelves-visible-mobile-name} {
-      @include force-visible;
-    }
-
-    .#{$shelves-hidden-mobile-name},
-    .#{$shelves-visible-tablet-name} {
-      @include force-hidden;
-    }
   }
 }
 
 // Tablet
 // ----------------------------------------------------------------------------
 
-@include on-tablet-up {
-
-  // Tablet Columns
-
-  @if $shelves-tablet {
-    #{columns-selector($shelves-tablet-column-name)} {
+@if $shelves-tablet-columns != false {
+  @include on-tablet-up {
+    %shelves-tablet-column-base {
       @include column-base;
       @include column-gutter;
+
+      .#{$shelves-row-name} &:first-child {
+        @extend %shelves-tablet-first-column;
+      }
+    }
+
+    %shelves-tablet-first-column {
+      @include reset-column-gutter;
+    }
+
+    .#{$shelves-first-tablet-column-name} {
+      @extend %shelves-tablet-first-column;
+    }
+
+    @if $shelves-center {
+      .#{$shelves-center-tablet-column-name} {
+        @include center-column;
+      }
     }
 
     @include shelves-columns(
@@ -75,63 +74,58 @@
       $prefixes: $shelves-tablet-prefixes,
       $suffixes: $shelves-tablet-suffixes,
       $pushes: $shelves-tablet-pushes,
-      $pulls: $shelves-tablet-pulls
+      $pulls: $shelves-tablet-pulls,
+      $base-placeholder: "shelves-tablet-column-base"
     );
-  }
-
-  // Tablet Visibility
-
-  @if $shelves-visibility {
-    .#{$shelves-visible-mobile-name} {
-      @include force-hidden;
-    }
-  }
-}
-
-@include on-tablet {
-
-  // Tablet Visibility (cont.)
-
-  @if $shelves-visibility {
-    .#{$shelves-visible-tablet-name} {
-      @include force-visible;
-    }
-
-    .#{$shelves-hidden-tablet-name} {
-      @include force-hidden;
-    }
   }
 }
 
 // Desktop
 // ----------------------------------------------------------------------------
 
-@include on-desktop {
-
-  // Desktop Columns
-
-  @if $shelves-desktop {
-    #{columns-selector($shelves-column-name)} {
+@if $shelves-desktop-columns != false {
+  @include on-desktop {
+    %shelves-desktop-column-base {
       @include column-base;
       @include column-gutter;
+
+      .#{$shelves-row-name} &:first-child {
+        @extend %shelves-first-desktop-column;
+      }
+    }
+
+    %shelves-first-desktop-column {
+      @include reset-column-gutter;
+    }
+
+    .#{$shelves-first-desktop-column-name} {
+      @extend %shelves-first-desktop-column;
+    }
+
+    @if $shelves-center {
+      .#{$shelves-center-desktop-column-name} {
+        @include center-column;
+      }
     }
 
     @include shelves-columns(
-      $column-name: $shelves-column-name,
       $prefixes: $shelves-prefixes,
       $suffixes: $shelves-suffixes,
       $pushes: $shelves-pushes,
-      $pulls: $shelves-pulls
+      $pulls: $shelves-pulls,
+      $base-placeholder: "shelves-desktop-column-base"
     );
 
-    @if $shelves-nested {
-      @for $i from 1 to $shelves-columns - 1  {
+    // Nested Desktop Columns
+
+    @if $shelves-nested-columns != false {
+      @for $i from 1 to $shelves-desktop-columns - 1  {
         // Loop background through the columns
         // to cascade the nested column properties.
-        $i: $shelves-columns - $i;
+        $i: $shelves-desktop-columns - $i;
 
         #{column-selector($shelves-column-name, $i)} {
-          #{columns-selector($shelves-column-name)} {
+          %shelves-nested-column-#{$i}-base {
             @include column-gutter($i);
           }
 
@@ -140,65 +134,42 @@
             $prefixes: $shelves-nested-prefixes,
             $suffixes: $shelves-nested-suffixes,
             $pushes: $shelves-nested-pushes,
-            $pulls: $shelves-nested-pulls
+            $pulls: $shelves-nested-pulls,
+            $base-placeholder: "shelves-nested-column-#{$i}-base"
           );
         }
       }
     }
   }
+}
 
-  // Breakout Columns
+// Breakout Columns
+// ----------------------------------------------------------------------------
 
-  @if $shelves-breakout {
-    #{columns-selector($shelves-row-name)} {
-      #{columns-selector($shelves-column-name)} {
-        @include column-gutter($gutter: $shelves-breakout-gutter);
-      }
-    }
+@if $shelves-breakout {
+  %shelves-breakout-column-base {
+    @include column-base;
+    @include column-gutter($gutter: $shelves-breakout-gutter);
 
-    @for $i from 2 through $shelves-breakout-columns {
-      #{column-selector($shelves-row-name, $i)} {
-        @include shelves-columns(
-          $total: $i,
-          $gutter: $shelves-breakout-gutter,
-          $prefixes: false,
-          $suffixes: false,
-          $pushes: false,
-          $pulls: false
-        );
-      }
+    &:first-child {
+      @include reset-column-gutter;
     }
   }
 
-  // Desktop Visibility
-
-  @if $shelves-visibility {
-    .#{$shelves-visible-desktop-name} {
-      @include force-visible;
-    }
-
-    .#{$shelves-hidden-desktop-name},
-    .#{$shelves-visible-tablet-name} {
-      @include force-hidden;
+  @for $i from 2 through $shelves-breakout-columns {
+    #{column-selector($shelves-row-name, $i)} {
+      @include shelves-columns(
+        $total: $i,
+        $gutter: $shelves-breakout-gutter,
+        $base-placeholder: "shelves-breakout-column-base"
+      );
     }
   }
 }
 
-// Global Column Gutter Reset
+// Visibility Helpers
+// ----------------------------------------------------------------------------
 
-.#{$shelves-row-name} {
-  #{columns-selector($shelves-column-name)}:first-child,
-  .#{$shelves-first-column-name} {
-    @include reset-column-gutter;
-  }
-}
-
-// Global Full Column
-
-.#{$shelves-row-name} {
-  .#{$shelves-full-column-name} {
-    @include reset-column-width;
-    @include reset-column-gutter;
-    @include row-base;
-  }
+@if $shelves-visibility {
+  @include shelves-visibility-helpers;
 }

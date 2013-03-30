@@ -1,7 +1,6 @@
 // Default Grid Settings
 $shelves-width: 1060px !default;
 $shelves-max-width: $shelves-width !default;
-$shelves-min-width: 767px !default;
 $shelves-columns: 12 !default;
 $shelves-margin: 20px !default;
 $shelves-gutter: 20px !default;
@@ -14,17 +13,21 @@ $shelves-context: null;
   $shelves-gutter: percentage($shelves-gutter / $shelves-max-width);
 }
 
-// Default Breakout Settings
-$shelves-breakout-columns: 4 !default;
-$shelves-breakout-gutter: $shelves-gutter * 2 !default;
+// Default Mobile Settings
+$shelves-mobile-columns: 4 !default;
+$shelves-mobile-gutter: $shelves-gutter * 2.375 !default;
 
 // Default Tablet Settings
 $shelves-tablet-columns: 6 !default;
 $shelves-tablet-gutter: $shelves-gutter * 1.5 !default;
 
-// Default Mobile Settings
-$shelves-mobile-columns: 4 !default;
-$shelves-mobile-gutter: $shelves-gutter * 2.375 !default;
+// Default Desktop Settings
+$shelves-desktop-columns: $shelves-columns !default;
+$shelves-desktop-gutter: $shelves-gutter !default;
+
+// Default Breakout Settings
+$shelves-breakout-columns: 4 !default;
+$shelves-breakout-gutter: $shelves-gutter * 2 !default;
 
 // Default Naming Conventions
 $shelves-separator: "-" !default;
@@ -33,45 +36,42 @@ $shelves-tablet-name: "tablet" !default;
 $shelves-mobile-name: "mobile" !default;
 $shelves-visible-name: "visible" !default;
 $shelves-hidden-name: "hidden" !default;
-$shelves-centered-name: "centered" !default;
+$shelves-center-name: "center" !default;
 $shelves-full-name: "full" !default;
 
 // Default Class Names
 // (Note the lack of the preceding ".")
 $shelves-row-name: "row" !default;
 $shelves-column-name: "column" !default;
-$shelves-tablet-column-name: "#{$shelves-tablet-name}#{$shelves-separator}#{$shelves-column-name}" !default;
 $shelves-mobile-column-name: "#{$shelves-mobile-name}#{$shelves-separator}#{$shelves-column-name}" !default;
+$shelves-tablet-column-name: "#{$shelves-tablet-name}#{$shelves-separator}#{$shelves-column-name}" !default;
+$shelves-desktop-column-name: $shelves-column-name !default;
 $shelves-prefix-name: "prefix" !default;
 $shelves-suffix-name: "suffix" !default;
 $shelves-push-name: "push" !default;
 $shelves-pull-name: "pull" !default;
 $shelves-first-name: "first" !default;
-$shelves-first-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-column-name}" !default;
-$shelves-first-tablet-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-tablet-column-name}" !default;
 $shelves-first-mobile-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-mobile-column-name}" !default;
+$shelves-first-tablet-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-tablet-column-name}" !default;
+$shelves-first-desktop-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-desktop-column-name}" !default;
+$shelves-center-mobile-column-name: "#{$shelves-center-name}#{$shelves-separator}#{$shelves-mobile-column-name}" !default;
+$shelves-center-tablet-column-name: "#{$shelves-center-name}#{$shelves-separator}#{$shelves-tablet-column-name}" !default;
+$shelves-center-desktop-column-name: "#{$shelves-center-name}#{$shelves-separator}#{$shelves-desktop-column-name}" !default;
+$shelves-full-mobile-column-name: "#{$shelves-mobile-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
+$shelves-full-tablet-column-name: "#{$shelves-tablet-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
+$shelves-full-desktop-column-name: "#{$shelves-desktop-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
 $shelves-visible-desktop-name: "#{$shelves-visible-name}#{$shelves-separator}#{$shelves-desktop-name}" !default;
 $shelves-visible-tablet-name: "#{$shelves-visible-name}#{$shelves-separator}#{$shelves-tablet-name}" !default;
 $shelves-visible-mobile-name: "#{$shelves-visible-name}#{$shelves-separator}#{$shelves-mobile-name}" !default;
 $shelves-hidden-desktop-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-desktop-name}" !default;
 $shelves-hidden-tablet-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-tablet-name}" !default;
 $shelves-hidden-mobile-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-mobile-name}" !default;
-$shelves-centered-column-name: "#{$shelves-column-name}#{$shelves-separator}#{$shelves-centered-name}" !default;
-$shelves-centered-tablet-column-name: "#{$shelves-tablet-column-name}#{$shelves-separator}#{$shelves-centered-name}" !default;
-$shelves-centered-mobile-column-name: "#{$shelves-mobile-column-name}#{$shelves-separator}#{$shelves-centered-name}" !default;
-$shelves-full-column-name: "#{$shelves-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
-$shelves-full-tablet-column-name: "#{$shelves-tablet-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
-$shelves-full-mobile-column-name: "#{$shelves-mobile-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
 
 // Default options for the grid generator
 $shelves-responsive-base: true !default;
 $shelves-visibility: true !default;
-$shelves-centered: false !default;
-$shelves-breakout: false !default;
-$shelves-nested: true !default;
-$shelves-desktop: true !default;
-$shelves-tablet: true !default;
-$shelves-mobile: true !default;
+$shelves-center: false !default;
+$shelves-nested-columns: true !default;
 $shelves-prefixes: true !default;
 $shelves-suffixes: true !default;
 $shelves-pushes: true !default;

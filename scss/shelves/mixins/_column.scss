@@ -193,16 +193,16 @@
 @mixin reset-column-width {
   float: none;
   width: auto;
+
+  @if $shelves-ie7-support {
+    *margin-right: 0px;
+  }
 }
 
 // Removes the gutter of a column in a grid. This is usually added
 // to the first column in a row.
 @mixin reset-column-gutter {
   margin-left: 0;
-
-  @if $shelves-ie7-support {
-    *margin-right: 0px;
-  }
 }
 
 // Removes the padding prefix added to a column.
