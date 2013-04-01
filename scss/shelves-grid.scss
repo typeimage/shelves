@@ -24,12 +24,6 @@
       @extend %shelves-mobile-first-column;
     }
 
-    @if $shelves-center {
-      .#{$shelves-center-mobile-column-name} {
-        @include center-column;
-      }
-    }
-
     @include shelves-columns(
       $column-name: $shelves-mobile-column-name,
       $prefixes: $shelves-mobile-prefixes,
@@ -61,12 +55,6 @@
 
     .#{$shelves-first-tablet-column-name} {
       @extend %shelves-tablet-first-column;
-    }
-
-    @if $shelves-center {
-      .#{$shelves-center-tablet-column-name} {
-        @include center-column;
-      }
     }
 
     @include shelves-columns(
@@ -102,12 +90,6 @@
       @extend %shelves-first-desktop-column;
     }
 
-    @if $shelves-center {
-      .#{$shelves-center-desktop-column-name} {
-        @include center-column;
-      }
-    }
-
     @include shelves-columns(
       $prefixes: $shelves-prefixes,
       $suffixes: $shelves-suffixes,
@@ -139,6 +121,16 @@
           );
         }
       }
+    }
+  }
+}
+
+@if $shelves-center {
+  .#{$shelves-row-name} .#{$shelves-center-desktop-column-name} {
+    @include center-column;
+
+    &:first-child {
+      margin-left: auto;
     }
   }
 }

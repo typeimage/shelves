@@ -129,14 +129,3 @@
 @function column-selector($class-name, $index, $separator: $shelves-separator) {
   @return ".#{$class-name}#{$separator}#{$index}";
 }
-
-// Returns a selector that will select all columns with the given prefix.
-//
-//   $class-name - The class name to build the selector from.
-//                 It should NOT have a preceding ".".
-//   $separator  - The separator between the class name and index.
-//                 Defaults to $shelves-separator.
-//
-@function columns-selector($class-name, $separator: $shelves-separator) {
-  @return "[class*=\"#{$class-name}#{$separator}\"]";
-}
