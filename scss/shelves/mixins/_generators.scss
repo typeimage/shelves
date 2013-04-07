@@ -8,10 +8,10 @@
     @include shelves-responsive-base;
   }
 
-  .#{$shelves-row-name} {
+  #{class-selector($shelves-row-name)} {
     @include row;
 
-    .#{$shelves-row-name} {
+    #{class-selector($shelves-row-name)} {
       @include reset-row;
     }
   }
@@ -31,25 +31,25 @@
 // device size.
 @mixin shelves-visibility-helpers {
   @include on-mobile {
-    .#{$shelves-hidden-mobile-name},
-    .#{$shelves-visible-tablet-name},
-    .#{$shelves-visible-desktop-name} {
+    #{class-selector($shelves-hidden-mobile-name)},
+    #{class-selector($shelves-visible-tablet-name)},
+    #{class-selector($shelves-visible-desktop-name)} {
       @include force-hidden;
     }
   }
 
   @include on-tablet {
-    .#{$shelves-visible-mobile-name},
-    .#{$shelves-hidden-tablet-name},
-    .#{$shelves-visible-desktop-name} {
+    #{class-selector($shelves-visible-mobile-name)},
+    #{class-selector($shelves-hidden-tablet-name)},
+    #{class-selector($shelves-visible-desktop-name)} {
       @include force-hidden;
     }
   }
 
   @include on-desktop {
-    .#{$shelves-visible-mobile-name},
-    .#{$shelves-visible-tablet-name},
-    .#{$shelves-hidden-desktop-name} {
+    #{class-selector($shelves-visible-mobile-name)},
+    #{class-selector($shelves-visible-tablet-name)},
+    #{class-selector($shelves-hidden-desktop-name)} {
       @include force-hidden;
     }
   }
@@ -59,8 +59,8 @@
 // the columns. This can be used in different contexts, varying
 // the number of columns if necessary.
 //
-//   $column-name - The name of the column to generate widths for.
-//                  Defaults to $shelves-column-name
+//   $extend      - Each column will @extend this placeholder if set.
+//                  Defaults to null.
 //   $start       - Where to start the loop. Defaults to 1.
 //   $end         - Where to end the loop.
 //                  Defaults to the value of $total.
@@ -74,9 +74,19 @@
 //   $suffixes    - Include suffix classes. Defaults to false.
 //   $pushes      - Include push classes. Defaults to false.
 //   $pulls       - Include pull classes. Defaults to false.
+//   $column-name - The name of the column to generate widths for.
+//                  Defaults to $shelves-desktop-column-name.
+//   $prefix-name - The class name of the prefix modifier.
+//                  Defaults to $shelves-desktop-prefix-name.
+//   $suffix-name - The class name of the suffix modifier.
+//                  Defaults to $shelves-desktop-suffix-name.
+//   $push-name   - The class name of the push modifier.
+//                  Defaults to $shelves-desktop-push-name.
+//   $pull-name   - The class name of the pull modifier.
+//                  Defaults to $shelves-desktop-pull-name.
 //
 @mixin shelves-columns(
-    $column-name: $shelves-column-name,
+    $extend: null,
     $start: 1,
     $end: null,
     $context: $shelves-context,
@@ -86,42 +96,46 @@
     $suffixes: false,
     $pushes: false,
     $pulls: false,
-    $base-placeholder: null) {
+    $column-name: $shelves-desktop-column-name,
+    $prefix-name: $shelves-desktop-prefix-name,
+    $suffix-name: $shelves-desktop-suffix-name,
+    $push-name: $shelves-desktop-push-name,
+    $pull-name: $shelves-desktop-pull-name) {
   $context: $total !default;
   $end: $context !default;
 
   @for $i from $start to $end  {
-    #{column-selector($column-name, $i)} {
-      @if $base-placeholder {
-        @extend %#{$base-placeholder};
+    #{class-selector($column-name $i)} {
+      @if $extend {
+        @extend %#{$extend};
       }
       @include column-width($i, $context, $total, $gutter);
     }
   }
   @if $prefixes {
     @for $i from $start to $end  {
-      #{column-selector($shelves-prefix-name, $i)} {
+      #{class-selector($prefix-name $i)} {
         @include prefix-column($i, $context, $total, $gutter);
       }
     }
   }
   @if $suffixes {
     @for $i from $start to $end  {
-      #{column-selector($shelves-suffix-name, $i)} {
+      #{class-selector($suffix-name $i)} {
         @include suffix-column($i, $context, $total, $gutter);
       }
     }
   }
   @if $pushes {
     @for $i from $start to $end  {
-      #{column-selector($shelves-push-name, $i)} {
+      #{class-selector($push-name $i)} {
         @include push-column($i, $context, $total, $gutter);
       }
     }
   }
   @if $pulls {
     @for $i from $start to $end  {
-      #{column-selector($shelves-pull-name, $i)} {
+      #{class-selector($pull-name $i)} {
         @include pull-column($i, $context, $total, $gutter);
       }
     }

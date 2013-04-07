@@ -26,7 +26,7 @@ $shelves-desktop-columns: $shelves-columns !default;
 $shelves-desktop-gutter: $shelves-gutter !default;
 
 // Default Breakout Settings
-$shelves-breakout-columns: 4 !default;
+$shelves-breakout-columns: false !default;
 $shelves-breakout-gutter: $shelves-gutter * 2 !default;
 
 // Default Naming Conventions
@@ -34,36 +34,44 @@ $shelves-separator: "-" !default;
 $shelves-desktop-name: "desktop" !default;
 $shelves-tablet-name: "tablet" !default;
 $shelves-mobile-name: "mobile" !default;
-$shelves-visible-name: "visible" !default;
-$shelves-hidden-name: "hidden" !default;
-$shelves-center-name: "center" !default;
-$shelves-full-name: "full" !default;
-
-// Default Class Names
-// (Note the lack of the preceding ".")
 $shelves-row-name: "row" !default;
 $shelves-column-name: "column" !default;
-$shelves-mobile-column-name: "#{$shelves-mobile-name}#{$shelves-separator}#{$shelves-column-name}" !default;
-$shelves-tablet-column-name: "#{$shelves-tablet-name}#{$shelves-separator}#{$shelves-column-name}" !default;
-$shelves-desktop-column-name: $shelves-column-name !default;
 $shelves-prefix-name: "prefix" !default;
 $shelves-suffix-name: "suffix" !default;
 $shelves-push-name: "push" !default;
 $shelves-pull-name: "pull" !default;
 $shelves-first-name: "first" !default;
-$shelves-first-mobile-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-mobile-column-name}" !default;
-$shelves-first-tablet-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-tablet-column-name}" !default;
-$shelves-first-desktop-column-name: "#{$shelves-first-name}#{$shelves-separator}#{$shelves-desktop-column-name}" !default;
-$shelves-center-column-name: "#{$shelves-center-name}#{$shelves-separator}#{$shelves-column-name}" !default;
-$shelves-full-mobile-column-name: "#{$shelves-mobile-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
-$shelves-full-tablet-column-name: "#{$shelves-tablet-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
-$shelves-full-desktop-column-name: "#{$shelves-desktop-column-name}#{$shelves-separator}#{$shelves-full-name}" !default;
-$shelves-visible-desktop-name: "#{$shelves-visible-name}#{$shelves-separator}#{$shelves-desktop-name}" !default;
-$shelves-visible-tablet-name: "#{$shelves-visible-name}#{$shelves-separator}#{$shelves-tablet-name}" !default;
-$shelves-visible-mobile-name: "#{$shelves-visible-name}#{$shelves-separator}#{$shelves-mobile-name}" !default;
-$shelves-hidden-desktop-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-desktop-name}" !default;
-$shelves-hidden-tablet-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-tablet-name}" !default;
-$shelves-hidden-mobile-name: "#{$shelves-hidden-name}#{$shelves-separator}#{$shelves-mobile-name}" !default;
+$shelves-center-name: "center" !default;
+$shelves-visible-name: "visible" !default;
+$shelves-hidden-name: "hidden" !default;
+
+// Default Class Names
+// (Note the lack of the preceding ".")
+$shelves-mobile-column-name: class-name($shelves-mobile-name $shelves-column-name) !default;
+$shelves-tablet-column-name: class-name($shelves-tablet-name $shelves-column-name) !default;
+$shelves-desktop-column-name: $shelves-column-name !default;
+$shelves-mobile-prefix-name: class-name($shelves-mobile-name $shelves-prefix-name) !default;
+$shelves-tablet-prefix-name: class-name($shelves-tablet-name $shelves-prefix-name) !default;
+$shelves-desktop-prefix-name: $shelves-prefix-name !default;
+$shelves-mobile-suffix-name: class-name($shelves-mobile-name $shelves-suffix-name) !default;
+$shelves-tablet-suffix-name: class-name($shelves-tablet-name $shelves-suffix-name) !default;
+$shelves-desktop-suffix-name: $shelves-suffix-name !default;
+$shelves-mobile-push-name: class-name($shelves-mobile-name $shelves-push-name) !default;
+$shelves-tablet-push-name: class-name($shelves-tablet-name $shelves-push-name) !default;
+$shelves-desktop-push-name: $shelves-push-name !default;
+$shelves-mobile-pull-name: class-name($shelves-mobile-name $shelves-pull-name) !default;
+$shelves-tablet-pull-name: class-name($shelves-tablet-name $shelves-pull-name) !default;
+$shelves-desktop-pull-name: $shelves-pull-name !default;
+$shelves-first-mobile-column-name: class-name($shelves-first-name $shelves-mobile-column-name) !default;
+$shelves-first-tablet-column-name: class-name($shelves-first-name $shelves-tablet-column-name) !default;
+$shelves-first-desktop-column-name: class-name($shelves-first-name $shelves-desktop-column-name) !default;
+$shelves-center-column-name: class-name($shelves-center-name $shelves-column-name) !default;
+$shelves-visible-desktop-name: class-name($shelves-visible-name $shelves-desktop-name) !default;
+$shelves-visible-tablet-name: class-name($shelves-visible-name $shelves-tablet-name) !default;
+$shelves-visible-mobile-name: class-name($shelves-visible-name $shelves-mobile-name) !default;
+$shelves-hidden-desktop-name: class-name($shelves-hidden-name $shelves-desktop-name) !default;
+$shelves-hidden-tablet-name: class-name($shelves-hidden-name $shelves-tablet-name) !default;
+$shelves-hidden-mobile-name: class-name($shelves-hidden-name $shelves-mobile-name) !default;
 
 // Default options for the grid generator
 $shelves-responsive-base: true !default;

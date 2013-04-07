@@ -103,7 +103,7 @@
 //   $with-gutter - Include an extra gutter in the calculation.
 //                  Defaults to true.
 //
-@function columns-distance(
+@function column-distance(
     $n,
     $context: $shelves-context,
     $total: $shelves-columns,
@@ -116,16 +116,40 @@
   @return $distance;
 }
 
-// Returns a column selector with the given class name,
-// appended with the given index.
+// Creates a class name by joining the parts of a list with the default
+// $shelves-separator.
 //
-//   $class-name - The class name to build the selector from.
-//                 It should NOT have a preceding ".".
-//   $index      - The index to append at the end. It will
-//                 be separated by $separator.
-//   $separator  - The separator between the class name and index.
-//                 Defaults to $shelves-separator.
+//   $list - The list of items to join.
 //
-@function column-selector($class-name, $index, $separator: $shelves-separator) {
-  @return ".#{$class-name}#{$separator}#{$index}";
+@function class-name($list) {
+  @return implode($list, $shelves-separator);
+}
+
+// Creates an actual class selector by prefixing it with a ".".
+//
+//   $name - A string or list of strings to create a class name from.
+//
+@function class-selector($name) {
+  @return ".#{class-name($name)}";
+}
+
+// Creates a string by joining the parts of a list with the given separator.
+//
+// Note: This uses the PHP-style "implode" because Sass already uses "join"
+// for concatenation.
+//
+//   $list      - The list of items to join.
+//   $separator - The string to join with. Defaults to an empty string ("").
+//
+@function implode($list, $separator: "") {
+  $length: length($list);
+  $output: nth($list, 1);
+
+  @for $i from 2 through $length {
+    $item: nth($list, $i);
+    @if $item != null {
+      $output: "#{$output}#{$separator}#{$item}";
+    }
+  }
+  @return $output;
 }

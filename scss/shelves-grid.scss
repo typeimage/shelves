@@ -11,7 +11,7 @@
       @include column-base;
       @include column-gutter;
 
-      .#{$shelves-row-name} &:first-child {
+      #{class-selector($shelves-row-name)} &:first-child {
         @extend %shelves-mobile-first-column;
       }
     }
@@ -20,17 +20,21 @@
       @include reset-column-gutter;
     }
 
-    .#{$shelves-first-mobile-column-name} {
+    #{class-selector($shelves-first-mobile-column-name)} {
       @extend %shelves-mobile-first-column;
     }
 
     @include shelves-columns(
-      $column-name: $shelves-mobile-column-name,
+      $extend: "shelves-mobile-column-base",
       $prefixes: $shelves-mobile-prefixes,
       $suffixes: $shelves-mobile-suffixes,
       $pushes: $shelves-mobile-pushes,
       $pulls: $shelves-mobile-pulls,
-      $base-placeholder: "shelves-mobile-column-base"
+      $column-name: $shelves-mobile-column-name,
+      $prefix-name: $shelves-mobile-prefix-name,
+      $suffix-name: $shelves-mobile-suffix-name,
+      $push-name: $shelves-mobile-push-name,
+      $pull-name: $shelves-mobile-pull-name
     );
   }
 }
@@ -44,7 +48,7 @@
       @include column-base;
       @include column-gutter;
 
-      .#{$shelves-row-name} &:first-child {
+      #{class-selector($shelves-row-name)} &:first-child {
         @extend %shelves-tablet-first-column;
       }
     }
@@ -53,17 +57,21 @@
       @include reset-column-gutter;
     }
 
-    .#{$shelves-first-tablet-column-name} {
+    #{class-selector($shelves-first-tablet-column-name)} {
       @extend %shelves-tablet-first-column;
     }
 
     @include shelves-columns(
-      $column-name: $shelves-tablet-column-name,
+      $extend: "shelves-tablet-column-base",
       $prefixes: $shelves-tablet-prefixes,
       $suffixes: $shelves-tablet-suffixes,
       $pushes: $shelves-tablet-pushes,
       $pulls: $shelves-tablet-pulls,
-      $base-placeholder: "shelves-tablet-column-base"
+      $column-name: $shelves-tablet-column-name,
+      $prefix-name: $shelves-tablet-prefix-name,
+      $suffix-name: $shelves-tablet-suffix-name,
+      $push-name: $shelves-tablet-push-name,
+      $pull-name: $shelves-tablet-pull-name
     );
   }
 }
@@ -77,7 +85,7 @@
       @include column-base;
       @include column-gutter;
 
-      .#{$shelves-row-name} &:first-child {
+      #{class-selector($shelves-row-name)} &:first-child {
         @extend %shelves-first-desktop-column;
       }
     }
@@ -86,16 +94,16 @@
       @include reset-column-gutter;
     }
 
-    .#{$shelves-first-desktop-column-name} {
+    #{class-selector($shelves-first-desktop-column-name)} {
       @extend %shelves-first-desktop-column;
     }
 
     @include shelves-columns(
+      $extend: "shelves-desktop-column-base",
       $prefixes: $shelves-prefixes,
       $suffixes: $shelves-suffixes,
       $pushes: $shelves-pushes,
-      $pulls: $shelves-pulls,
-      $base-placeholder: "shelves-desktop-column-base"
+      $pulls: $shelves-pulls
     );
 
     // Nested Desktop Columns
@@ -106,18 +114,18 @@
         // to cascade the nested column properties.
         $i: $shelves-desktop-columns - $i;
 
-        #{column-selector($shelves-column-name, $i)} {
+        #{class-selector($shelves-desktop-column-name $i)} {
           %shelves-nested-column-#{$i}-base {
             @include column-gutter($i);
           }
 
           @include shelves-columns(
+            $extend: "shelves-nested-column-#{$i}-base",
             $context: $i,
             $prefixes: $shelves-nested-prefixes,
             $suffixes: $shelves-nested-suffixes,
             $pushes: $shelves-nested-pushes,
-            $pulls: $shelves-nested-pulls,
-            $base-placeholder: "shelves-nested-column-#{$i}-base"
+            $pulls: $shelves-nested-pulls
           );
         }
       }
@@ -126,7 +134,7 @@
 }
 
 @if $shelves-center {
-  .#{$shelves-row-name} .#{$shelves-center-desktop-column-name} {
+  #{class-selector($shelves-row-name)} #{class-selector($shelves-center-column-name)} {
     @include center-column;
 
     &:first-child {
@@ -138,7 +146,7 @@
 // Breakout Columns
 // ----------------------------------------------------------------------------
 
-@if $shelves-breakout {
+@if $shelves-breakout-columns != false {
   %shelves-breakout-column-base {
     @include column-base;
     @include column-gutter($gutter: $shelves-breakout-gutter);
@@ -149,11 +157,11 @@
   }
 
   @for $i from 2 through $shelves-breakout-columns {
-    #{column-selector($shelves-row-name, $i)} {
+    #{class-selector($shelves-row-name $i)} {
       @include shelves-columns(
+        $extend: "shelves-breakout-column-base",
         $total: $i,
-        $gutter: $shelves-breakout-gutter,
-        $base-placeholder: "shelves-breakout-column-base"
+        $gutter: $shelves-breakout-gutter
       );
     }
   }

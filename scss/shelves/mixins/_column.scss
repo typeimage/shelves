@@ -107,7 +107,7 @@
     $total: $shelves-columns,
     $gutter: $shelves-gutter,
     $with-gutter: true) {
-  padding-left: columns-distance($n, $context, $total, $gutter, $with-gutter);
+  padding-left: column-distance($n, $context, $total, $gutter, $with-gutter);
 }
 
 // Adds a padding suffix (which shifts the column to the left)
@@ -129,7 +129,7 @@
     $total: $shelves-columns,
     $gutter: $shelves-gutter,
     $with-gutter: true) {
-  padding-right: columns-distance($n, $context, $total, $gutter, $with-gutter);
+  padding-right: column-distance($n, $context, $total, $gutter, $with-gutter);
 }
 
 // Reorder the content by shifting the column to the right. This
@@ -151,7 +151,7 @@
     $total: $shelves-columns,
     $gutter: $shelves-gutter,
     $with-gutter: true) {
-  left: columns-distance($n, $context, $total, $gutter, $with-gutter);
+  left: column-distance($n, $context, $total, $gutter, $with-gutter);
 }
 
 // Reorder the content by shifting the column to the left. This
@@ -173,7 +173,7 @@
     $total: $shelves-columns,
     $gutter: $shelves-gutter,
     $with-gutter: true) {
-  right: columns-distance($n, $context, $total, $gutter, $with-gutter);
+  right: column-distance($n, $context, $total, $gutter, $with-gutter);
 }
 
 // Column Resets

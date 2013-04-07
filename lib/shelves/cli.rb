@@ -48,6 +48,12 @@ BANNER
     desc 'Do not include nested columns.'
   end
 
+  option 'skip-desktop' do
+    short '-D'
+    long '--skip-desktop'
+    desc 'Do not include desktop columns.'
+  end
+
   option 'skip-tablet' do
     short '-T'
     long '--skip-tablet'
@@ -135,14 +141,16 @@ BANNER
   separator ''
   separator 'Advanced Options:'
 
-  option 'breakout' do
-    long '--breakout'
-    desc 'Include breakout columns.'
+  option 'breakout-columns' do
+    long '--breakout-columns COLUMNS'
+    desc 'The number of breakout columns.'
+    desc '(default: false)'
+    cast Integer
   end
 
-  option 'centered' do
-    long '--centered'
-    desc 'Include centered column helpers.'
+  option 'center' do
+    long '--center'
+    desc 'Include center column helpers.'
   end
 
   option 'skip-visibility' do
@@ -268,6 +276,7 @@ TEMPLATE
         settings.each do |setting, value|
           if setting =~ /^skip-(\w*)$/
             setting = $1
+            setting = "#{setting}-columns" if %w(desktop tablet mobile).include?(setting)
             value = false
           end
           normalized_settings[setting] = value
