@@ -1,6 +1,6 @@
 {
   "name": "shelves",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": ["css/shelves.css", "scss/shelves.scss"],
   "ignore": [
     "*.gemspec",
