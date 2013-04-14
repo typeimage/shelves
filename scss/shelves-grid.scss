@@ -136,10 +136,6 @@
 @if $shelves-center {
   #{class-selector($shelves-row-name)} #{class-selector($shelves-center-column-name)} {
     @include center-column;
-
-    &:first-child {
-      margin-left: auto;
-    }
   }
 }
 

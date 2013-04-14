@@ -84,7 +84,7 @@
 // margins to auto.
 @mixin center-column {
   float: none;
-  margin-left: auto;
+  margin-left: auto !important;
   margin-right: auto;
 }
 
