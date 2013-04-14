@@ -169,17 +169,17 @@ BANNER
   end
 
   option 'skip-suffixes' do
-    long '--skip-suffix'
+    long '--skip-suffixes'
     desc 'Do not include suffix classes.'
   end
 
   option 'skip-pushes' do
-    long '--skip-push'
+    long '--skip-pushes'
     desc 'Do not include push classes.'
   end
 
   option 'skip-pulls' do
-    long '--skip-pull'
+    long '--skip-pulls'
     desc 'Do not include pull classes.'
   end
 
