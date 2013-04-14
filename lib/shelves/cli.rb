@@ -48,6 +48,12 @@ BANNER
     desc 'Do not include nested columns.'
   end
 
+  option 'skip-desktop' do
+    short '-D'
+    long '--skip-desktop'
+    desc 'Do not include desktop columns.'
+  end
+
   option 'skip-tablet' do
     short '-T'
     long '--skip-tablet'
@@ -135,6 +141,16 @@ BANNER
   separator ''
   separator 'Advanced Options:'
 
+  option 'skip-center' do
+    long '--skip-center'
+    desc 'Do not include center column helper.'
+  end
+
+  option 'skip-visibility' do
+    long '--skip-visibility'
+    desc 'Do not include visibility helpers.'
+  end
+
   option 'skip-ie7-support' do
     long '--skip-ie7-support'
     desc 'Skip legacy support for IE7.'
@@ -146,17 +162,17 @@ BANNER
   end
 
   option 'skip-suffixes' do
-    long '--skip-suffix'
+    long '--skip-suffixes'
     desc 'Do not include suffix classes.'
   end
 
   option 'skip-pushes' do
-    long '--skip-push'
+    long '--skip-pushes'
     desc 'Do not include push classes.'
   end
 
   option 'skip-pulls' do
-    long '--skip-pull'
+    long '--skip-pulls'
     desc 'Do not include pull classes.'
   end
 
@@ -243,8 +259,7 @@ module Shelves
 <% settings.each do |setting, value| %>
 $shelves-<%= setting %>: <%= value %>;
 <% end %>
-@import "shelves";
-@include shelves;
+@import "shelves-grid";
 TEMPLATE
         template.result(binding)
       end
@@ -254,6 +269,7 @@ TEMPLATE
         settings.each do |setting, value|
           if setting =~ /^skip-(\w*)$/
             setting = $1
+            setting = "#{setting}-columns" if %w(desktop tablet mobile).include?(setting)
             value = false
           end
           normalized_settings[setting] = value

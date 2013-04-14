@@ -9,8 +9,8 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@function column-width(
-    $context: null,
+@function single-column-width(
+    $context: $shelves-context,
     $total: $shelves-columns,
     $gutter: $shelves-gutter) {
   $context: $total !default;
@@ -19,41 +19,13 @@
     @return 100%;
   }
   @else if $context >= $total {
-    $column-gutter: column-gutter($total: $total, $gutter: $gutter);
+    $column-gutter: column-gutter($context: null, $total: $total, $gutter: $gutter);
     @return (100% - ($total - 1) * $column-gutter) / $total;
   }
   @else {
-    $column-width: column-width($total: $total, $gutter: $gutter);
-    $context-width: columns-width($n: $context, $total: $total, $gutter: $gutter);
+    $column-width: single-column-width($context: null, $total: $total, $gutter: $gutter);
+    $context-width: column-width($n: $context, $context: null, $total: $total, $gutter: $gutter);
     @return $column-width * (100% / $context-width);
-  }
-}
-
-// Returns the width of the gutter as a percentage. If given a $context,
-// this returns the gutter width relative to that number of columns.
-//
-//   $context - The number of columns encapsulating the gutter.
-//              Defaults to the the value of $total.
-//   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns.
-//   $gutter  - The width of the gutter in the root context (in %).
-//              Defaults to the value of $shelves-gutter.
-//
-@function column-gutter(
-    $context: null,
-    $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  $context: $total !default;
-
-  @if $context <= 1 {
-    @return 0%;
-  }
-  @else if $context >= $total {
-    @return $gutter;
-  }
-  @else {
-    $context-width: columns-width($n: $context, $total: $total);
-    @return $gutter * (100% / $context-width);
   }
 }
 
@@ -69,24 +41,51 @@
 //   $gutter  - The width of the gutter in the root context (in %).
 //              Defaults to the value of $shelves-gutter.
 //
-@function columns-width(
+@function column-width(
     $n,
-    $context: null,
+    $context: $shelves-context,
     $total: $shelves-columns,
     $gutter: $shelves-gutter) {
   $context: $total !default;
 
   @if $n <= 1 {
-    @return column-width($context, $total, $gutter);
+    @return single-column-width($context, $total, $gutter);
   }
   @else if $n >= $context {
     @return 100%;
   }
   @else {
-    $column-width: column-width($context, $total, $gutter);
+    $column-width: single-column-width($context, $total, $gutter);
     $column-gutter: column-gutter($context, $total, $gutter);
-
     @return $column-width * $n + $column-gutter * ($n - 1);
+  }
+}
+
+// Returns the width of the gutter as a percentage. If given a $context,
+// this returns the gutter width relative to that number of columns.
+//
+//   $context - The number of columns encapsulating the gutter.
+//              Defaults to the the value of $total.
+//   $total   - The total number of columns in the grid.
+//              Defaults to the value of $shelves-columns.
+//   $gutter  - The width of the gutter in the root context (in %).
+//              Defaults to the value of $shelves-gutter.
+//
+@function column-gutter(
+    $context: $shelves-context,
+    $total: $shelves-columns,
+    $gutter: $shelves-gutter) {
+  $context: $total !default;
+
+  @if $context <= 1 {
+    @return 0%;
+  }
+  @else if $context >= $total {
+    @return $gutter;
+  }
+  @else {
+    $context-width: column-width($n: $context, $context: null, $total: $total);
+    @return $gutter * (100% / $context-width);
   }
 }
 
@@ -94,43 +93,63 @@
 // number of columns. If given a $context, this returns the
 // distance relative to that number of columns.
 //
-//   $n       - The number of columns to measure.
-//   $context - The number of columns encapsulating the columns.
-//              Defaults to the the value of $total.
-//   $total   - The total number of columns in the grid.
-//              Defaults to the value of $shelves-columns.
-//   $gutter  - The width of the gutter in the root context (in %).
-//              Defaults to the value of $shelves-gutter.
+//   $n           - The number of columns to measure.
+//   $context     - The number of columns encapsulating the columns.
+//                  Defaults to the the value of $total.
+//   $total       - The total number of columns in the grid.
+//                  Defaults to the value of $shelves-columns.
+//   $gutter      - The width of the gutter in the root context (in %).
+//                  Defaults to the value of $shelves-gutter.
+//   $with-gutter - Include an extra gutter in the calculation.
+//                  Defaults to true.
 //
-@function columns-distance(
+@function column-distance(
     $n,
-    $context: null,
+    $context: $shelves-context,
     $total: $shelves-columns,
-    $gutter: $shelves-gutter) {
-  @return columns-width($n, $context, $total, $gutter) + column-gutter($context, $total, $gutter);
+    $gutter: $shelves-gutter,
+    $with-gutter: true) {
+  $distance: column-width($n, $context, $total, $gutter);
+  @if $with-gutter {
+    $distance: $distance + column-gutter($context, $total, $gutter);
+  }
+  @return $distance;
 }
 
-// Returns a column selector with the given class name,
-// appended with the given index.
+// Creates a class name by joining the parts of a list with the default
+// $shelves-separator.
 //
-//   $class-name - The class name to build the selector from.
-//                 It should NOT have a preceding ".".
-//   $index      - The index to append at the end. It will
-//                 be separated by $separator.
-//   $separator  - The separator between the class name and index.
-//                 Defaults to $shelves-separator.
+//   $list - The list of items to join.
 //
-@function column-selector($class-name, $index, $separator: $shelves-separator) {
-  @return ".#{$class-name}#{$separator}#{$index}";
+@function class-name($list) {
+  @return implode($list, $shelves-separator);
 }
 
-// Returns a selector that will select all columns with the given prefix.
+// Creates an actual class selector by prefixing it with a ".".
 //
-//   $class-name - The class name to build the selector from.
-//                 It should NOT have a preceding ".".
-//   $separator  - The separator between the class name and index.
-//                 Defaults to $shelves-separator.
+//   $name - A string or list of strings to create a class name from.
 //
-@function columns-selector($class-name, $separator: $shelves-separator) {
-  @return "[class*=\"#{$class-name}#{$separator}\"]";
+@function class-selector($name) {
+  @return ".#{class-name($name)}";
+}
+
+// Creates a string by joining the parts of a list with the given separator.
+//
+// Note: This uses the PHP-style "implode" because Sass already uses "join"
+// for concatenation.
+//
+//   $list      - The list of items to join.
+//   $separator - The string to join with. Defaults to an empty string ("").
+//
+@function implode($list, $separator: "") {
+  $length: length($list);
+  $output: nth($list, 1);
+
+  @for $i from 2 through $length {
+    $item: nth($list, $i);
+    @if $item != null {
+      $output: "#{$output}#{$separator}#{$item}";
+    }
+  }
+  @return $output;
 }
