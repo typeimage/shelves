@@ -25,10 +25,6 @@ $shelves-tablet-gutter: $shelves-gutter * 1.5 !default;
 $shelves-desktop-columns: $shelves-columns !default;
 $shelves-desktop-gutter: $shelves-gutter !default;
 
-// Default Breakout Settings
-$shelves-breakout-columns: false !default;
-$shelves-breakout-gutter: $shelves-gutter * 2 !default;
-
 // Default Naming Conventions
 $shelves-separator: "-" !default;
 $shelves-desktop-name: "desktop" !default;
@@ -76,7 +72,7 @@ $shelves-hidden-mobile-name: class-name($shelves-hidden-name $shelves-mobile-nam
 // Default options for the grid generator
 $shelves-responsive-base: true !default;
 $shelves-visibility: true !default;
-$shelves-center: false !default;
+$shelves-center: true !default;
 $shelves-nested-columns: true !default;
 $shelves-prefixes: true !default;
 $shelves-suffixes: true !default;

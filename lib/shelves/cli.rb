@@ -141,16 +141,9 @@ BANNER
   separator ''
   separator 'Advanced Options:'
 
-  option 'breakout-columns' do
-    long '--breakout-columns COLUMNS'
-    desc 'The number of breakout columns.'
-    desc '(default: false)'
-    cast Integer
-  end
-
-  option 'center' do
-    long '--center'
-    desc 'Include center column helpers.'
+  option 'skip-center' do
+    long '--skip-center'
+    desc 'Do not include center column helper.'
   end
 
   option 'skip-visibility' do

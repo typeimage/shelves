@@ -139,30 +139,6 @@
   }
 }
 
-// Breakout Columns
-// ----------------------------------------------------------------------------
-
-@if $shelves-breakout-columns != false {
-  %shelves-breakout-column-base {
-    @include column-base;
-    @include column-gutter($gutter: $shelves-breakout-gutter);
-
-    &:first-child {
-      @include reset-column-gutter;
-    }
-  }
-
-  @for $i from 2 through $shelves-breakout-columns {
-    #{class-selector($shelves-row-name $i)} {
-      @include shelves-columns(
-        $extend: "shelves-breakout-column-base",
-        $total: $i,
-        $gutter: $shelves-breakout-gutter
-      );
-    }
-  }
-}
-
 // Visibility Helpers
 // ----------------------------------------------------------------------------
 
