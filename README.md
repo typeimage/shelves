@@ -8,4 +8,4 @@ Shelves CSS Grid Framework
 Copyright
 ---------
 
-Copyright (c) 2013 [Artifex](http://whoisartifex.com/). See LICENSE for details.
+Copyright (c) 2013 [Type&Image](http://typeimage.com/). See LICENSE for details.
