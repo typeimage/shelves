@@ -20,4 +20,6 @@ elsif defined?(::Sprockets) && Sprockets.respond_to?(:append_path)
   require 'shelves/extensions/sprockets'
 elsif defined?(::Compass)
   require 'shelves/extensions/compass'
+else
+  require 'shelves/extensions/sass'
 end
