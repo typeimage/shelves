@@ -144,11 +144,12 @@
 @function implode($list, $separator: "") {
   $length: length($list);
   $output: nth($list, 1);
-
-  @for $i from 2 through $length {
-    $item: nth($list, $i);
-    @if $item != null {
-      $output: "#{$output}#{$separator}#{$item}";
+  @if $length > 1 {
+    @for $i from 2 through $length {
+      $item: nth($list, $i);
+      @if $item != null {
+        $output: "#{$output}#{$separator}#{$item}";
+      }
     }
   }
   @return $output;
