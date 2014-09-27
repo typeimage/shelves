@@ -7,11 +7,11 @@
 @mixin with-grid($columns, $gutter: $shelves-gutter) {
   $original-shelves-columns: $shelves-columns;
   $original-shelves-gutter: $shelves-gutter;
-  $shelves-columns: $columns;
-  $shelves-gutter: $gutter;
+  $shelves-columns: $columns !global;
+  $shelves-gutter: $gutter !global;
   @content;
-  $shelves-columns: $original-shelves-columns;
-  $shelves-gutter: $original-shelves-gutter;
+  $shelves-columns: $original-shelves-columns !global;
+  $shelves-gutter: $original-shelves-gutter !global;
 }
 
 // Place the block of content with the given context (the current column size).
@@ -20,9 +20,9 @@
 //
 @mixin with-parent-column($context) {
   $original-shelves-contenxt: $shelves-context;
-  $shelves-context: $context;
+  $shelves-context: $context !global;
   @content;
-  $shelves-context: $original-shelves-contenxt;
+  $shelves-context: $original-shelves-contenxt !global;
 }
 
 // Place the block of content with the given desktop grid settings.

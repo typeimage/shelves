@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.version       = Shelves::VERSION
 
-  gem.add_runtime_dependency 'sass', '~> 3.2'
+  gem.add_runtime_dependency 'sass', '~> 3.3'
   gem.add_runtime_dependency 'choice', '~> 0.1'
   gem.add_development_dependency 'rake', '~> 10.0'
 end
