@@ -10,7 +10,7 @@ $shelves-context: null;
 
 // Convert the gutter to a percentage if necessary.
 @if unit($shelves-gutter) != "%" {
-  $shelves-gutter: percentage($shelves-gutter / $shelves-max-width);
+  $shelves-gutter: percentage($shelves-gutter / $shelves-max-width) !global;
 }
 
 // Default Mobile Settings
