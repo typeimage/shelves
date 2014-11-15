@@ -1,0 +1,22 @@
+{
+  "name": "shelves",
+  "description": "The only responsive, fluid CSS grid framework with infinitely nestable columns.",
+  "version": "1.1.1",
+  "main": ["css/shelves.css", "scss/shelves.scss"],
+  "keywords": [
+    "css",
+    "scss",
+    "grid",
+    "mobile-first",
+    "responsive"
+  ],
+  "homepage": "http://shelvesgrid.org/",
+  "ignore": [
+    "*.gemspec",
+    "bin",
+    "lib",
+    "Gemfile",
+    "Gemfile.lock",
+    "Rakefile"
+  ]
+}
