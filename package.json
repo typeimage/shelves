@@ -1,0 +1,31 @@
+{
+  "name": "shelves",
+  "version": "1.1.1",
+  "description": "The only responsive, fluid CSS grid with infinitely nestable columns.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typeimage/shelves.git"
+  },
+  "keywords": [
+    "eyeglass-module",
+    "sass",
+    "responsive",
+    "grid",
+    "rwd",
+    "layout"
+  ],
+  "author": "Pete Browne <pete@typeimage.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/typeimage/shelves/issues"
+  },
+  "homepage": "https://github.com/typeimage/shelves#readme",
+  "eyeglass": {
+    "needs": "^0.7.1",
+    "exports": false,
+    "sassDir": "scss"
+  }
+}
