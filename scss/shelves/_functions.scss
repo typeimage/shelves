@@ -125,14 +125,6 @@
   @return implode($list, $shelves-separator);
 }
 
-// Creates an actual class selector by prefixing it with a ".".
-//
-//   $name - A string or list of strings to create a class name from.
-//
-@function class-selector($name) {
-  @return ".#{class-name($name)}";
-}
-
 // Creates a string by joining the parts of a list with the given separator.
 //
 // Note: This uses the PHP-style "implode" because Sass already uses "join"

@@ -11,7 +11,7 @@
       @include column-base;
       @include column-gutter;
 
-      #{class-selector($shelves-row-name)} &:first-child {
+      .#{class-name($shelves-row-name)} &:first-child {
         @extend %shelves-mobile-first-column;
       }
     }
@@ -20,7 +20,7 @@
       @include reset-column-gutter;
     }
 
-    #{class-selector($shelves-first-mobile-column-name)} {
+    .#{class-name($shelves-first-mobile-column-name)} {
       @extend %shelves-mobile-first-column;
     }
 
@@ -48,7 +48,7 @@
       @include column-base;
       @include column-gutter;
 
-      #{class-selector($shelves-row-name)} &:first-child {
+      .#{class-name($shelves-row-name)} &:first-child {
         @extend %shelves-tablet-first-column;
       }
     }
@@ -57,7 +57,7 @@
       @include reset-column-gutter;
     }
 
-    #{class-selector($shelves-first-tablet-column-name)} {
+    .#{class-name($shelves-first-tablet-column-name)} {
       @extend %shelves-tablet-first-column;
     }
 
@@ -85,7 +85,7 @@
       @include column-base;
       @include column-gutter;
 
-      #{class-selector($shelves-row-name)} &:first-child {
+      .#{class-name($shelves-row-name)} &:first-child {
         @extend %shelves-first-desktop-column;
       }
     }
@@ -94,7 +94,7 @@
       @include reset-column-gutter;
     }
 
-    #{class-selector($shelves-first-desktop-column-name)} {
+    .#{class-name($shelves-first-desktop-column-name)} {
       @extend %shelves-first-desktop-column;
     }
 
@@ -109,12 +109,12 @@
     // Nested Desktop Columns
 
     @if $shelves-nested-columns != false {
-      @for $i from 1 to $shelves-desktop-columns - 1  {
+      @for $i from 1 to $shelves-desktop-columns - 1 {
         // Loop background through the columns
         // to cascade the nested column properties.
         $i: $shelves-desktop-columns - $i;
 
-        #{class-selector($shelves-desktop-column-name $i)} {
+        .#{class-name($shelves-desktop-column-name $i)} {
           %shelves-nested-column-#{$i}-base {
             @include column-gutter($i);
           }
@@ -134,7 +134,7 @@
 }
 
 @if $shelves-center {
-  #{class-selector($shelves-row-name)} #{class-selector($shelves-center-column-name)} {
+  .#{class-name($shelves-row-name)} .#{class-name($shelves-center-column-name)} {
     @include center-column;
   }
 }

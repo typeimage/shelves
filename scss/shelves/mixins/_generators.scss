@@ -8,10 +8,10 @@
     @include shelves-responsive-base;
   }
 
-  #{class-selector($shelves-row-name)} {
+  .#{class-name($shelves-row-name)} {
     @include row;
 
-    #{class-selector($shelves-row-name)} {
+    .#{class-name($shelves-row-name)} {
       @include reset-row;
     }
   }
@@ -31,25 +31,25 @@
 // device size.
 @mixin shelves-visibility-helpers {
   @include on-mobile {
-    #{class-selector($shelves-hidden-mobile-name)},
-    #{class-selector($shelves-visible-tablet-name)},
-    #{class-selector($shelves-visible-desktop-name)} {
+    .#{class-name($shelves-hidden-mobile-name)},
+    .#{class-name($shelves-visible-tablet-name)},
+    .#{class-name($shelves-visible-desktop-name)} {
       @include force-hidden;
     }
   }
 
   @include on-tablet {
-    #{class-selector($shelves-visible-mobile-name)},
-    #{class-selector($shelves-hidden-tablet-name)},
-    #{class-selector($shelves-visible-desktop-name)} {
+    .#{class-name($shelves-visible-mobile-name)},
+    .#{class-name($shelves-hidden-tablet-name)},
+    .#{class-name($shelves-visible-desktop-name)} {
       @include force-hidden;
     }
   }
 
   @include on-desktop {
-    #{class-selector($shelves-visible-mobile-name)},
-    #{class-selector($shelves-visible-tablet-name)},
-    #{class-selector($shelves-hidden-desktop-name)} {
+    .#{class-name($shelves-visible-mobile-name)},
+    .#{class-name($shelves-visible-tablet-name)},
+    .#{class-name($shelves-hidden-desktop-name)} {
       @include force-hidden;
     }
   }
@@ -104,8 +104,8 @@
   $context: $total !default;
   $end: $context !default;
 
-  @for $i from $start to $end  {
-    #{class-selector($column-name $i)} {
+  @for $i from $start to $end {
+    .#{class-name($column-name $i)} {
       @if $extend {
         @extend %#{$extend};
       }
@@ -113,29 +113,29 @@
     }
   }
   @if $prefixes {
-    @for $i from $start to $end  {
-      #{class-selector($prefix-name $i)} {
+    @for $i from $start to $end {
+      .#{class-name($prefix-name $i)} {
         @include prefix-column($i, $context, $total, $gutter);
       }
     }
   }
   @if $suffixes {
-    @for $i from $start to $end  {
-      #{class-selector($suffix-name $i)} {
+    @for $i from $start to $end {
+      .#{class-name($suffix-name $i)} {
         @include suffix-column($i, $context, $total, $gutter);
       }
     }
   }
   @if $pushes {
-    @for $i from $start to $end  {
-      #{class-selector($push-name $i)} {
+    @for $i from $start to $end {
+      .#{class-name($push-name $i)} {
         @include push-column($i, $context, $total, $gutter);
       }
     }
   }
   @if $pulls {
-    @for $i from $start to $end  {
-      #{class-selector($pull-name $i)} {
+    @for $i from $start to $end {
+      .#{class-name($pull-name $i)} {
         @include pull-column($i, $context, $total, $gutter);
       }
     }
