@@ -1,0 +1,9 @@
+**/.*
+*.log
+*.gemspec
+Gemfile*
+Rakefile
+bin
+lib
+node_modules
+pkg
