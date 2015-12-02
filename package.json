@@ -1,7 +1,8 @@
 {
   "name": "shelves",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "The only responsive, fluid CSS grid with infinitely nestable columns.",
+  "main": "scss/shelves.scss",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
