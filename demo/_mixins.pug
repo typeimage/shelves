@@ -1,0 +1,24 @@
+mixin row()
+  div(class='row display-row')
+    block
+
+mixin column(n, options = {})
+  -
+    const classNames = [
+      `column-${n}`,
+      options.tablet && `tablet-column-${options.tablet}`,
+      options.mobile && `mobile-column-${options.mobile}`,
+      options.prefix && `prefix-${options.prefix}`,
+      options.suffix && `suffix-${options.suffix}`,
+      options.push && `push-${options.push}`,
+      options.pull && `pull-${options.pull}`,
+    ];
+  div(class=classNames)
+    p.display-column= `column-${n}`
+    if block
+      +row
+        block
+
+mixin times(n)
+  each _ in Array(n)
+    block

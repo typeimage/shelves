@@ -1,0 +1,235 @@
+include _mixins.pug
+
+doctype html
+head
+  meta(charset='utf-8')
+  title Shelves Demo
+  link(rel='stylesheet' href='demo.css')
+body
+  .row
+    h1 Shelves Demo
+    h2 Standard Demo
+  +row
+    +times(2)
+      +column(6)
+  +row
+    +times(3)
+      +column(4)
+  +row
+    +times(6)
+      +column(2)
+  +row
+    +times(12)
+      +column(1)
+  +row
+    +column(1)
+    +column(11)
+  +row
+    +column(2)
+    +column(10)
+  +row
+    +column(3)
+    +column(9)
+  +row
+    +column(4)
+    +column(8)
+  +row
+    +column(5)
+    +column(7)
+  +row
+    +column(6)
+    +column(6)
+  +row
+    +column(7)
+    +column(5)
+  +row
+    +column(8)
+    +column(4)
+  +row
+    +column(9)
+    +column(3)
+  +row
+    +column(10)
+    +column(2)
+  +row
+    +column(11)
+    +column(1)
+  .row
+    h2 Responsive Demo
+    h3 Desktop Columns Demo
+  +row
+    +times(2)
+      +column(6, { tablet: 3, mobile: 2 })
+  +row
+    +times(3)
+      +column(4, { tablet: 2 })
+  +row
+    +times(4)
+      +column(3, { mobile: 1 })
+  .row
+    h3 Tablet Columns Demo
+  +row
+    +times(2)
+      +column(6, { tablet: 3 })
+  +row
+    +times(3)
+      +column(4, { tablet: 2 })
+  +row
+    +times(6)
+      +column(2, { tablet: 1 })
+  +row
+    +column(3, { tablet: 2 })
+    +column(9, { tablet: 4 })
+  +row
+    +column(9, { tablet: 4 })
+    +column(3, { tablet: 2 })
+  .row
+    h3 Mobile Columns Demo
+  +row
+    +times(2)
+      +column(6, { mobile: 2 })
+  +row
+    +times(4)
+      +column(3, { mobile: 1 })
+  +row
+    +column(3, { mobile: 1 })
+    +column(9, { mobile: 3 })
+  +row
+    +column(9, { mobile: 3 })
+    +column(3, { mobile: 1 })
+  .row
+    h2 Responsive Demo
+  +row
+    +times(6)
+      +column(2)
+        +times(2)
+          +column(1)
+  +row
+    +times(4)
+      +column(3)
+        +times(3)
+          +column(1)
+  +row
+    +times(3)
+      +column(4)
+        +times(2)
+          +column(2)
+            +times(2)
+              +column(1)
+  +row
+    +times(2)
+      +column(6)
+        +times(2)
+          +column(3)
+            +times(3)
+              +column(1)
+  +row
+    +column(2)
+      +times(2)
+        +column(1)
+    +column(10)
+      +column(2)
+        +times(2)
+          +column(1)
+      +column(8)
+        +column(2)
+          +times(2)
+            +column(1)
+        +column(6)
+          +column(2)
+            +times(2)
+              +column(1)
+          +column(4)
+            +times(2)
+              +column(2)
+                +times(2)
+                  +column(1)
+  .row
+    h2 Positioning Demo
+  +row
+    +column(11, { prefix: 1 })
+  +row
+    +column(1)
+    +column(10, { prefix: 1 })
+  +row
+    +column(10, { prefix: 2 })
+  +row
+    +column(1)
+    +column(9, { prefix: 2 })
+  +row
+    +column(9, { prefix: 3 })
+  +row
+    +column(1)
+    +column(8, { prefix: 3 })
+  +row
+    +column(8, { prefix: 4 })
+  +row
+    +column(1)
+    +column(7, { prefix: 4 })
+  +row
+    +column(7, { prefix: 5 })
+  +row
+    +column(1)
+    +column(6, { prefix: 5 })
+  +row
+    +column(6, { prefix: 6 })
+  +row
+    +column(1)
+    +column(5, { prefix: 6 })
+  +row
+    +column(5, { prefix: 7 })
+  +row
+    +column(1)
+    +column(4, { prefix: 7 })
+  +row
+    +column(4, { prefix: 8 })
+  +row
+    +column(1)
+    +column(3, { prefix: 8 })
+  +row
+    +column(3, { prefix: 9 })
+  +row
+    +column(1)
+    +column(2, { prefix: 9 })
+  +row
+    +column(2, { prefix: 10 })
+  +row
+    +column(1)
+    +column(1, { prefix: 10 })
+  +row
+    +column(1, { prefix: 11 })
+  .row
+    h3 Nested Spacing Demo
+  +row
+    +column(10, { prefix: 2 })
+      +column(8, { prefix: 2 })
+        +column(6, { prefix: 2 })
+          +column(4, { prefix: 2 })
+            +column(2, { prefix: 2 })
+  +row
+    +column(1)
+    +column(10, { suffix: 1 })
+      +column(1)
+      +column(8, { suffix: 1 })
+        +column(1)
+        +column(6, { suffix: 1 })
+          +column(1)
+          +column(4, { suffix: 1 })
+            +column(1)
+            +column(2, { suffix: 1 })
+  .row
+    h2 Reordering Demo
+  +row
+    +column(3, { push: 9 })
+    +column(9, { pull: 3 })
+  +row
+    +column(4, { push: 8 })
+    +column(8, { pull: 4 })
+  +row
+    +column(5, { push: 7 })
+    +column(7, { pull: 5 })
+  +row
+    +column(6, { push: 6 })
+    +column(6, { pull: 6 })
+
+  include _guidelines.pug
