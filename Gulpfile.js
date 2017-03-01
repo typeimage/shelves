@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const pug = require('gulp-pug');
-const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 
 gulp.task('demo', ['demo:scss', 'demo:pug'], () => {
