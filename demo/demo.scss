@@ -1,0 +1,70 @@
+$shelves-nested-prefixes: true;
+$primary-color: #7084cf;
+$column-color: $primary-color;
+$guide-color: lighten(#9933ff, 30%);
+
+@import "shelves-grid";
+
+body {
+  font-family: monospace;
+  margin: 0;
+  padding: 2rem 0;
+}
+
+.display-row + .display-row {
+  margin-top: 1rem;
+}
+
+.display-column + .display-row {
+  margin-top: .25rem;
+}
+
+.display-column {
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0;
+  padding: .25rem;
+  background-color: $column-color;
+  color: white;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-family: monospace;
+  font-size: .75em;
+  line-height: 1rem;
+  white-space: nowrap;
+}
+
+.guidelines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  .row,
+  .guide,
+  .column-1,
+  .column-2,
+  .column-3,
+  .column-4,
+  .column-5,
+  .column-6,
+  .column-7,
+  .column-8,
+  .column-9,
+  .column-10,
+  .column-11,
+  .column-12 {
+    height: 100%;
+  }
+
+  .guide {
+    text-indent: 9999em;
+    border-width: 1px;
+    border-style: none solid;
+    border-color: $guide-color;
+    text-align: center;
+  }
+}
